@@ -1,0 +1,31 @@
+.btn {
+    padding: 1rem 3rem;
+    border-radius: 10px;
+    background-color: grey;
+    color: black;
+    border: none;
+    transition: .3s all ease-in-out;
+}
+
+.btn:hover {
+    transform: scale(0.95);
+    transition: .3s all ease-in-out;
+    color: var(--primary-color);
+}
+
+.center {
+    text-align: center;
+}
+
+.flex-row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.all-caps {
+    text-transform: uppercase;
+}
+.capitalize {
+    text-transform: capitalize;
+}
