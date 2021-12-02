@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/login.css" class="css">
+    <link rel="icon" href="assets/favicon.png">
+</head>
+
+<body>
+    <a href="main.html">
+        <h2 class="logo">Feyton Inc</h2>
+    </a>
+    <img src="assets/login-bg.jpg" alt="background-image" class="wave">
+
+    <div class="container">
+
+
+        <div class="img">
+            <img src="/assets/phone.svg" alt="">
+        </div>
+        <div class="login-container">
+            <form action="#here" method="">
+
+                <img src="assets/profile_avatar.svg" alt="avatar" class="avatar">
+
+                <div class="input-div one">
+                    <div class="i">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="">
+                        <h5>Email</h5>
+                        <input type="email" name="login" id="login" class="input">
+                    </div>
+                </div>
+                <div class="input-div second">
+                    <div class="i">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <div class="">
+                        <h5>Password</h5>
+                        <input type="password" class="input" name="password">
+                    </div>
+                </div>
+                <a href="#">Forgot Password?</a>
+                <input type="submit" class="btn" value="Login">
+            </form>
+        </div>
+    </div>
+    <script src="/login.js"></script>
+
+
+    <script>
+        var err = document.getElementById("login-error");
+        err.classList.add("error-text");
+        err.innerText = "Incorrect credentials";
+    </script>
+
+
+</body>
+
+</html>
