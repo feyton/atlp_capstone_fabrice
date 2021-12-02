@@ -8,4 +8,9 @@ $(document).ready(function (e) {
     //to toggle class when user click and left it there
     $(".menu-items").removeClass("menu-displayed", $(window).width() > 575);
   });
+
+  // Disabling links and buttons 
+  $(".disabled").click(function(e) {
+    e.preventDefault()
+  })
 });
