@@ -40,7 +40,7 @@ nav.fixed {
     position: fixed;
     z-index: 1000;
     background-color: rgb(241, 236, 236);
-    
+
 }
 
 main header nav a {
@@ -703,6 +703,34 @@ main .services {
 
 
 
+/* Pagination */
+.pagination {
+    background-color: white;
+    color: grey;
+    padding: .5rem 2rem;
+    justify-content: center;
+    text-align: center;
+    margin: 1rem auto;
+}
+
+.pagination span {
+    background-color: rgb(54, 50, 50);
+    border-radius: 50%;
+    text-align: center;
+    padding: 1rem;
+    height: 20px;
+    width: 30px;
+    color: white;
+    cursor: pointer;
+    font-family: var(--Lexend);
+}
+
+.pagination span:hover {
+    color: #444;
+    background-color: var(--light-blue);
+}
+
+/* Pagination */
 
 
 
