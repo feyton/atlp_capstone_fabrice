@@ -30,9 +30,17 @@ main header nav {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    background-color: white;
+    background-color: transparent;
     overflow: hidden;
     font-family: var(--Abel);
+
+}
+
+nav.fixed {
+    position: fixed;
+    z-index: 1000;
+    background-color: rgb(241, 236, 236);
+    
 }
 
 main header nav a {
@@ -88,6 +96,10 @@ main header nav .menu .menu-item.active {
 main header nav .menu .menu-item.active a {
     color: white;
 }
+
+/* nav .fixed {
+    position: fixed;
+} */
 
 /* Menu Toggle */
 main header nav .menu-toggle {
