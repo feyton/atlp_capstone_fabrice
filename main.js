@@ -9,6 +9,7 @@ $(document).ready(function (e) {
     $(".menu-items").removeClass("menu-displayed", $(window).width() > 575);
   });
 
+
   // Disabling links and buttons
   $(".disabled").click(function (e) {
     e.preventDefault();
