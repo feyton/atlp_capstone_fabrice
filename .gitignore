@@ -13,6 +13,9 @@ bower_components
 
 *.sublime*
 
+# Ignoring the script folder
+/scripts/
+
 psd
 thumb
 sketch
