@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main| Fabrice</title>
+    <title>ATPL| The new macbook pro is the best on market</title>
     <link rel="icon" type="image/png" href="/assets/favicon.png">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
@@ -28,8 +28,8 @@
                 </div>
                 <div class="menu flex-row menu-displayed">
                     <ul class="menu-items flex-row">
-                        <li class="menu-item active"><a href="main.html" class="">Home</a></li>
-                        <li class="menu-item"><a href="#here">Blog</a></li>
+                        <li class="menu-item"><a href="index.html" class="">Home</a></li>
+                        <li class="menu-item active"><a href="blog.html">Blog</a></li>
                         <li class="menu-item"><a href="#here">Our Work</a></li>
                         <li class="menu-item"><a href="#here">Contact Us</a></li>
                     </ul>
@@ -54,9 +54,9 @@
                             </div>
                         </div>
                         <div class="blog-info">
-                            <a href="#detail.html" class="title">
-                                <h2>The new mac-book is the laptop on the market</h2>
-                            </a>
+
+                            <h2>The new mac-book is the laptop on the market</h2>
+
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa laborum dolorum nihil? Non,
                                 a
                                 tenetur et aperiam hic illo maiores quibusdam iure tempora deserunt fuga eaque ipsam,
@@ -73,7 +73,8 @@
                                 blanditiis culpa esse accusamus id corporis. Aspernatur quos esse necessitatibus
                                 laudantium repellendus asperiores vitae. Voluptatem tempore natus accusantium iure
                                 laboriosam a tenetur nobis dolorum optio dolorem perferendis voluptatum esse rem error
-                                veniam sed pariatur, ad ex soluta quod. Mollitia eum nobis maxime eius repellat!
+                                veniam sed pariatur, ad ex soluta quod. </p>
+                            <p>Mollitia eum nobis maxime eius repellat!
                                 Recusandae iste voluptatum mollitia saepe nisi tenetur ex velit quis necessitatibus
                                 dolore minima dolores est, sequi atque ea ratione? Dolorem voluptatem voluptas animi eum
                                 libero. Molestias quibusdam dolorem iusto ipsam adipisci nemo deserunt delectus ullam
@@ -98,12 +99,13 @@
                     </div>
                     <hr>
                     <div class="comments">
+                        <h3>Add a comment</h3>
                         <div class="comment-form">
                             <form action="#comment">
-                                <input type="text" name="name" placeholder="Name">
-                                <input type="email" name="email" id="" placeholder="email">
-                                <textarea name="comment" id="" cols="30" rows="3"
-                                    placeholder="Type your comment here"></textarea>
+                                <input type="text" name="name" placeholder="Name" required>
+                                <input type="email" name="email" id="" placeholder="Email" required>
+                                <textarea name="comment" id="" cols="30" rows="3" placeholder="Type your comment here"
+                                    required></textarea>
                                 <input type="submit" value="Send" class="disabled">
                             </form>
                         </div>
@@ -120,8 +122,29 @@
                                         earum
                                         quisquam sed libero quis tempora, asperiores similique, fuga architecto iste
                                         velit!</p>
+                                    <hr>
                                 </li>
-                                <hr>
+                                <li>
+                                    <h3 class="title">By Fabrice</h3>
+                                    <p class="comment-content">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                        Magni
+                                        rerum repellat doloremque repudiandae tenetur aliquam modi sapiente repellendus
+                                        earum
+                                        quisquam sed libero quis tempora, asperiores similique, fuga architecto iste
+                                        velit!</p>
+                                    <hr>
+                                </li>
+                                <li>
+                                    <h3 class="title">By Fabrice</h3>
+                                    <p class="comment-content">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                        Magni
+                                        rerum repellat doloremque repudiandae tenetur aliquam modi sapiente repellendus
+                                        earum
+                                        quisquam sed libero quis tempora, asperiores similique, fuga architecto iste
+                                        velit!</p>
+                                    <hr>
+                                </li>
+
                             </ul>
                         </div>
                     </div>
@@ -129,27 +152,51 @@
                 </section>
                 <aside class="sidebar">
                     <div class="author author-card">
-                        <h2>Fabrice H.</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque facilis quam perspiciatis hic
-                            eligendi cumque, tempore iste odit voluptatum labore error amet quisquam sit aliquam et
-                            eaque possimus sunt adipisci!</p>
+                        <div class="author-avatar"><img src="assets/profile.JPG" alt=""></div>
 
+
+                        <h2>Fabrice H.</h2>
+                        <p>A happy traveller, and a software developer by passion. If you see me around,
+                            say hi and we can talk dev on a cup of coffe</p>
+                        <button class="coffee">
+                            <span>Follow</span><span><i class="fab fa-facebook"></i><i class="fab fa-github"></i></span>
+                        </button>
+
+                    </div>
+                    <div class="recommended">
+                        <h2 class="title">You can also read</h2>
+                        <div class="r-post">
+                            <img src="https://images.unsplash.com/photo-1607799279861-4dd421887fb3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+                                alt="">
+                            <a href="detail.html" class="title">Lorem ipsum dolor sit amet</a>
+                            <hr>
+                        </div>
+                        <div class="r-post">
+                            <img src="https://images.unsplash.com/photo-1607799279861-4dd421887fb3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+                                alt="">
+                            <a href="detail.html" class="title">Lorem ipsum dolor sit amet</a>
+                            <hr>
+                        </div>
+                        <div class="r-post">
+                            <img src="https://images.unsplash.com/photo-1607799279861-4dd421887fb3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+                                alt="">
+                            <a href="detail.html" class="title">Lorem ipsum dolor sit amet</a>
+                            <hr>
+                        </div>
                     </div>
 
                     <div class="categories">
-                        <h1 class="center">About post</h1>
+                        <h1 class="center">By Category</h1>
                         <div class="category color-gradient">
-                            <span>Category</span><span>Software</span>
+                            <span>Tutorials</span><span>(2)</span>
                         </div>
                         <div class="category color-gradient">
-                            <span>Comments</span><span>(30)</span>
+                            <span>HTML</span><span>(30)</span>
                         </div>
                         <div class="category color-gradient">
-                            <span>Visits</span><span>(3000)</span>
+                            <span>CSS</span><span>(30)</span>
                         </div>
-                        <div class="category color-gradient">
-                            <span>Author</span><span>Fabrice</span>
-                        </div>
+
                     </div>
                     <h1 class="newsletter">Newsletter</h1>
                     <form action="#none">

@@ -11,7 +11,7 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
-.wave {
+.bg {
     position: fixed;
     height: 100%;
     width: 100%;
@@ -53,10 +53,14 @@ body {
 
 .img img {
     width: 500px;
+
 }
 
 .avatar {
     width: 100px;
+    height: 100px;
+    object-fit: cover; /* */
+    border-radius: 50%;
 }
 
 .login-container {
@@ -235,7 +239,7 @@ a:hover {
         justify-content: center;
     }
 
-    .wave {
+    .bg {
         transition: all 0.25s ease-in-out;
         -webkit-filter: blur(6px);
         -moz-filter: blur(6px);
