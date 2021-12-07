@@ -1,3 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Josefin+Slab:wght@300;500;600&family=Lato&family=Lexend:wght@400;500&display=swap');
+
+:root {
+    --Josefin: "Josefin Slab", sans-serif;
+    --Lexend: 'Lexend', sans-serif;
+    --Lato: 'Lato', sans-serif;
+    --Abel: 'Abel', sans-serif;
+    --light-blue: rgba(33, 141, 241, 1);
+    --dark-blue: rgba(33, 141, 241, 0.31);
+    --dark-grey: rgba(35, 43, 51, 0.9);
+    --light-cyan: rgba(130, 180, 195, 1);
+}
+
+
 * {
     padding: 0;
     margin: 0;
@@ -59,7 +73,8 @@ body {
 .avatar {
     width: 100px;
     height: 100px;
-    object-fit: cover; /* */
+    object-fit: cover;
+    /* */
     border-radius: 50%;
 }
 
@@ -74,7 +89,7 @@ form {
 }
 
 form h2 {
-    font-size: 2.9rem;
+    font-size: 2rem;
     text-transform: uppercase;
     margin: 15px 0;
     color: rgb(37, 36, 36);
@@ -127,13 +142,13 @@ form h2 {
     margin-bottom: 4px;
 }
 
-.i {
+.input-div .i {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.i i {
+.input-div .i i {
     color: #d9d9d9;
     transition: .3s;
 }
@@ -169,20 +184,20 @@ form h2 {
     color: rgb(245, 245, 245);
 }
 
-a {
+form a , form p{
     display: block;
     text-align: right;
     text-decoration: none;
-    color: rgb(71, 67, 67);
+    color: rgb(255, 255, 255);
     font-size: 1rem;
     transition: 0.3s;
 }
 
-a:hover {
+form a:hover {
     color: #3895d3;
 }
 
-.btn {
+form .btn {
     display: block;
     width: 100%;
     height: 50px;
@@ -191,7 +206,7 @@ a:hover {
     font-size: 1.2rem;
     outline: none;
     border: none;
-    background-image: linear-gradient(to right, #32be8f, #32c594, #38be8f);
+    background-image: linear-gradient(to right, #344d44, #29795e, #38be8f);
     cursor: pointer;
     color: #fff;
     background-size: 150%;
@@ -199,10 +214,51 @@ a:hover {
     text-transform: uppercase;
 }
 
-.btn:hover {
+form .btn:hover {
     background-position: right;
     transition: .5s;
     transform: scale(.95);
+}
+
+form .social-login {
+    width: 100%;
+
+}
+form .links {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 10px;
+
+}
+
+form .social-login .social {
+    display: flex;
+    justify-content: space-between;
+}
+form .social-login .social a {
+    font-size: .9rem;
+}
+form .social-login .social a {
+    padding: .5rem 2rem;
+    background-color: rgba(12, 62, 71, 0.637);
+    border-radius: 10px;
+    display: inline-block;
+}
+.or-div h3 {
+    display: inline-block;
+    margin-bottom: 10px;
+    justify-content: center;
+    text-align: center;
+    vertical-align: middle;
+}
+.or-div h3:first-child {
+    width: 30%;
+    border-bottom: 3px solid black;
+}
+.or-div h3:last-child {
+    width: 30%;
+    border-bottom: 3px solid black;
 }
 
 @media screen and (max-width: 1050px) {
@@ -247,7 +303,7 @@ a:hover {
         filter: blur(6px);
     }
 
-    a {
+    form a {
         color: rgb(0, 0, 0);
     }
 
