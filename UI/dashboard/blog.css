@@ -1,0 +1,205 @@
+.bg-light h2 {
+    color: rgb(241, 241, 241);
+    z-index: 10;
+    text-align: center;
+    padding-top: 2rem;
+    font-family: var(--Lexend);
+}
+
+.add-blog {
+    position: fixed;
+    z-index: 10;
+    bottom: 0%;
+    right: 0%;
+    background-color: rgba(117, 150, 182, 0.932);
+    padding: 10px;
+    text-align: center;
+    justify-content: center;
+    margin-right: 3rem;
+    margin-bottom: 2rem;
+    border-radius: 50%;
+    cursor: pointer;
+    /* transition: 0.3s; */
+    transition-delay: 1s;
+}
+
+.add-blog i {
+    color: white;
+    font-weight: bolder;
+    font-size: 1.3rem;
+}
+
+.add-blog-message {
+    position: fixed;
+    z-index: 10;
+    bottom: 0%;
+    right: 0%;
+    padding: 10px;
+    text-align: center;
+    justify-content: center;
+    margin-right: 1rem;
+    margin-bottom: 4rem;
+    /* border-radius: 50%; */
+    cursor: pointer;
+    /* display: none; */
+    font-weight: bolder;
+    color: rgb(14, 59, 59);
+    font-family: var(--Lexend);
+    transition-delay: 1s;
+    transition: .5s;
+    opacity: 0;
+}
+
+.add-blog:hover+.add-blog-message {
+    opacity: 1;
+    transition: 0.3s;
+    transition-delay: .3s;
+}
+
+.title {
+    font-family: var(--Lexend);
+    text-align: center;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+#articles {
+    width: 100%;
+    margin: 1rem;
+    font-family: var(--Josefin);
+    text-align: left;
+}
+
+#articles thead {
+    font-weight: bolder;
+    font-size: 1.2rem;
+    padding: .5rem 0rem;
+}
+
+#articles thead th {
+    padding: 1rem 0rem;
+}
+
+#articles tbody {
+    font-size: 1.1rem;
+}
+
+#articles .post-comments {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.2rem .5rem;
+    flex-wrap: wrap;
+    width: fit-content;
+}
+
+#articles .post-comments .check-mark {
+    background-color: rgb(0, 182, 0);
+    padding: .2rem;
+    border-radius: 50%;
+    color: rgb(255, 255, 255);
+}
+
+#articles .post-comments .unapproved {
+    background-color: rgb(253, 48, 48);
+    padding: .2rem;
+    border-radius: 50%;
+    color: rgb(255, 255, 255);
+    text-align: center;
+}
+
+#articles .actions {
+    padding: 0rem .2rem;
+    text-align: center;
+
+}
+
+#articles .actions .fa-edit {
+    background-color: rgb(255, 255, 255);
+    padding: .2rem;
+    text-align: center;
+    border-radius: 2px;
+}
+
+#articles .actions .fa-trash {
+    background-color: rgb(255, 255, 255);
+    padding: .2rem;
+    text-align: center;
+    border-radius: 2px;
+    color: red;
+}
+
+.color-primary {
+    color: black;
+}
+
+tfoot {
+    text-align: center;
+    padding: 1rem 2rem;
+}
+
+tfoot button {
+    padding: .5rem 1rem;
+    border-radius: 10px;
+    border: none;
+    background-color: rgb(5, 26, 29);
+    font-weight: bolder;
+    font-family: var(--Lexend);
+    color: white;
+    margin-top: 1rem;
+}
+
+tbody tr {
+    border-bottom: 2px solid grey;
+    padding: 1rem;
+}
+
+/* Post creation */
+
+.add-card {
+    width: 100%;
+    margin: 1rem;
+    box-shadow: 0px 2px 2px 2px grey;
+    padding: 1rem;
+    border-radius: 10px;
+
+}
+
+.add-card form {
+    display: block;
+}
+
+.add-card form .input-group {
+    display: block;
+    margin: 1rem 0rem;
+    text-align: left;
+    font-family: var(--Josefin);
+    color: black;
+    font-weight: 600;
+}
+
+.add-card form .input-group input, .input-group textarea {
+    display: block;
+    padding: .5rem 1rem;
+    border-radius: 10px;
+    border: 1px solid grey;
+    background-color: rgb(226, 226, 226);
+}
+
+.add-card form .input-group input::placeholder {
+    opacity: 0;
+}
+
+textarea {
+    width: 100%;
+    height: 100%;
+    max-height: 500px;
+}
+
+.editor-section .editor {
+    display: block;
+    width: 100%;
+    border: 2px solid rgb(190, 187, 187);
+
+}

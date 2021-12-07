@@ -11,9 +11,17 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" href="dashboard.css" class="css">
+    <link rel="stylesheet" href="blog.css" class="css">
 </head>
 
 <body>
+    <div class="add-blog">
+        <a href="create.html"><i class="fas fa-plus"></i></a>
+
+    </div>
+    <div class="add-blog-message">
+        <span>New article</span>
+    </div>
 
     <header>
         <nav>
@@ -50,8 +58,8 @@
 
             </div>
             <ul>
-                <li class="active"><a href="./index.html">Dashboard</a></li>
-                <li><a href="./blog.html">Blog</a></li>
+                <li><a href="./index.html">Dashboard</a></li>
+                <li class="active"><a href="./blog.html">Blog</a></li>
                 <li><a href="./comments.html">Comments</a></li>
                 <li><a href="./profile.html">Profile</a></li>
 
@@ -61,66 +69,57 @@
         </div>
 
         <section class="dashboard">
-            <div class="bg-light"></div>
-            <div class="">
-                <div class="stats">
-                    <div class="card">
-                        <h3>Today Visits</h3>
-                        <div class="stat">
-                            <span>Today</span><span class="number">204556</span>
-                        </div>
-                        <div class="stat">
-                            <span>7 days</span><span class="number">20000</span>
-                        </div>
-                        <div class="stat">
-                            <span>This month</span><span class="number">20000</span>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <h3>Articles</h3>
-                        <div class="stat">
-                            <span>Published</span><span class="number">20</span>
-                        </div>
-                        <div class="stat">
-                            <span>Drafts</span><span class="number">20</span>
-                        </div>
-                        <div class="stat">
-                            <span>Total</span><span class="number">20</span>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <h3>Comments</h3>
-                        <div class="stat">
-                            <span>Pending approval</span><span class="number">20</span>
-
-
-                        </div>
-                        <div class="stat">
-                            <span>Approved</span><span class="number">20</span>
-
-                        </div>
-                        <div class="stat">
-                            <span>Total</span><span class="number">20</span>
-                        </div>
-                    </div>
-                </div>
-
+            <div class="bg-light">
+                <h2>Create Article&nbsp;<strong></strong></h2>
             </div>
-            <div class="row ">
-                <div class="tasks">
+            <div class="add-card">
+                <form action="">
+                    <div class="input-group">
+                        <label for="title">Post Title</label>
+                        <input type="text" placeholder="title" name="title" id="title">
+                    </div>
+                    <div class="input-group">
+                        <label for="post-date">Published date</label>
+                        <input type="date" placeholder="title" name="title" id="post-date">
+                    </div>
+                    <div class="input-group">
+                        <label for="post-date">Post Image</label>
+                        <input type="file" placeholder="title" name="title" id="post-image">
+                    </div>
+                    <div class="input-group editor-section">
+                        <h2>Add your content here</h2>
+                        <hr>
+                        <div class="editor" id="editor">
 
-                </div>
-                <div class="projects">
+                        </div>
+                    </div>
 
-                </div>
+
+
+                </form>
             </div>
+
         </section>
     </main>
 
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@latest"></script>
     <script src="main.js"></script>
+    <script>
+        $(document).ready(function () {
+            const editor = new EditorJS({
+                /**
+                 * Id of Element that should contain Editor instance
+                 */
+                placeholder: 'Let`s write an awesome story today!',
+
+                holder: 'editor',
+                inlineToolbar: ['link', 'marker', 'bold', 'italic'],
+            })
+        })
+    </script>
 </body>
 
 </html>
