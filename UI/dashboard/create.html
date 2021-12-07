@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | ATLP</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="dashboard.css" class="css">
+    <link rel="stylesheet" href="blog.css" class="css">
+</head>
+
+<body>
+    <div class="add-blog">
+        <a href="create.html"><i class="fas fa-plus"></i></a>
+
+    </div>
+    <div class="add-blog-message">
+        <span>New article</span>
+    </div>
+
+    <header>
+        <nav>
+            <div class="brand">
+                <a href="dashboard/index.html">
+                    <h3>Feyton Inc</h3>
+                </a>
+
+            </div>
+
+            <div class="menu ">
+                <ul class="menu-items">
+                    <li class="menu-item"><a href="index.html" class="">Actions</a>&nbsp;<i
+                            class="fas fa-chevron-down"></i>
+                        <ul>
+                            <li><a href="./blog.html">Blogs</a></li>
+                            <li><a href="./profile.html">Profile</a></li>
+                            <li><a href="../index.html">View Site</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="menu-item logout"><a href="#here">Logout</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main class=" ">
+        <div class="sidebar ">
+            <div class="menu-toggle close"><i class="fas fa-chevron-circle-left"></i></div>
+
+            <div class="profile">
+                <img src="../assets/profile.JPG" alt="">
+                <h3>Fabrice H.</h3>
+
+            </div>
+            <ul>
+                <li><a href="./index.html">Dashboard</a></li>
+                <li class="active"><a href="./blog.html">Blog</a></li>
+                <li><a href="./comments.html">Comments</a></li>
+                <li><a href="./profile.html">Profile</a></li>
+
+            </ul>
+
+
+        </div>
+
+        <section class="dashboard">
+            <div class="bg-light">
+                <h2>Create Article&nbsp;<strong></strong></h2>
+            </div>
+            <div class="add-card">
+                <form action="">
+                    <div class="input-group">
+                        <label for="title">Post Title</label>
+                        <input type="text" placeholder="title" name="title" id="title">
+                    </div>
+                    <div class="input-group">
+                        <label for="post-date">Published date</label>
+                        <input type="date" placeholder="title" name="title" id="post-date">
+                    </div>
+                    <div class="input-group">
+                        <label for="post-date">Post Image</label>
+                        <input type="file" placeholder="title" name="title" id="post-image">
+                    </div>
+                    <div class="input-group editor-section">
+                        <h2>Add your content here</h2>
+                        <hr>
+                        <div class="editor" id="editor">
+
+                        </div>
+                    </div>
+
+
+
+                </form>
+            </div>
+
+        </section>
+    </main>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/header@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/link@2.0.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/simple-image@latest"></script>
+    <script src="main.js"></script>
+    <script>
+        $(document).ready(function () {
+            const editor = new EditorJS({
+                /**
+                 * Id of Element that should contain Editor instance
+                 */
+                placeholder: 'Let`s write an awesome story today!',
+
+                holder: 'editor',
+
+                inlineToolbar: ['link', 'marker', 'bold', 'italic'],
+                tools: {
+                    header: Header,
+
+                    image: SimpleImage,
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>
