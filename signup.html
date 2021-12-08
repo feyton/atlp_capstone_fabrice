@@ -30,29 +30,25 @@
             <p><i class="fa fa-check"></i>&nbsp;Best Support</p>
         </div>
         <div class="sign-container">
-            <form action="#here" method="">
+            <form action="" method="" id="form">
 
                 <h2 class="form-title">Sign Up</h2>
 
-                <div class="input-div one">
+                <div class="input-div ">
                     <div class="i ">
                         <i class="fas fa-user "></i>
                     </div>
                     <div class="">
-                        <input type="text" name="name" id="user-name" class="input" required placeholder="Name">
+                        <input type="text" name="name" id="user-name" class="input" required placeholder="Name"
+                            minlength="3">
                     </div>
 
-                    <div class="message-div">
-                        <b>Must:</b>
-                        <ul>
-                            <li class="invalid" id="lower-case">Have at least 3 letters</li>
-                        </ul>
-                    </div>
+
 
                 </div>
-                <div class="input-div second">
+                <div class="input-div ">
                     <div class="i valid">
-                        <i class="fas fa-at"></i>
+                        <i class="fas fa-at" id="email-icon"></i>
                     </div>
                     <div class="">
                         <input type="email" class="input" name="email" required placeholder="Email" id="user-email">
@@ -60,12 +56,12 @@
                     <div class="message-div">
                         <b>Must:</b>
                         <ul>
-                            <li class="invalid" id="lower-case">Have @ symbol</li>
+                            <li class="invalid" id="email-valid">Valid email required</li>
                         </ul>
                     </div>
 
                 </div>
-                <div class="input-div second">
+                <div class="input-div ">
                     <div class="i">
                         <i class="fas fa-lock" id="password-icon"></i>
                     </div>
@@ -83,22 +79,22 @@
                         </ul>
                     </div>
                 </div>
-                <div class="input-div second">
+                <div class="input-div ">
                     <div class="i">
-                        <i class="fas fa-lock"></i>
+                        <i class="fas fa-lock" id="password-confirm-icon"></i>
                     </div>
                     <div class="">
                         <input type="password" class="input" id="user-password-confirm" name="password" required
-                            placeholder="Confirm password">
+                            placeholder="Confirm password" disabled>
                     </div>
                     <div class="message-div">
                         <b>Must be:</b>
                         <ul>
-                            <li class="invalid">Similar to password</li>
+                            <li class="invalid" id="confirm-password-list">Similar to password</li>
                         </ul>
                     </div>
                 </div>
-                <input type="submit" class="btn" value="Sign Up" disabled>
+                <input type="submit" class="btn" value="Sign Up" id="form-submit">
                 <div class="links">
                     <a href="login.html">Login Here</a>
                 </div>

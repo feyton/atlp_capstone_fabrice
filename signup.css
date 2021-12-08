@@ -25,6 +25,16 @@
     transition: 0.3s ease-in-out all;
 }
 
+.btn {
+    cursor: pointer;
+    transition: .3s all;
+}
+
+.btn:hover {
+    transform: scale(0.95);
+    transition: .3s all;
+}
+
 .bg {
     position: fixed;
     height: 100%;
@@ -212,7 +222,7 @@ i.valid {
 
 }
 
-@media screen and (max-width: 1020px){
+@media screen and (max-width: 1020px) {
     .sign-container {
 
         padding: 1rem 2rem;
@@ -221,23 +231,25 @@ i.valid {
     }
 
 }
-@media screen and (max-width: 1000px) {
 
-}
+@media screen and (max-width: 1000px) {}
 
-@media screen and (max-width: 900px)  {
+@media screen and (max-width: 900px) {
     .container {
         gap: 2rem;
     }
+
     .sign-container {
 
         padding: 1rem 2rem;
 
         /* width: 100%; */
     }
+
     form .social-login .social a {
         padding: .5rem 1rem;
     }
+
     .text-box {
         padding: 1rem 1rem;
     }
@@ -249,16 +261,19 @@ i.valid {
     .text-box {
         display: none;
     }
+
     .container {
         display: flex;
-        
+
     }
+
     .sign-container {
         padding: 1rem 4rem;
     }
 
 }
-@media only screen and (max-width:400px){
+
+@media only screen and (max-width:400px) {
     .sign-container {
         padding: 1rem 1rem;
     }
