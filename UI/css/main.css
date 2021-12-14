@@ -31,6 +31,7 @@ main {
 
 main header {
     height: 100vh;
+    position: relative;
 }
 
 main header nav {
@@ -39,8 +40,9 @@ main header nav {
     justify-content: space-between;
     width: 100%;
     background-color: transparent;
-    overflow: hidden;
+    /* overflow: hidden; */
     font-family: var(--Abel);
+    position: relative;
 
 }
 
@@ -109,6 +111,137 @@ main header nav .menu .menu-item.active {
 
 main header nav .menu .menu-item.active a {
     color: #1f75c4;
+}
+
+
+nav ul:first-child li:last-child {
+    display: flex;
+    justify-content: center;
+    vertical-align: center;
+    position: relative;
+    height: 10vh;
+}
+
+nav ul:first-child li:last-child ul {
+    display: block;
+    position: absolute;
+    top: 10vh;
+    z-index: 10;
+    display: none;
+    margin-bottom: 5px;
+}
+
+nav img {
+    height: 40px;
+    width: 40px;
+    margin: auto;
+    border-radius: 50%;
+    margin-right: 10px;
+    /* margin-bottom: 10px; */
+    border: 1px solid grey;
+    padding: 2px;
+    object-fit: cover;
+}
+
+nav ul li {
+    position: relative;
+    padding: 1rem;
+    height: 100%;
+}
+
+nav ul li ul {
+    position: absolute;
+    top: 9vh;
+    right: 0px;
+    z-index: 10000;
+
+    background-color: inherit;
+    border-radius: 0px 0px 10px 10px;
+    /* width: 100px; */
+    background-color: rgb(247, 244, 244);
+
+    /* width: 150px; */
+}
+
+nav ul li ul li {
+    width: 100%;
+    padding: .5rem;
+    border-bottom: 1px solid black;
+    text-align: center;
+
+}
+
+nav ul li ul li a {
+    color: rgb(0, 0, 0);
+    font-family: var(--Abel);
+    text-align: center;
+}
+
+nav ul:first-child li:last-child:hover {
+    border: none;
+}
+
+nav ul:first-child li:last-child:hover ul {
+    display: block;
+    transition: .2s all;
+}
+
+
+.d-none {
+    display: none;
+}
+
+body {
+    position: relative;
+}
+
+.notify {
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgb(50, 143, 155);
+    color: white;
+    padding: 1rem 2rem;
+    font-weight: normal;
+    border-radius: 0px 0px 20px 20px;
+    font-family: var(--Lexend);
+
+}
+
+.notify .notification-progress {
+    position: absolute;
+    bottom: 0;
+    height: 10px;
+    left: 50%;
+    background-color: rgb(151, 26, 26);
+    transform: translateX(-50%);
+    animation-timing-function: linear;
+
+}
+
+.animate-progress {
+    animation: progress;
+
+
+}
+
+@keyframes progress {
+    0% {
+        width: 0%;
+    }
+
+    50% {
+        border-radius: 0px 0px 20px 20px;
+        width: 50%;
+    }
+
+    100% {
+        width: 90%;
+        border-radius: 0px 0px 30px 30px;
+        padding-bottom: 5px;
+    }
+
 }
 
 /* nav .fixed {

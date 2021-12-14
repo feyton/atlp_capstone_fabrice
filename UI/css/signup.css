@@ -147,6 +147,21 @@ ul li {
     color: white;
 }
 
+.custom-file-input::-webkit-file-upload-button {
+    padding: 10px 20px;
+    margin: 0 5px 0px 0px;
+    border-radius: 10px 0px 0px 10px;
+    border: none;
+    font-family: var(--Lexend);
+    background-color: rgb(17, 73, 73);
+    color: white;
+}
+
+form input[type="file"] {
+    padding: 0px;
+    border: none;
+}
+
 .sign-container form .links {
     display: flex;
     justify-content: flex-end;
@@ -219,6 +234,63 @@ i.invalid {
 
 i.valid {
     color: green;
+
+}
+
+.d-none {
+    display: none;
+}
+
+body {
+    position: relative;
+}
+
+.notify {
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgb(50, 143, 155);
+    color: white;
+    padding: 1rem 2rem;
+    font-weight: normal;
+    border-radius: 0px 0px 20px 20px;
+    font-family: var(--Lexend);
+
+}
+
+.notify .notification-progress {
+    position: absolute;
+    bottom: 0;
+    height: 10px;
+    left: 50%;
+    background-color: rgb(151, 26, 26);
+    transform: translateX(-50%);
+    animation-timing-function: linear;
+
+}
+
+.animate-progress {
+    animation: progress;
+
+
+}
+
+@keyframes progress {
+    0% {
+        width: 0%;
+    }
+
+    50% {
+        border-radius: 0px 0px 20px 20px;
+        width: 50%;
+    }
+
+    100% {
+        width: 90%;
+        border-radius: 0px 0px 30px 30px;
+        padding-bottom: 5px;
+    }
 
 }
 

@@ -13,10 +13,18 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
-    <link rel="stylesheet" href="main.css" class="css">
+    <link rel="stylesheet" href="./css/main.css" class="css">
+    <style>
+      
+    </style>
 </head>
 
 <body>
+    <div class="notify d-none">
+        <span class="text-notification">Hi there</span>
+        <span class="notification-progress animate-progress"></span>
+
+    </div>
 
     <main>
         <header>
@@ -33,10 +41,18 @@
                 <div class="menu flex-row menu-displayed">
                     <ul class="menu-items flex-row">
 
-                        <li class="menu-item active menu-home"><a href="index.html" class="">Home</a></li>
-                        <li class="menu-item"><a href="blog.html">Blog</a></li>
+                        <li class="menu-item active menu-home"><a href="./index.html" class="">Home</a></li>
+                        <li class="menu-item"><a href="./pages/blog.html">Blog</a></li>
                         <li class="menu-item"><a href="#here">Our Work</a></li>
                         <li class="menu-item"><a href="#here">Contact Us</a></li>
+                        <li class="menu-item profile logged-in"><img src="./assets/profile.JPG" alt=""
+                                class="profile-picture"><i class="fas fa-chevron-down"></i>
+                            <ul>
+                                <li><a href="#profile">Profile</a></li>
+                                <li><a href="#profile">Logout</a></li>
+                            </ul>
+                        </li>
+
                     </ul>
                 </div>
 
@@ -259,7 +275,7 @@
                         <div class="info">
                             <p>Designed and deployed Ticketing system</p>
                             <h6>Isaniro Corp</h6>
-                            <button>Read more</button>
+                            <button class="read-post" data-ref="">Read more</button>
                         </div>
                     </div>
                     <!-- End card -->
@@ -270,7 +286,7 @@
                         <div class="info">
                             <p>Designed and deployed Ticketing system</p>
                             <h6>Isaniro Corp</h6>
-                            <button>Read more</button>
+                            <button class="read-post" data-ref="">Read more</button>
                         </div>
                     </div>
                     <!-- End card -->
@@ -372,11 +388,11 @@
                 </div>
 
             </footer>
-            <div class="admin center">
+            <div class="admin center logged-out">
                 <div class="login">
                     <p>Admin</p>
 
-                    <button class="login-btn" onclick="window.location.href='login.html'">Login</button>
+                    <button class="login-btn" onclick="window.location.href='./pages/login.html'">Login</button>
                 </div>
 
             </div>
@@ -384,7 +400,18 @@
     </main>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="main.js"></script>
+
+
+
+    <!-- Projects Scripts -->
+    <script src="./js/main.js"></script>
+    <!-- Firebase Scrips -->
+    <script src="./js/base.js" type="module" defer></script>
+
+    <script src="./js/index.js" type="module" defer></script>
+    <script src="./js/blog.js" type="module" defer></script>
+    <script src="./js/dashboard.js" type="module" defer></script>
+
 
 </body>
 

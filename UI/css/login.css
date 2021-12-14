@@ -11,6 +11,62 @@
     --light-cyan: rgba(130, 180, 195, 1);
 }
 
+.d-none {
+    display: none;
+}
+
+body {
+    position: relative;
+}
+
+.notify {
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgb(50, 143, 155);
+    color: white;
+    padding: 1rem 2rem;
+    font-weight: normal;
+    border-radius: 0px 0px 20px 20px;
+    font-family: var(--Lexend);
+
+}
+
+.notify .notification-progress {
+    position: absolute;
+    bottom: 0;
+    height: 10px;
+    left: 50%;
+    background-color: rgb(151, 26, 26);
+    transform: translateX(-50%);
+    animation-timing-function: linear;
+
+}
+
+.animate-progress {
+    animation: progress;
+
+
+}
+
+@keyframes progress {
+    0% {
+        width: 0%;
+    }
+
+    50% {
+        border-radius: 0px 0px 20px 20px;
+        width: 50%;
+    }
+
+    100% {
+        width: 90%;
+        border-radius: 0px 0px 30px 30px;
+        padding-bottom: 5px;
+    }
+
+}
 
 * {
     padding: 0;
@@ -184,7 +240,7 @@ form h2 {
     color: rgb(245, 245, 245);
 }
 
-form a , form p{
+form a, form p {
     display: block;
     text-align: right;
     text-decoration: none;
@@ -224,6 +280,7 @@ form .social-login {
     width: 100%;
 
 }
+
 form .links {
     display: flex;
     flex-direction: row;
@@ -236,15 +293,18 @@ form .social-login .social {
     display: flex;
     justify-content: space-between;
 }
+
 form .social-login .social a {
     font-size: .9rem;
 }
+
 form .social-login .social a {
     padding: .5rem 2rem;
     background-color: rgba(12, 62, 71, 0.637);
     border-radius: 10px;
     display: inline-block;
 }
+
 .or-div h3 {
     display: inline-block;
     margin-bottom: 10px;
@@ -252,10 +312,12 @@ form .social-login .social a {
     text-align: center;
     vertical-align: middle;
 }
+
 .or-div h3:first-child {
     width: 30%;
     border-bottom: 3px solid black;
 }
+
 .or-div h3:last-child {
     width: 30%;
     border-bottom: 3px solid black;
