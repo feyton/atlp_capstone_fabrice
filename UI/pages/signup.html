@@ -15,6 +15,11 @@
 </head>
 
 <body>
+    <div class="notify d-none">
+        <span class="text-notification">Hi there</span>
+        <span class="notification-progress animate-progress"></span>
+
+    </div>
     <a href="../index.html">
         <h2 class="logo">Feyton Inc</h2>
     </a>
@@ -61,7 +66,8 @@
                     </div>
 
                 </div>
-                <input type="file" class="custom-file-input" name="profile-image" id="user-image" placeholder="Profile picture">
+                <input type="file" class="custom-file-input" name="profile-image" id="user-image"
+                    placeholder="Profile picture">
                 <div class="input-div ">
                     <div class="i">
                         <i class="fas fa-lock" id="password-icon"></i>
@@ -108,8 +114,8 @@
                         <h3></h3>
                     </div>
                     <div class="social">
-                        <a href="#facebook"><i class="fab fa-facebook"></i>&nbsp;Facebook</a>
-                        <a href="#facebook"><i class="fab fa-google"></i>&nbsp;Google</a>
+                        <a href="#facebook" id="login-with-facebook"><i class="fab fa-facebook"></i>&nbsp;Facebook</a>
+                        <a href="#facebook" id="login-with-google"><i class="fab fa-google"></i>&nbsp;Google</a>
                     </div>
                 </div>
 
@@ -121,9 +127,6 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="../js/base.js" type="module" defer></script>
-
-    <script src="../js/index.js" type="module" defer></script>
-    <script src="../js/blog.js" type="module" defer></script>
     <script src="../js/signup.js" type="module"></script>
 
 

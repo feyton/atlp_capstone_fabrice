@@ -15,7 +15,7 @@
 
     <link rel="stylesheet" href="./css/main.css" class="css">
     <style>
-      
+
     </style>
 </head>
 
@@ -45,11 +45,12 @@
                         <li class="menu-item"><a href="./pages/blog.html">Blog</a></li>
                         <li class="menu-item"><a href="#here">Our Work</a></li>
                         <li class="menu-item"><a href="#here">Contact Us</a></li>
-                        <li class="menu-item profile logged-in"><img src="./assets/profile.JPG" alt=""
-                                class="profile-picture"><i class="fas fa-chevron-down"></i>
+                        <li class="menu-item profile logged-in"><img src="" alt="" class="profile-picture"><i
+                                class="fas fa-chevron-down"></i>
                             <ul>
                                 <li><a href="#profile">Profile</a></li>
-                                <li><a href="#profile">Logout</a></li>
+                                <li class="logged-in-admin"><a href="./dashboard/index.html">Dashboard</a></li>
+                                <li><a href="#profile" class="user-logout-button">Logout</a></li>
                             </ul>
                         </li>
 
@@ -109,106 +110,44 @@
             <h2 class="head-title">Trending Posts</h2>
             <div class="blog-section">
                 <section class="blog-list">
-                    <!-- Blog -->
-                    <div class="blog-card">
-                        <div class="blog-image">
-                            <img src="https://images.unsplash.com/photo-1607799279861-4dd421887fb3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-                                alt="">
-                            <div class="date-info">
-                                <h2>24-06</h2>
-                                <hr>
-                                <h2>2021</h2>
+                    <div class="index-blog-list-div">
+
+
+                        <!-- Blog -->
+                        <div class="blog-card">
+                            <div class="blog-image">
+                                <img src="https://images.unsplash.com/photo-1607799279861-4dd421887fb3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+                                    alt="">
+                                <div class="date-info">
+                                    <h2>24-06</h2>
+                                    <hr>
+                                    <h2>2021</h2>
+                                </div>
                             </div>
+                            <div class="blog-info">
+
+                                <a href="detail.html" class="title">
+
+                                    <h2>The new mac-book is the laptop on the market</h2>
+                                </a>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa laborum dolorum nihil?
+                                    Non,
+                                    a
+                                    tenetur et aperiam hic illo maiores quibusdam iure tempora deserunt fuga eaque
+                                    ipsam,
+                                    voluptatem
+                                    magni nobis.</p><br>
+
+                                <a href="detail.html" class="btn btn-more">Read more&nbsp;<i class="fa fa-fighter-jet"
+                                        aria-hidden="true"></i></a><br>
+
+                            </div>
+                            <br>
+
                         </div>
-                        <div class="blog-info">
-
-                            <a href="detail.html" class="title">
-
-                                <h2>The new mac-book is the laptop on the market</h2>
-                            </a>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa laborum dolorum nihil? Non,
-                                a
-                                tenetur et aperiam hic illo maiores quibusdam iure tempora deserunt fuga eaque ipsam,
-                                voluptatem
-                                magni nobis.</p><br>
-
-                            <a href="detail.html" class="btn btn-more">Read more&nbsp;<i class="fa fa-fighter-jet"
-                                    aria-hidden="true"></i></a><br>
-
-                        </div>
-                        <br>
+                        <hr>
 
                     </div>
-                    <hr>
-
-
-                    <!-- End blog -->
-                    <!-- Blog -->
-                    <div class="blog-card">
-                        <div class="blog-image">
-                            <img src="https://media.cnn.com/api/v1/images/stellar/prod/211025072623-macbook-pro-14-display-5.jpg?q=x_0,y_0,h_2268,w_4030,c_fill/h_720,w_1280"
-                                alt="">
-                            <div class="date-info">
-                                <h2>24-04</h2>
-                                <hr>
-                                <h2>2020</h2>
-                            </div>
-                        </div>
-                        <div class="blog-info">
-
-                            <a href="detail.html" class="title">
-
-                                <h2>The new mac-book is the laptop on the market</h2>
-                            </a>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa laborum dolorum nihil? Non,
-                                a
-                                tenetur et aperiam hic illo maiores quibusdam iure tempora deserunt fuga eaque ipsam,
-                                voluptatem
-                                magni nobis.</p><br>
-                            <a href="detail.html" class="btn btn-more">Read more&nbsp;<i class="fa fa-fighter-jet"
-                                    aria-hidden="true"></i></a><br>
-
-                        </div>
-                        <br>
-
-                    </div>
-                    <hr>
-
-
-                    <!-- End blog -->
-                    <!-- Blog -->
-                    <div class="blog-card">
-                        <div class="blog-image">
-                            <img src="https://images.unsplash.com/photo-1607799279861-4dd421887fb3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-                                alt="">
-                            <div class="date-info">
-                                <h2>24-06</h2>
-                                <hr>
-                                <h2>2018</h2>
-                            </div>
-                        </div>
-                        <div class="blog-info">
-
-                            <a href="detail.html" class="title">
-
-                                <h2>The new mac-book is the laptop on the market</h2>
-                            </a>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa laborum dolorum nihil? Non,
-                                a
-                                tenetur et aperiam hic illo maiores quibusdam iure tempora deserunt fuga eaque ipsam,
-                                voluptatem
-                                magni nobis.</p><br>
-
-                            <a href="detail.html" class="btn btn-more">Read more&nbsp;<i class="fa fa-fighter-jet"
-                                    aria-hidden="true"></i></a><br>
-
-                        </div>
-                        <br>
-
-                    </div>
-                    <hr>
-
-
                     <!-- End blog -->
                     <div class="load-more">
 

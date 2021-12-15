@@ -1,5 +1,7 @@
 import {
   createUserWithEmailAndPassword,
+  FacebookAuthProvider,
+  signInWithPopup,
   updateProfile,
 } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
 import {
@@ -7,8 +9,12 @@ import {
   ref as storageRef,
   uploadBytesResumable,
 } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-storage.js";
-import { auth, handleUserSignUpError, storage } from "./base.js";
-
+import {
+  auth,
+  handleUserLoggedIn,
+  handleUserSignUpError,
+  storage,
+} from "./base.js";
 $(".input").each(function () {
   $(this).on("focus", function () {
     //   alert("focused");
@@ -157,20 +163,31 @@ var submitData = (name, email, password, image) => {
     .then((userCredential) => {
       let user = userCredential.user;
       let profRef = storageRef(storage, "users/" + user.uid + "/profile.jpg");
-      uploadBytesResumable(profRef, image).then((snapshot) => {
-        console.log("Profile picture uploaded");
-        getDownloadURL(
-          storageRef(storage, "users/" + user.uid + "/profile.jpg")
-        ).then((url) => {
-          imgURL = url;
+      uploadBytesResumable(profRef, image)
+        .then((snapshot) => {
+          console.log("Profile picture uploaded");
+          getDownloadURL(
+            storageRef(storage, "users/" + user.uid + "/profile.jpg")
+          )
+            .then((url) => {
+              let imgUrl = url;
+              // console.log(imgUrl);
+              updateProfile(user, {
+                displayName: name,
+                photoURL: imgUrl,
+              });
+
+              console.log("Profile crated successfully");
+              $("#form").trigger("reset");
+              // handleUserLoggedInFirstTime(user);
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        })
+        .catch((err) => {
+          console.log(err);
         });
-        updateProfile(user, {
-          displayName: name,
-          imgURL: imgURL,
-        });
-        console.log("Profile crated successfully");
-        $("#form").trigger("reset");
-      });
     })
     .catch((err) => {
       console.log(err);
@@ -182,4 +199,21 @@ var submitData = (name, email, password, image) => {
 $("#form").on("submit", function (e) {
   e.preventDefault();
   validateSignUpForm();
+});
+
+const facebookProvider = new FacebookAuthProvider();
+
+$("#login-with-facebook").click((e) => {
+  e.preventDefault();
+  signInWithPopup(auth, facebookProvider)
+    .then((result) => {
+      const user = result.user;
+      const credential = FacebookAuthProvider.credentialFromResult(result);
+      const accessToken = credential.accessToken;
+      handleUserLoggedIn(user);
+    })
+    .catch((err) => {
+      console.log(err);
+      console.log(err.message);
+    });
 });

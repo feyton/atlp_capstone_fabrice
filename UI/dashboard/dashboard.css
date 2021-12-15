@@ -229,6 +229,7 @@ main .dashboard {
     background-color: rgb(255, 255, 255);
     height: 100vh;
     padding: 1rem 2rem;
+    padding-bottom: 7herem !important;
 }
 
 .dashboard .bg-light {

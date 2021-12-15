@@ -10,16 +10,22 @@
         integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <link rel="stylesheet" href="dashboard.css" class="css">
-    <link rel="icon" href="assets/favicon.png">
+    <link rel="stylesheet" href="./dashboard.css" class="css">
+    <link rel="stylesheet" href="../css/util.css" class="css">
+    <link rel="icon" href="../assets/favicon.png">
 </head>
 
 <body>
+    <div class="notify d-none">
+        <span class="text-notification">Hi there</span>
+        <span class="notification-progress animate-progress"></span>
+
+    </div>
 
     <header>
         <nav>
             <div class="brand">
-                <a href="dashboard/index.html">
+                <a href="../dashboard/index.html">
                     <h3>Feyton Inc</h3>
                 </a>
 
@@ -27,8 +33,7 @@
 
             <div class="menu ">
                 <ul class="menu-items">
-                    <li class="menu-item"><a href="index.html" class="">Actions</a>&nbsp;<i
-                            class="fas fa-chevron-down"></i>
+                    <li class="menu-item"><a href="#popup" class="">Actions</a>&nbsp;<i class="fas fa-chevron-down"></i>
                         <ul>
                             <li><a href="./blog.html">Blogs</a></li>
                             <li><a href="./profile.html">Profile</a></li>
@@ -36,7 +41,7 @@
                         </ul>
                     </li>
 
-                    <li class="menu-item logout"><a href="#here">Logout</a></li>
+                    <li class="menu-item logout loggeg-in"><a href="#here" class="logout-button">Logout</a></li>
                 </ul>
             </div>
         </nav>
@@ -46,8 +51,8 @@
             <div class="menu-toggle close"><i class="fas fa-chevron-circle-left"></i></div>
 
             <div class="profile">
-                <img src="../assets/profile.JPG" alt="">
-                <h3>Fabrice H.</h3>
+                <img src="" alt="" class="profile-picture">
+                <h3 class="user-name"></h3>
 
             </div>
             <ul>
@@ -121,6 +126,8 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="../js/base.js" defer type="module"></script>
+    <script src="../js/dashboard.js" defer type="module"></script>
     <script src="main.js"></script>
 </body>
 

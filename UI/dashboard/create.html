@@ -10,14 +10,19 @@
         integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <link rel="stylesheet" href="dashboard.css" class="css">
-    <link rel="stylesheet" href="blog.css" class="css">
+    <link rel="stylesheet" href="./dashboard.css" class="css">
+    <link rel="stylesheet" href="./blog.css" class="css">
+    <link rel="stylesheet" href="../css/util.css" class="css">
     <link rel="icon" href="assets/favicon.png">
+    <script src='https://cdn.tiny.cloud/1/xyeau33pff3iqnbpm6awb9rz6y6mrvid09r36yumi28g026m/tinymce/5/tinymce.min.js'
+        referrerpolicy="origin">
+        </script>
 </head>
 
 <body>
-    <div class="add-blog">
-        <a href="create.html"><i class="fas fa-plus"></i></a>
+    <div class="notify d-none">
+        <span class="text-notification">Hi there</span>
+        <span class="notification-progress animate-progress"></span>
 
     </div>
     <div class="add-blog-message">
@@ -74,26 +79,36 @@
                 <h2>Create Article&nbsp;<strong></strong></h2>
             </div>
             <div class="add-card">
-                <form action="">
+                <form action="#here" id="post-create-form">
                     <div class="input-group">
                         <label for="title">Post Title</label>
-                        <input type="text" placeholder="title" name="title" id="title">
+                        <input type="text" placeholder="title" name="title" id="title" class="w-100">
                     </div>
                     <div class="input-group">
-                        <label for="post-date">Published date</label>
-                        <input type="date" placeholder="title" name="title" id="post-date">
+                        <label for="title">Post Summary</label>
+                        <textarea name="summary" id="post-summary" cols="30" rows="4"></textarea>
                     </div>
+                    <div class="input-group custom-select-input">
+                        <label for="category">Choose a category</label>
+                        <select name="category" id="category" required>
+                            <option value="Technology">Technology</option>
+                            <option value="Tutorials">Tutorials</option>
+                            <option value="Story">Story</option>
+                        </select>
+                    </div>
+
+
                     <div class="input-group">
                         <label for="post-date">Post Image</label>
-                        <input type="file" placeholder="title" name="title" id="post-image">
+                        <input type="file" placeholder="title" name="title" id="post-image" class="custom-file-input">
                     </div>
                     <div class="input-group editor-section">
                         <h2>Add your content here</h2>
                         <hr>
-                        <div class="editor" id="editor">
-
-                        </div>
+                        <textarea name="content" id="post-content" cols="30" rows="10"
+                            class="post-content-create"></textarea>
                     </div>
+                    <input type="submit" value="Create" class="btn btn-submit">
 
 
 
@@ -107,13 +122,25 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="../js/base.js" type="module" defer></script>
-
+    <script src="../js/dashboard.js" type="module" defer></script>
     <script src="../js/index.js" type="module" defer></script>
     <script src="../js/blog.js" type="module" defer></script>
-    <script src="../js/dashboard.js" type="module" defer></script>
+
 
 
     <script src="main.js"></script>
+    <script>
+        tinymce.init({
+            selector: "#post-content",
+            plugins:
+                "a11ychecker advcode casechange export formatpainter linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tinycomments tinymcespellchecker",
+            toolbar:
+                "a11ycheck addcomment showcomments casechange checklist code export formatpainter pageembed permanentpen table",
+            toolbar_mode: "floating",
+            tinycomments_mode: "embedded",
+            tinycomments_author: "Author name",
+        });
+    </script>
 </body>
 
 </html>

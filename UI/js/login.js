@@ -39,6 +39,7 @@ $(document).ready(() => {
           notifyUser(
             "Dear " + user.displayName + ", you have successfully logged in!"
           );
+          window.location.href = "/UI/";
           handleUserLoggedIn(userCreadential.user);
         })
         .catch((err) => {

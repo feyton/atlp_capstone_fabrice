@@ -27,13 +27,22 @@ console.log("Firebase loaded");
 export const handleUserLoggedIn = (user) => {
   $(".logged-in").css("display", "block");
   $(".logged-out").css("display", "none");
-  let message = `Welcome back, ${user.displayName}`;
+  $(".profile-picture").attr("src", user.photoURL);
+  $(".user-name").text(user.displayName.split(" ")[0]);
+  // console.log(user)
+};
+export const handleUserLoggedInFirstTime = (user) => {
+  $(".logged-in").css("display", "block");
+  $(".logged-out").css("display", "none");
+  let message = `Welcome, ${user.displayName}`;
   notifyUser(message, "primary", 4000);
+  renderHome();
 };
 
 export const handleUserLoggedOut = () => {
   $(".logged-in").css("display", "none");
   $(".logged-out").css("display", "block");
+  renderHome();
 };
 
 onAuthStateChanged(auth, (user) => {
@@ -48,7 +57,7 @@ export const notifyUser = (message, type = "primary", duration = 3000) => {
   $(".notify").text(message);
   $(".notify").addClass(type);
   $(".notify").removeClass("d-none");
-  $(".animate-progress").css("animation-duration", duration);
+  $(".animate-progress").css("animation-duration", duration / 1000 + "s");
   setTimeout(() => {
     $(".notify").text(message);
     $(".notify").removeClass(type);
@@ -57,5 +66,51 @@ export const notifyUser = (message, type = "primary", duration = 3000) => {
 };
 
 export function handleUserSignUpError(code) {
-console.log(code)
+  console.log(code);
+}
+
+$(".user-logout-button").click((e) => {
+  e.preventDefault();
+  let logout = confirm("Are you sure to logout?");
+  if (logout) {
+    auth.signOut();
+    handleUserLoggedOut();
+    notifyUser("You have successfully logged out", "warning", 3000);
+  }
+});
+export let loggedOutPath = ["/UI/pages/signup.html", "/UI/pages/login.html"];
+export let loggedInPath = [""];
+export function renderHome() {
+  // window.location.href = "/UI/";
+  let home = ["/UI/", "/UI/index.html"];
+  let host = window.location.pathname;
+  if (!home.includes(host)) {
+    // console.log("Not home");
+    // window.location.pathname = "/UI/";
+    // onAuthStateChanged(auth, (user) => {
+    //   if (user && loggedOutPath.includes(host)) {
+    //     notifyUser("you should not be here.", "warning", 3000);
+    //     setTimeout(() => {
+    //       window.location.pathname = home[0];
+    //     }, 3000);
+    //   }
+    // });
+  } else {
+    console.log("Welcome home");
+  }
+}
+
+function handleLoading() {
+  let host = window.location.pathname;
+  // let user = auth.currentUser;
+  console.log(host);
+  if (host == "/UI/pages/signup.html") {
+    console.log("Matched");
+
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        alert("You should not be here.");
+      }
+    });
+  }
 }

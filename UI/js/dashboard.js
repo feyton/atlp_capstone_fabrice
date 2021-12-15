@@ -1,2 +1,1 @@
-
-const postRef;
+let postRef;
