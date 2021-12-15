@@ -15,11 +15,21 @@
 
     <link rel="stylesheet" href="./css/main.css" class="css">
     <style>
-
+   
     </style>
 </head>
 
 <body>
+    <div class="full-loader d-none">
+        <div class="lds-ring">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div>
+
+            </div>
+        </div>
+    </div>
     <div class="notify d-none">
         <span class="text-notification">Hi there</span>
         <span class="notification-progress animate-progress"></span>
@@ -31,7 +41,7 @@
 
             <nav class="">
                 <div class="brand">
-                    <a href="index.html">
+                    <a href="./index.html">
                         <h3>Feyton Inc</h3>
                     </a>
                 </div>
@@ -112,46 +122,12 @@
                 <section class="blog-list">
                     <div class="index-blog-list-div">
 
-
-                        <!-- Blog -->
-                        <div class="blog-card">
-                            <div class="blog-image">
-                                <img src="https://images.unsplash.com/photo-1607799279861-4dd421887fb3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-                                    alt="">
-                                <div class="date-info">
-                                    <h2>24-06</h2>
-                                    <hr>
-                                    <h2>2021</h2>
-                                </div>
-                            </div>
-                            <div class="blog-info">
-
-                                <a href="detail.html" class="title">
-
-                                    <h2>The new mac-book is the laptop on the market</h2>
-                                </a>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa laborum dolorum nihil?
-                                    Non,
-                                    a
-                                    tenetur et aperiam hic illo maiores quibusdam iure tempora deserunt fuga eaque
-                                    ipsam,
-                                    voluptatem
-                                    magni nobis.</p><br>
-
-                                <a href="detail.html" class="btn btn-more">Read more&nbsp;<i class="fa fa-fighter-jet"
-                                        aria-hidden="true"></i></a><br>
-
-                            </div>
-                            <br>
-
-                        </div>
-                        <hr>
-
                     </div>
                     <!-- End blog -->
                     <div class="load-more">
 
-                        <button class="btn btn-more" onclick="window.location.href='blog.html'">Load more</button>
+                        <button class="btn btn-more" onclick="window.location.href='/UI/pages/blog.html'">Load
+                            more</button>
                     </div>
 
                 </section>
@@ -346,10 +322,9 @@
     <script src="./js/main.js"></script>
     <!-- Firebase Scrips -->
     <script src="./js/base.js" type="module" defer></script>
-
-    <script src="./js/index.js" type="module" defer></script>
     <script src="./js/blog.js" type="module" defer></script>
     <script src="./js/dashboard.js" type="module" defer></script>
+    <script src="./js/index.js" type="module" defer></script>
 
 
 </body>

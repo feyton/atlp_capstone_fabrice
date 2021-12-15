@@ -11,10 +11,13 @@ import {
 } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-storage.js";
 import {
   auth,
+  createUserProfile,
   handleUserLoggedIn,
   handleUserSignUpError,
+  notifyUser,
   storage,
 } from "./base.js";
+import { contentLoadingController } from "./index.js";
 $(".input").each(function () {
   $(this).on("focus", function () {
     //   alert("focused");
@@ -159,6 +162,7 @@ const validateSignUpForm = () => {
 // Form Submission function
 
 var submitData = (name, email, password, image) => {
+  contentLoadingController();
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       let user = userCredential.user;
@@ -176,10 +180,21 @@ var submitData = (name, email, password, image) => {
                 displayName: name,
                 photoURL: imgUrl,
               });
+              let userData = {
+                name: name,
+                photoURL: imgUrl,
+                email: email,
+              };
+              createUserProfile(user, userData);
 
-              console.log("Profile crated successfully");
+              console.log("Profile created successfully");
               $("#form").trigger("reset");
               // handleUserLoggedInFirstTime(user);
+              notifyUser("You will be redirected in 3 seconds");
+              contentLoadingController("hide");
+              setTimeout(() => {
+                window.location.pathname = "/UI/";
+              }, 3000);
             })
             .catch((err) => {
               console.log(err);

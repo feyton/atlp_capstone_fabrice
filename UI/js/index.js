@@ -1,43 +1,153 @@
 import {
-    child,
-    onValue,
-    push,
-    ref as databaseRef,
-    set, orderByChild, query, limitToFirst
-  } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
+  limitToFirst,
+  onValue,
+  orderByChild,
+  query,
+  ref as databaseRef,
+} from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
+import { database } from "./base.js";
 
+function loadBlogsIndex() {
+  contentLoadingController();
+  let postRefList = query(
+    databaseRef(database, "posts"),
+    orderByChild("date"),
+    limitToFirst(3)
+  );
 
+  onValue(postRefList, (snapshot) => {
+    if (snapshot.exists()) {
+      $(".index-blog-list-div").html("");
+      let data = Object.keys(snapshot.val()).forEach((key) => {
+        // console.log(key);
+        let post = snapshot.val()[key];
+        let mon, date, year;
+        mon = post.date.split(" ")[0];
+        date = post.date.split(" ")[1];
+        year = post.date.split(" ")[2];
 
-  function loadBlogs() {
-    let postRefList = query(databaseRef(database, "posts"), orderByChild("date"), limitToFirst(3));
-  
-    onValue(postRefList, (snapshot) => {
-      if (snapshot.exists()) {
-        $(".t-body").html("");
-        let data = Object.keys(snapshot.val()).forEach((key) => {
-          let post = snapshot.val()[key];
-  
-          let postRow = `
-            <tr id="${key}">
-              <td class=""><a href="#Update page" class="color-primary post-detail" data-key="${key}">${post.title}</a></td>
-              <td><a href="#comments" class="color-primary">${post.category}</a></td>
-              <td>${post.published}</td>
-              <td class="post-comments"><span>30 &nbsp;<i class="fa fa-check check-mark"
-                          aria-hidden="true"></i></span>&nbsp; <span>20 &nbsp;<i
-                          class="fa fa-ban unapproved" aria-hidden="true"></i></span></td>
-  
-              <td class="actions">
-                  <span><a href="edit.html" class="edit post-edit" data-key="${key}"><i class="fas fa-edit"></i></a></span>
-                  <span><a href="edit.html" class="delete post-delete" data-key="${key}"><i class="fas fa-trash"></i></a></span>
-              </td>
-          </tr>
+        let postRow = `
+          <div class="blog-card">
+          <div class="blog-image">
+              <img src="${post.imageURL}"
+                  alt="">
+              <div class="date-info">
+                  <h2>${date}-${mon}</h2>
+                  <hr>
+                  <h2>${year}</h2>
+              </div>
+          </div>
+          <div class="blog-info">
+
+              <a href="#here" class="title capitalize read-post" data-key="${key}">
+
+                  ${post.title}
+              </a>
+              <p>${post.summary}</p><br>
+
+              <a href="#post" class="btn btn-more read-post" data-key="${key}">Read more&nbsp;<i class="fa fa-fighter-jet"
+                      aria-hidden="true" data-key="${key}"></i></a><br>
+
+          </div>
+          <br>
+
+      </div>
+      <hr>
             
             `;
-          $(".t-body").append(postRow);
-        });
-        handlePostDetailView();
-        // console.log(data);
-      } else {
-      }
-    });
+        $(".index-blog-list-div").append(postRow);
+      });
+      contentLoadingController("hide");
+    } else {
+      contentLoadingController("hide");
+      console.log("No post yet");
+    }
+  });
+}
+
+let path = window.location.pathname;
+if (path == "/UI/index.html" || path == "/UI/") {
+  loadBlogsIndex();
+}
+
+if (path == "/UI/pages/blog.html") {
+  loadBlogsBloPage();
+}
+$(".index-blog-list-div").on("click", ".read-post", (e) => {
+  e.preventDefault();
+  //   alert("Clicked");
+  const key = e.target.getAttribute("data-key");
+  // console.log(key);
+  localStorage.setItem("currentPostKey", JSON.stringify(key));
+  window.location.pathname = "/UI/pages/detail.html";
+});
+
+export function contentLoadingController(state = "show") {
+  if (state == "show") {
+    $(".full-loader").removeClass("d-none");
+    $("body").addClass("noscroll");
+  } else if (state == "hide") {
+    $(".full-loader").addClass("d-none");
+    $("body").removeClass("noscroll");
   }
+}
+
+function loadBlogsBloPage() {
+  contentLoadingController();
+  let postRefList = query(
+    databaseRef(database, "posts"),
+    orderByChild("date"),
+    limitToFirst(3)
+  );
+
+  onValue(postRefList, (snapshot) => {
+    if (snapshot.exists()) {
+      $(".index-blog-list-div").html("");
+      let data = Object.keys(snapshot.val()).forEach((key) => {
+        // console.log(key);
+        let post = snapshot.val()[key];
+        let mon, date, year;
+        mon = post.date.split(" ")[0];
+        date = post.date.split(" ")[1];
+        year = post.date.split(" ")[2];
+
+        let postRow = `
+        <!-- Blog -->
+        <div class="blog-card">
+            <div class="blog-image">
+                <img src="${post.imageURL}"
+                    alt="">
+                <div class="date-info">
+                    <h2>${date}</h2>
+                    <hr>
+                    <h2>${mon}</h2>
+                </div>
+            </div>
+            <div class="blog-info">
+                <a href="#./detail.html" class="title">
+                    <h2 class="read-post" data-key="${key}">${post.title}</h2>
+                </a>
+                <p>${post.summary}</p><br>
+                <a href="#detail.html" class="btn btn-read read-post" data-key="${key}">Read more&nbsp;<i class="fa fa-fighter-jet"
+                        aria-hidden="true"></i></a><br>
+
+            </div>
+            <br>
+
+        </div>
+        <hr>
+
+
+
+        <!-- End blog -->
+            
+            `;
+        $(".index-blog-list-div").append(postRow);
+      });
+      contentLoadingController("hide");
+    } else {
+      contentLoadingController("hide");
+      console.log("No post yet");
+    }
+  });
+}

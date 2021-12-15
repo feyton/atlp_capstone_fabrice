@@ -3,7 +3,14 @@ import {
   getAuth,
   onAuthStateChanged,
 } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
-import { getDatabase } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
+import {
+  child,
+  get,
+  getDatabase,
+  push,
+  ref as databaseRef,
+  set,
+} from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
 import { getStorage } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-storage.js";
 
 const firebaseConfig = {
@@ -28,7 +35,13 @@ export const handleUserLoggedIn = (user) => {
   $(".logged-in").css("display", "block");
   $(".logged-out").css("display", "none");
   $(".profile-picture").attr("src", user.photoURL);
-  $(".user-name").text(user.displayName.split(" ")[0]);
+  try {
+    $(".user-name").text(user.displayName.split(" ")[0]);
+    $(".profile-picture").attr("src", user.photoURL);
+  } catch (error) {
+    $(".user-name").text(user.displayName);
+  }
+
   // console.log(user)
 };
 export const handleUserLoggedInFirstTime = (user) => {
@@ -96,21 +109,45 @@ export function renderHome() {
     //   }
     // });
   } else {
-    console.log("Welcome home");
+    // console.log("Welcome home");
   }
 }
 
 function handleLoading() {
   let host = window.location.pathname;
   // let user = auth.currentUser;
-  console.log(host);
+  // console.log(host);
   if (host == "/UI/pages/signup.html") {
     console.log("Matched");
 
     onAuthStateChanged(auth, (user) => {
       if (user) {
         alert("You should not be here.");
+        window.location.pathname = "/UI/";
       }
     });
   }
+}
+
+export function createUserProfile(user, data) {
+  let userRef = push(child(databaseRef(database), "users/" + user.uid));
+  set(databaseRef(database, "users/" + user.uid), data);
+  console.log("Profile created");
+}
+
+export function getUserData(uid) {
+  let userRef = databaseRef(database, "users/" + uid);
+  get(userRef)
+    .then((snapshot) => {
+      if (snapshot.exists()) {
+        console.log(snapshot);
+        return snapshot.val();
+      } else {
+        return null;
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+      return null;
+    });
 }

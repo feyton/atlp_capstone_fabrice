@@ -11,6 +11,7 @@ import {
   uploadBytesResumable,
 } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-storage.js";
 import { auth, database, notifyUser, storage } from "./base.js";
+import { contentLoadingController } from "./index.js";
 const savePost = (
   title,
   image,
@@ -20,6 +21,7 @@ const savePost = (
   category,
   published = "true"
 ) => {
+  contentLoadingController();
   let imgURL;
   let newPostRef = push(child(databaseRef(database), "posts/")).key;
   let newUserPostRef = push(
@@ -62,11 +64,13 @@ const savePost = (
             databaseRef(database, "user-posts/" + user.uid + "/" + newPostRef),
             postData
           );
+          contentLoadingController("hide");
           notifyUser("New Post Created Successfully");
           window.location.pathname = "/UI/dashboard/blog.html";
         })
         .catch((err) => {
           console.log(err);
+          contentLoadingController("hide");
         });
     }
   );
@@ -83,7 +87,9 @@ $("#post-create-form").on("submit", (e) => {
   title = $("#title").val();
   summary = $("#post-summary").val();
   image = $("#post-image")[0].files[0];
-  content = $("#post-content").val();
+  content = tinymce.get("post-content").getContent();
+  //   content = $("#post-content").val();
+  //   console.log(content);
   category = $("#category").val();
   savePost(title, image, content, user, summary, category);
   console.log("Form submitted");
@@ -94,6 +100,7 @@ function loadBlogs() {
   let postRefList = databaseRef(database, "posts");
 
   onValue(postRefList, (snapshot) => {
+    contentLoadingController();
     if (snapshot.exists()) {
       $(".t-body").html("");
       let data = Object.keys(snapshot.val()).forEach((key) => {
@@ -119,6 +126,7 @@ function loadBlogs() {
       });
       handlePostDetailView();
       // console.log(data);
+      contentLoadingController("hide");
     } else {
     }
   });
@@ -137,10 +145,11 @@ loadBlogs();
 
 $(".t-body").on("click", ".post-detail", (e) => {
   e.preventDefault();
-  alert("Clicked");
+  //   alert("Clicked");
   let key = e.target.getAttribute("data-key");
   console.log(key);
   localStorage.setItem("currentPostKey", JSON.stringify(key));
+  window.location.pathname = "/UI/pages/detail.html";
 });
 function renderPostDetails() {
   let path = window.location.pathname;
