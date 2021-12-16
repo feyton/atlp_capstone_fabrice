@@ -137,7 +137,7 @@ function checkPass(pass) {
   return false;
 }
 
-function checkEmail(email) {
+export function checkEmail(email) {
   var emailRegex = /\S+@\S+\.\S+/;
   if (email.match(emailRegex)) {
     return true;

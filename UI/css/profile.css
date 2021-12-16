@@ -1,0 +1,97 @@
+.user-profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 2rem auto;
+    padding: 2rem 3rem;
+    font-family: var(--Lexend);
+    text-align: center;
+
+}
+
+.user-profile h2 {
+    padding: 2rem;
+}
+
+.user-profile .about-user .user-info-render {
+    margin: 30px auto 10px auto;
+    width: fit-content;
+    text-align: left;
+
+}
+
+.user-profile .about-user .user-card {
+    position: relative;
+    box-shadow: 2px 2px 2px 2px grey;
+    width: fit-content;
+    min-width: 60%;
+    margin: 70px auto;
+    padding: 2rem 2rem 2rem 2rem;
+    border-radius: 10px;
+}
+
+.user-profile .about-user .user-card .info {
+    margin: 10px auto 5px auto;
+    width: 40%;
+}
+
+.user-profile .about-user .user-card .info span:first-child {
+    font-weight: bolder;
+}
+
+.user-profile .about-user .user-card img {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    object-fit: contain;
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.user-profile .update-profile {
+    margin: 10px auto;
+    width: 80%;
+    box-shadow: 2px 2px 2px 2px blue;
+}
+
+.user-profile form {
+    margin: 10px auto;
+    width: fit-content;
+    padding: 1rem 2rem;
+}
+
+.user-profile form input,
+.user-profile textarea {
+    display: block;
+    margin: 5px 10px;
+
+    background-color: var(--light-blue);
+    color: rgb(10, 10, 10);
+    margin: 10px;
+    padding: .5rem;
+    border: none;
+    font-family: var(--Lexend);
+}
+
+.user-profile form input::placeholder,
+.user-profile textarea::placeholder {
+    color: rgb(240, 240, 240);
+    font-family: var(--Lexend);
+}
+
+.user-profile form input[type="submit"] {
+    background-color: rgb(48, 138, 173);
+    cursor: pointer;
+    padding: .5rem 1rem;
+    color: white;
+    font-weight: normal;
+}
+
+.user-profile textarea:focus,
+.user-profile form input:focus {
+    color: black;
+    font-family: var(--Lexend);
+    background-color: var(--light-cyan);
+}

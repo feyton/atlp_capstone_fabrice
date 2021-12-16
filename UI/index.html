@@ -15,7 +15,7 @@
 
     <link rel="stylesheet" href="./css/main.css" class="css">
     <style>
-   
+
     </style>
 </head>
 
@@ -25,13 +25,11 @@
             <div></div>
             <div></div>
             <div></div>
-            <div>
-
-            </div>
+            <div></div>
         </div>
     </div>
     <div class="notify d-none">
-        <span class="text-notification">Hi there</span>
+        <span class="text-notification">Hdsfsdfdsfdsfdsfdsdsfefdsfsi</span>
         <span class="notification-progress animate-progress"></span>
 
     </div>
@@ -58,7 +56,7 @@
                         <li class="menu-item profile logged-in"><img src="" alt="" class="profile-picture"><i
                                 class="fas fa-chevron-down"></i>
                             <ul>
-                                <li><a href="#profile">Profile</a></li>
+                                <li><a href="./pages/profile.html">Profile</a></li>
                                 <li class="logged-in-admin"><a href="./dashboard/index.html">Dashboard</a></li>
                                 <li><a href="#profile" class="user-logout-button">Logout</a></li>
                             </ul>
@@ -156,8 +154,8 @@
                         </div>
                     </div>
                     <h1 class="newsletter">Newsletter</h1>
-                    <form action="#none">
-                        <input type="email" name="email" placeholder="E-mail">
+                    <form action="#none" class="sub-form">
+                        <input type="email" name="email" placeholder="E-mail" class="sub-email">
                         <button>Join</button>
                     </form>
 
@@ -262,11 +260,13 @@
                 </div>
                 <div class="form-card">
 
-                    <form action="#request">
-                        <input type="text" name="name" placeholder="Name" required>
-                        <input type="email" name="email" placeholder="E-mail" id="" required>
-                        <textarea name="message" placeholder="Message" required id="" cols="30" rows="5"></textarea>
-                        <p>By submitting this form, you agree with our terms and privacy policy.</p>
+                    <form action="#request" id="contact-form">
+                        <input type="text" name="name" placeholder="Name" required id="contact-name">
+                        <input type="email" name="email" placeholder="E-mail" id="contact-email" required>
+                        <textarea name="message" placeholder="Message" required id="contact-message" cols="30"
+                            rows="5"></textarea>
+                        <p class="contact-form-error">By submitting this form, you agree with our terms and privacy
+                            policy.</p>
                         <input type="submit" value="Send">
 
                     </form>
@@ -284,20 +284,21 @@
                 </div>
                 <div class="form">
                     <h3>Our NewsLetter</h3>
-                    <form action="#">
+                    <form action="#" class="sub-form">
                         <div class="input-container">
-                            <input type="text" placeholder="E-mail">
+                            <input type="email" placeholder="E-mail" class="sub-email">
                             <button type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
                         </div>
                     </form>
                 </div>
                 <div class="social">
                     <h3>Follow us</h3>
-                    <div class="social-icons">
-                        <i class="fab fa-facebook"></i>
-                        <i class="fab fa-instagram"></i>
-                        <i class="fab fa-github"></i>
-                        <i class="fab fa-youtube"></i>
+                    <div class="social-icons"><i class="fab fa-facebook"
+                            data-link="https://www.facebook.com/feytonf/"></i>
+                        <i class="fab fa-instagram" data-link="https://www.instagram.com/feytonf/"></i>
+                        <i class="fab fa-github" data-link="https://github.com/feyton"></i>
+                        <i class="fab fa-youtube"
+                            data-link="https://www.youtube.com/channel/UCfMEXzqST_bQSs0f31_R8NA"></i>
                     </div>
 
                 </div>

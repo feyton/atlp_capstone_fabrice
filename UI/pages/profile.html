@@ -13,6 +13,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../css/util.css" class="css">
     <link rel="stylesheet" href="../css/main.css" class="css">
+    <link rel="stylesheet" href="../css/profile.css" class="css">
 
 </head>
 
@@ -29,7 +30,7 @@
         </div>
     </div>
     <div class="notify d-none">
-        <span class="text-notification">Hi there</span>
+        <span class="text-notification"></span>
         <span class="notification-progress animate-progress"></span>
 
     </div>
@@ -51,7 +52,7 @@
                         <li class="menu-item "><a href="../index.html" class="">Home</a></li>
                         <li class="menu-item active"><a href="./blog.html">Blog</a></li>
                         <li class="menu-item"><a href="#here">Our Work</a></li>
-                        <li class="menu-item"><a href="#here">Contact Us</a></li>
+                        <li class="menu-item"><a href="#contact-us-div">Contact Us</a></li>
                         <li class="menu-item profile logged-in"><img src="" alt="" class="profile-picture"><i
                                 class="fas fa-chevron-down"></i>
                             <ul>
@@ -66,49 +67,42 @@
         </header>
 
 
-        <div class="trending-blogs">
-            <h2 class="head-title">Trending Posts</h2>
-            <div class="blog-section">
-                <section class="blog-list">
-                    <div class="index-blog-list-div">
+        <div class="user-profile">
+
+            <div class="about-user">
+                <h2 class="head-title">My Profile</h2>
+                <hr>
+                <div class="user-card">
+                    <img src="" alt="" class="profile-picture">
+                    <div class="user-info-render">
                         <div class="loader-for-div"><i class="fas fa-spinner fa-spin"></i></div>
 
                     </div>
 
-                    <div class="pagination d-none">
-                        <span><i class="fas fa-angle-double-left"></i></span>
-                        <span>1</span>
-                        <span>2</span>
-                        <span>3</span>
-                        <span><i class="fas fa-angle-double-right"></i></span>
-                    </div>
+                    <button class="btn btn-update-profile">Update Profile</button>
+                </div>
 
-                </section>
-                <aside class="sidebar">
 
-                    <div class="categories">
-                        <h1 class="center">Categories</h1>
-                        <div class="category color-gradient">
-                            <span>Software</span><span>(30)</span>
-                        </div>
-                        <div class="category color-gradient">
-                            <span>Tutorials</span><span>(30)</span>
-                        </div>
-                        <div class="category color-gradient">
-                            <span>HTML</span><span>(30)</span>
-                        </div>
-                        <div class="category color-gradient">
-                            <span>CSS</span><span>(30)</span>
-                        </div>
-                    </div>
-                    <h1 class="newsletter">Newsletter</h1>
-                    <form action="#none" class="subscription-form">
-                        <input type="email" name="email" placeholder="E-mail" class="subscriber-email">
-                        <button class="disabled">Join</button>
-                    </form>
 
-                </aside>
             </div>
+            <div class="update-profile update-div d-none">
+                <h2>Update Profile</h2>
+                <hr>
+                <div class="form-div">
+                    <form action="$sd" id="update-profile-form">
+                        <input type="text" placeholder="Full name" id="profile-name" value="" class="">
+                        <input type="url" placeholder="Link to Facebook" id="profile-facebook" value="" class="">
+                        <input type="url" placeholder="Link to Twitter" id="profile-twitter" value="" class="">
+                        <textarea name="biography" id="profile-bio" cols="30" rows="3" maxlength="200"
+                            placeholder="Biography"></textarea>
+                        <input type="submit" value="Update" class="btn btn-submit">
+
+                    </form>
+                </div>
+
+
+            </div>
+
         </div>
 
 

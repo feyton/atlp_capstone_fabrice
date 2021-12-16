@@ -2,6 +2,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase
 import {
   getAuth,
   onAuthStateChanged,
+  updateProfile,
 } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
 import {
   child,
@@ -10,8 +11,10 @@ import {
   push,
   ref as databaseRef,
   set,
+  update,
 } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
 import { getStorage } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-storage.js";
+// import { checkEmail } from "./signup.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDuKlY5Wq1Bt2ZSRzmM6iJfjfL6oB5VNKA",
@@ -70,7 +73,7 @@ export const notifyUser = (message, type = "primary", duration = 3000) => {
   $(".notify").text(message);
   $(".notify").addClass(type);
   $(".notify").removeClass("d-none");
-  $(".animate-progress").css("animation-duration", duration / 1000 + "s");
+  // $(".animate-progress").css("animation-duration");
   setTimeout(() => {
     $(".notify").text(message);
     $(".notify").removeClass(type);
@@ -135,19 +138,126 @@ export function createUserProfile(user, data) {
   console.log("Profile created");
 }
 
-export function getUserData(uid) {
-  let userRef = databaseRef(database, "users/" + uid);
+export function getUserData(uid) {}
+function checkSubEmail(email) {
+  var emailRegex = /\S+@\S+\.\S+/;
+  if (email.match(emailRegex)) {
+    return true;
+  }
+  return false;
+}
+
+$(".sub-form").on("submit", (e) => {
+  e.preventDefault();
+  let email = e.target.querySelector("input").value;
+  // console.log(email);
+  if (email == "") {
+  } else {
+    if (checkSubEmail(email)) {
+      let subRef = push(child(databaseRef(database), "subscribers/")).key;
+      /**TO-DO
+       * Ensure email uniqueness to avoid double entries
+       *
+       */
+      //To do making sure that email does not exist in the database
+      set(databaseRef(database, "subscribers/" + subRef + "/"), {
+        email: email,
+      });
+      notifyUser("Thank you! You will start to receive our newsletter");
+      $(".sub-form").trigger("reset");
+    } else {
+      notifyUser("Fill the form with valid email", "danger");
+    }
+  }
+});
+
+$(".social-icons i").click((e) => {
+  // To avoid turning all icons into url,
+  let link = e.target.getAttribute("data-link");
+  window.open(link, "_blank");
+});
+
+onAuthStateChanged(auth, (user) => {
+  if (user && window.location.pathname == "/UI/pages/profile.html") {
+    renderUserInfo(user);
+  }
+});
+
+const renderUserInfo = (user) => {
+  // console.log(user);
+  let userRef = child(databaseRef(database), "users/" + user.uid);
+  let data;
   get(userRef)
     .then((snapshot) => {
-      if (snapshot.exists()) {
-        console.log(snapshot);
-        return snapshot.val();
-      } else {
-        return null;
+      data = snapshot.val();
+      console.log(data);
+      let divData = `
+  
+      <div class="info">
+          <span>Name:</span> <span class="">${data.name}</span>
+      </div>
+      <div class="info">
+          <span>Facebook:</span> <span class="">${data.facebook}</span>
+      </div>
+      <div class="info">
+          <span>Twitter:</span> <span class="">${data.twitter}</span>
+      </div>
+      <div class="info bio">
+          <span>Bio:</span> <span class="">${data.bio}</span>
+      </div>
+      `;
+
+      $(".user-info-render").html(divData);
+      $("#profile-name").val(data.name);
+      if (data.facebook != undefined) {
+        $("#profile-facebook").val(data.facebook);
+      }
+      if (data.twitter != undefined) {
+        $("#profile-twitter").val(data.twitter);
+      }
+      if (data.bio != undefined) {
+        $("#profile-bio").val(data.bio);
       }
     })
-    .catch((err) => {
-      console.log(err);
-      return null;
+    .catch((err) => {});
+};
+
+$(".btn-update-profile").click((e) => {
+  e.preventDefault();
+  $(".update-div").toggle(200);
+});
+
+$("#update-profile-form").submit((e) => {
+  e.preventDefault();
+  let user = auth.currentUser;
+  let userRef = child(databaseRef(database), "users/" + user.uid);
+
+  let name, facebook, twitter, bio;
+  name = $("#profile-name").val();
+  facebook = $("#profile-facebook").val();
+  twitter = $("#profile-twitter").val();
+  bio = $("#profile-bio").val();
+  let profileData = {
+    displayName: name,
+  };
+  let customData = {
+    name: name,
+    facebook: facebook,
+    twitter: twitter,
+    bio: bio,
+  };
+  console.log(customData);
+  updateProfile(user, profileData);
+  update(userRef, customData)
+    .then(() => {
+      console.log("Updated profile");
+    })
+    .catch((error) => {
+      console.log(error);
     });
-}
+
+  notifyUser("Your profile has been updated");
+  setTimeout(() => {
+    window.location.reload();
+  }, 3000);
+});

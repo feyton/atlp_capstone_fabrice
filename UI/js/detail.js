@@ -1,13 +1,14 @@
 import {
   child,
   get,
-  limitToFirst,
+  limitToLast,
   onValue,
   orderByChild,
   push,
   query,
   ref as databaseRef,
   set,
+  update,
 } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
 import { auth, database, notifyUser } from "./base.js";
 import { contentLoadingController } from "./index.js";
@@ -30,6 +31,7 @@ function renderDetailPage() {
           contentLoadingController("hide");
           renderAuthorSection(post.user);
           loadComments(key);
+          loadRecommendedPost();
         })
         .catch((err) => {
           // console.log(err);
@@ -115,7 +117,7 @@ const loadComments = (postId) => {
   let commentsRef = query(
     databaseRef(database, "comments/" + postId + "/"),
     orderByChild("date"),
-    limitToFirst(10)
+    limitToLast(10)
   );
   onValue(commentsRef, (snapshot) => {
     if (snapshot.exists()) {
@@ -126,7 +128,7 @@ const loadComments = (postId) => {
         let commentElement = renderComment(comment);
         // console.log(comment);
 
-        $(".comment-list-div").append(commentElement);
+        $(".comment-list-div").prepend(commentElement);
       });
     } else {
       let commentElement = `
@@ -175,10 +177,38 @@ function addComment(postId) {
       ),
       commentData
     );
+    incrementCommentsCount(postId);
     notifyUser("Your comment has been successfully logged");
     console.log("Comment added");
   }
 }
+
+const incrementCommentsCount = (key) => {
+  let post = databaseRef(database, "posts/" + key);
+  let count = 1;
+  get(post)
+    .then((snapshot) => {
+      let data = snapshot.val();
+      if (data.commentCount !== null && data.commentCount !== undefined) {
+        count = parseInt(post.commentCount) + 1;
+      }
+      let newData = { commentCount: count };
+      // let userPost = databaseRef(
+      //   database,
+      //   "user-posts/" + data.user + "/" + key
+      // );
+
+      update(child(databaseRef(database), "posts/" + key), newData);
+      update(
+        child(databaseRef(database), "user-posts/" + data.user + "/" + key),
+        newData
+      );
+      console.log("comment recorded");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
 
 function renderComment(comment) {
   let commentElement = `
@@ -202,4 +232,56 @@ $("#comment-form").submit((e) => {
   key = JSON.parse(key);
   addComment(key);
   $("#comment-form").trigger("reset");
+});
+
+const loadRecommendedPost = () => {
+  let postRefList = query(
+    databaseRef(database, "posts/"),
+    orderByChild("date"),
+    limitToLast(3)
+  );
+  let activePost = localStorage.getItem("currentPostKey");
+  activePost = JSON.parse(activePost);
+  get(postRefList)
+    .then((snapshot) => {
+      if (snapshot.exists()) {
+        $(".recommended-post-div").html("");
+        let data = snapshot.val();
+        Object.keys(data).forEach((key) => {
+          if (key !== activePost) {
+            // console.log(key, activePost);
+
+            let post = data[key];
+            let postDiv = `
+        <div class="r-post">
+              <img src="${post.imageURL}"
+                   alt="${post.title}-image">
+               <a href="#detail.html" class="title read-post" data-key="${key}">${post.title}</a>
+               <hr>
+           </div>
+        
+        `;
+            $(".recommended-post-div").append(postDiv);
+          }
+        });
+      } else {
+        $(".recommended-post-div").html(
+          "<h3>No posts recommended for now</h3>"
+        );
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+      $(".recommended-post-div").html("<h3>No posts recommended for now</h3>");
+    });
+};
+
+$(".recommended-post-div").on("click", ".read-post", (e) => {
+  e.preventDefault();
+  //   alert("Clicked");
+  const key = e.target.getAttribute("data-key");
+  // console.log(key);
+  localStorage.setItem("currentPostKey", JSON.stringify(key));
+  // window.location.pathname = "/UI/pages/detail.html";
+  window.location.reload();
 });

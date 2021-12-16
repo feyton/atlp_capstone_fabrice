@@ -5,7 +5,8 @@ import {
   query,
   ref as databaseRef,
 } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
-import { database } from "./base.js";
+import { auth, database } from "./base.js";
+import { checkEmail } from "./signup.js";
 
 function loadBlogsIndex() {
   contentLoadingController();
@@ -41,7 +42,7 @@ function loadBlogsIndex() {
 
               <a href="#here" class="title capitalize read-post" data-key="${key}">
 
-                  ${post.title}
+                  <h2 class="link">${post.title}</h2>
               </a>
               <p>${post.summary}</p><br>
 
@@ -92,7 +93,7 @@ export function contentLoadingController(state = "show") {
   }
 }
 
-function loadBlogsBloPage() {
+export function loadBlogsBloPage() {
   contentLoadingController();
   let postRefList = query(
     databaseRef(database, "posts"),
@@ -151,3 +152,44 @@ function loadBlogsBloPage() {
     }
   });
 }
+
+const checkContactForm = () => {
+  let form = document.getElementById("contact-form");
+  let user = auth.currentUser;
+  if (user !== null) {
+    let userRef = databaseRef(database, "users/" + user.uid);
+    get(userRef).then((snapshot) => {
+      let data = snapshot.val();
+      setInputValue("contact-email", data.email);
+      setInputValue("contact-name", data.name);
+    });
+  }
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let data = form.serializeArray();
+    console.log(data);
+  });
+};
+
+const setInputValue = (id, value) => {
+  document.getElementById(id).value = value;
+};
+
+if (
+  window.location.pathname == "/UI/" ||
+  window.location.pathname == "/UI/index.html"
+) {
+  checkContactForm();
+}
+
+const validateContactForm = (name, email, message) => {
+  if (name.length >= 3 && checkEmail(email) && validateMessage(message)) {
+    console.log("Form valid");
+  } else {
+    document
+      .getElementsByClassName("contact-form-error")
+      .text("Please fill the form correctly");
+  }
+};
+const validateMessage = () => {};

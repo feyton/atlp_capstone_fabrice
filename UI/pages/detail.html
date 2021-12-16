@@ -14,11 +14,7 @@
     <link rel="stylesheet" href="../css/main.css" class="css">
     <link rel="stylesheet" href="../css/detail.css" class="css">
     <style>
-        .post-content-render {
-            box-shadow: 2px 2px 2px 2px grey;
-            padding: 10px;
-
-        }
+        
     </style>
 </head>
 
@@ -32,6 +28,11 @@
 
             </div>
         </div>
+    </div>
+    <div class="notify d-none">
+        <span class="text-notification">Hi there</span>
+        <span class="notification-progress animate-progress"></span>
+
     </div>
 
     <main>
@@ -55,7 +56,7 @@
                         <li class="menu-item profile logged-in"><img src="" alt="" class="profile-picture"><i
                                 class="fas fa-chevron-down"></i>
                             <ul>
-                                <li><a href="#profile">Profile</a></li>
+                                <li><a href="./profile.html">Profile</a></li>
                                 <li class="logged-in-admin"><a href="../dashboard/index.html">Dashboard</a></li>
                                 <li><a href="#profile" class="user-logout-button">Logout</a></li>
                             </ul>
@@ -98,6 +99,7 @@
                         <h2>Comments</h2>
                         <div class="comment-div">
                             <ul class="comment-list-div">
+                                <div class="loader-for-div"><i class="fas fa-spinner fa-spin"></i></div>
 
                             </ul>
                         </div>
@@ -106,29 +108,16 @@
                 </section>
                 <aside class="sidebar">
                     <div class="author author-card">
+                        <div class="loader-for-div"><i class="fas fa-spinner fa-spin"></i></div>
 
 
                     </div>
                     <div class="recommended">
                         <h2 class="title">You can also read</h2>
-                        <div class="r-post">
-                            <img src="https://images.unsplash.com/photo-1607799279861-4dd421887fb3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-                                alt="">
-                            <a href="detail.html" class="title">Lorem ipsum dolor sit amet</a>
-                            <hr>
+                        <div class="recommended-post-div">
+
                         </div>
-                        <div class="r-post">
-                            <img src="https://images.unsplash.com/photo-1607799279861-4dd421887fb3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-                                alt="">
-                            <a href="detail.html" class="title">Lorem ipsum dolor sit amet</a>
-                            <hr>
-                        </div>
-                        <div class="r-post">
-                            <img src="https://images.unsplash.com/photo-1607799279861-4dd421887fb3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-                                alt="">
-                            <a href="detail.html" class="title">Lorem ipsum dolor sit amet</a>
-                            <hr>
-                        </div>
+
                     </div>
 
                     <div class="categories">
@@ -176,10 +165,11 @@
                 <div class="social">
                     <h3>Follow us</h3>
                     <div class="social-icons">
-                        <i class="fab fa-facebook"></i>
-                        <i class="fab fa-instagram"></i>
-                        <i class="fab fa-github"></i>
-                        <i class="fab fa-youtube"></i>
+                        <i class="fab fa-facebook" data-link="https://www.facebook.com/feytonf/"></i>
+                        <i class="fab fa-instagram" data-link="https://www.instagram.com/feytonf/"></i>
+                        <i class="fab fa-github" data-link="https://github.com/feyton"></i>
+                        <i class="fab fa-youtube"
+                            data-link="https://www.youtube.com/channel/UCfMEXzqST_bQSs0f31_R8NA"></i>
                     </div>
 
                 </div>

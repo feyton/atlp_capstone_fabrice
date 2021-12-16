@@ -35,6 +35,14 @@ ul li {
     list-style: none;
 }
 
+.btn {
+    background-color: rgb(48, 138, 173);
+    border: none;
+    font-family: var(--Lato);
+    font-weight: 600;
+    text-align: center;
+}
+
 header {
     height: 10vh;
     position: fixed;
