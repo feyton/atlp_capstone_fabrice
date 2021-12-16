@@ -6,6 +6,10 @@
     font-family: var(--Lexend);
 }
 
+.t-body {
+    position: relative;
+}
+
 .add-blog {
     position: fixed;
     z-index: 10;
@@ -204,18 +208,21 @@ textarea {
     border: 2px solid rgb(190, 187, 187);
 
 }
+
 .post-content-create {
     min-height: 500px;
     max-height: 1000px;
     overflow: scroll;
-    border:2px solid green;
+    border: 2px solid green;
 }
+
 .custom-file-input {
-    padding: 0px !important; 
+    padding: 0px !important;
     border: none;
     margin-top: 10px;
-    border-radius: 10px!important;
+    border-radius: 10px !important;
 }
+
 .custom-file-input::-webkit-file-upload-button {
     padding: 10px 20px;
     margin: 0px 5px 0px 0px;

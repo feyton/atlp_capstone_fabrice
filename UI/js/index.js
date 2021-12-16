@@ -1,11 +1,15 @@
 import {
+  child,
+  get,
   limitToFirst,
   onValue,
   orderByChild,
+  push,
   query,
   ref as databaseRef,
+  set,
 } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
-import { auth, database } from "./base.js";
+import { auth, database, notifyUser } from "./base.js";
 import { checkEmail } from "./signup.js";
 
 function loadBlogsIndex() {
@@ -154,22 +158,16 @@ export function loadBlogsBloPage() {
 }
 
 const checkContactForm = () => {
-  let form = document.getElementById("contact-form");
   let user = auth.currentUser;
-  if (user !== null) {
+  if (user) {
     let userRef = databaseRef(database, "users/" + user.uid);
     get(userRef).then((snapshot) => {
       let data = snapshot.val();
       setInputValue("contact-email", data.email);
       setInputValue("contact-name", data.name);
+      console.log("detected");
     });
   }
-
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    let data = form.serializeArray();
-    console.log(data);
-  });
 };
 
 const setInputValue = (id, value) => {
@@ -180,16 +178,54 @@ if (
   window.location.pathname == "/UI/" ||
   window.location.pathname == "/UI/index.html"
 ) {
-  checkContactForm();
-}
+  setTimeout(() => {
+    checkContactForm();
+  }, 5000);
 
-const validateContactForm = (name, email, message) => {
-  if (name.length >= 3 && checkEmail(email) && validateMessage(message)) {
-    console.log("Form valid");
-  } else {
-    document
-      .getElementsByClassName("contact-form-error")
-      .text("Please fill the form correctly");
-  }
-};
-const validateMessage = () => {};
+  document.getElementById("contact-form").addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    let user = auth.currentUser;
+    let message = document.getElementById("contact-message").value;
+    if (message.length >= 10 && message.length < 500) {
+      console.log(message);
+      if (user) {
+        let queryRef = push(
+          child(databaseRef(database), "user-query/" + user.uid)
+        ).key;
+        let data = { message: message, user: user.uid };
+        set(databaseRef(database, "user-query/" + queryRef), data);
+        notifyUser(
+          `Dear ${user.displayName}, your query has been logged!`,
+          "primary",
+          5000
+        );
+      } else {
+        let email = document.getElementById("contact-email").value;
+        let name = document.getElementById("contact-name").value;
+        if (checkEmail(email) && name.length > 3) {
+          let queryRef = push(
+            child(databaseRef(database), "anonymous-query/")
+          ).key;
+          let data = { name: name, email: email, message: message };
+          set(databaseRef(database, "anonymous-query/" + queryRef), data);
+          notifyUser(
+            "Your query has been logged! Look forward to the ticket",
+            "primary",
+            5000
+          );
+          document.getElementById("contact-form").reset();
+        } else {
+          notifyUser(
+            "Fill all info, or <a href='./pages/login.html' class='btn'>Login</a> for faster processing",
+            "primary",
+            5000
+          );
+          document.getElementById("contact-form").reset();
+        }
+      }
+    } else {
+      notifyUser("Fill the form correctly", "danger", 5000);
+    }
+  });
+}

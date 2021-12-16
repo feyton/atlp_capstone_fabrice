@@ -1,8 +1,10 @@
 import {
   child,
+  get,
   onValue,
   push,
   ref as databaseRef,
+  remove,
   set,
 } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
 import {
@@ -58,13 +60,15 @@ const savePost = (
             date: new Date().toDateString().split(" ").slice(1).join(" "),
             authorName: user.displayName.split(" ")[0],
             user: user.uid,
+            commentCount: 0,
           };
+          contentLoadingController("hide");
           set(databaseRef(database, "posts/" + newPostRef), postData);
           set(
             databaseRef(database, "user-posts/" + user.uid + "/" + newPostRef),
             postData
           );
-          contentLoadingController("hide");
+
           notifyUser("New Post Created Successfully");
           window.location.pathname = "/UI/dashboard/blog.html";
         })
@@ -96,11 +100,11 @@ $("#post-create-form").on("submit", (e) => {
   console.log("Created");
 });
 
-function loadBlogs() {
-  let postRefList = databaseRef(database, "posts");
+function loadBlogs(uid) {
+  let postRefList = databaseRef(database, "user-posts/" + uid);
 
   onValue(postRefList, (snapshot) => {
-    contentLoadingController();
+    // contentLoadingController();
     if (snapshot.exists()) {
       $(".t-body").html("");
       let data = Object.keys(snapshot.val()).forEach((key) => {
@@ -111,11 +115,7 @@ function loadBlogs() {
             <td class=""><a href="#Update page" class="color-primary post-detail" data-key="${key}">${post.title}</a></td>
             <td><a href="#comments" class="color-primary">${post.category}</a></td>
             <td>${post.published}</td>
-            <td class="post-comments"><span>30 &nbsp;<i class="fa fa-check check-mark"
-                        aria-hidden="true"></i></span>&nbsp; <span>20 &nbsp;<i
-                        class="fa fa-ban unapproved" aria-hidden="true"></i></span></td>
-
-            <td class="actions">
+             <td class="actions">
                 <span><a href="edit.html" class="edit post-edit" data-key="${key}"><i class="fas fa-edit"></i></a></span>
                 <span><a href="edit.html" class="delete post-delete" data-key="${key}"><i class="fas fa-trash"></i></a></span>
             </td>
@@ -126,8 +126,7 @@ function loadBlogs() {
       });
       handlePostDetailView();
       // console.log(data);
-      contentLoadingController("hide");
-    } else {
+      // contentLoadingController("hide");
     }
   });
 }
@@ -141,7 +140,19 @@ const handlePostDetailView = () => {
   //   });
 };
 
-loadBlogs();
+function startDashboardPage() {
+  let uid = localStorage.getItem("currentUserId");
+  if (uid == null) {
+    let user = auth.currentUser;
+    let uid = user.uid;
+    loadBlogs(uid);
+  } else {
+    loadBlogs(uid);
+  }
+}
+if (window.location.pathname == "/UI/dashboard/blog.html") {
+  startDashboardPage();
+}
 
 $(".t-body").on("click", ".post-detail", (e) => {
   e.preventDefault();
@@ -162,3 +173,46 @@ function renderPostDetails() {
     console.log("Not able to log the key");
   }
 }
+
+$(".t-body").on("click", ".post-edit", (e) => {
+  e.preventDefault();
+  let postKey = e.target.getAttribute("data-key");
+  console.log(postKey);
+  localStorage.setItem("activeEditPost", JSON.stringify(postKey));
+  window.location.pathname = "/UI/dashboard/edit.html";
+});
+$(".t-body").on("click", ".post-delete", (e) => {
+  e.preventDefault();
+  let key = e.target.getAttribute("data-key");
+  console.log(key);
+  let del = confirm("Are you sure to delete this post?");
+  if (del) {
+    let user = auth.currentUser;
+    let postRef = databaseRef(database, "posts/" + key);
+
+    let userPostRef = databaseRef(
+      database,
+      "user-posts/" + user.uid + "/" + key
+    );
+    get(postRef).then((snapshot) => {
+      let userId = snapshot.val().user;
+
+      if (user && user.uid == userId) {
+        //To -Do: Work On File deletion
+        // let imgRef = storageRef(snapshot.val().imageURL);
+        // console.log(imgRef);
+
+        // imgRef.delete();
+        // console.log("deleted");
+
+        remove(postRef);
+        remove(userPostRef);
+        notifyUser("Post deleted successfully");
+      } else {
+        alert("Don't remove a post you don't own");
+      }
+    });
+  } else {
+    notifyUser("Your posts are intact.");
+  }
+});

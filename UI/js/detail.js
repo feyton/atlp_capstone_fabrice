@@ -85,6 +85,7 @@ const renderDetailTemplate = (post) => {
 `;
 
   $(".post-detail-div").html(postDetail);
+  $(".comment-count").text(post.commentCount);
 };
 
 const renderAuthorSection = (uid) => {
@@ -96,10 +97,9 @@ const renderAuthorSection = (uid) => {
     
       <div class="author-avatar"><img src="${data.photoURL}" alt=""></div>
       <h2>${data.name}</h2>
-       <p>A happy traveller, and a software developer by passion. If you see me around,
-          say hi and we can talk dev on a cup of coffe</p>
+       <p>${data.bio}</p>
        <button class="coffee">
-          <span>Follow</span><span><i class="fab fa-facebook"></i><i class="fab fa-github"></i></span>
+          <span>Follow</span><span><i class="fab fa-facebook" data-link="${data.facebook}"></i><i class="fab fa-twitter" data-link="${data.twitter}"></i></span>
        </button>
     
       `;
@@ -112,6 +112,12 @@ const renderAuthorSection = (uid) => {
       $(".author-card").html("Unable to retrieve the author");
     });
 };
+$(".author-card").on("click", " i", (e) => {
+  let link = e.target.getAttribute("data-link");
+  if (link != "" && link != undefined) {
+    window.open(link, "_blank");
+  }
+});
 
 const loadComments = (postId) => {
   let commentsRef = query(
@@ -148,7 +154,7 @@ function addComment(postId) {
   let user = auth.currentUser;
   let message = $("#user-comment").val();
 
-  if (user !== null) {
+  if (user !== null && message.length >= 5 && message.length < 500) {
     let newPostRef = push(
       child(databaseRef(database), "comments/" + postId + "/")
     ).key;
@@ -179,28 +185,26 @@ function addComment(postId) {
     );
     incrementCommentsCount(postId);
     notifyUser("Your comment has been successfully logged");
-    console.log("Comment added");
+    // console.log("Comment added");
+  } else {
+    notifyUser("Check the form and try again", "danger");
   }
 }
 
 const incrementCommentsCount = (key) => {
-  let post = databaseRef(database, "posts/" + key);
+  let postRef = databaseRef(database, "posts/" + key);
   let count = 1;
-  get(post)
+  get(postRef)
     .then((snapshot) => {
       let data = snapshot.val();
       if (data.commentCount !== null && data.commentCount !== undefined) {
-        count = parseInt(post.commentCount) + 1;
+        count = parseInt(data.commentCount) + 1;
       }
       let newData = { commentCount: count };
-      // let userPost = databaseRef(
-      //   database,
-      //   "user-posts/" + data.user + "/" + key
-      // );
 
-      update(child(databaseRef(database), "posts/" + key), newData);
+      update(databaseRef(database, "posts/" + key), newData);
       update(
-        child(databaseRef(database), "user-posts/" + data.user + "/" + key),
+        databaseRef(database, "user-posts/" + data.user + "/" + key),
         newData
       );
       console.log("comment recorded");
@@ -213,9 +217,9 @@ const incrementCommentsCount = (key) => {
 function renderComment(comment) {
   let commentElement = `
   <li>
-  <h3 class="title">By ${comment.author}</h3>
+  <h3 class="title">By ${comment.author}<strong>On ${comment.date}</strong></h3>
    <p class="comment-content">${comment.message}</p><br>
-   <strong>On ${comment.date}</strong>
+   
   <hr>
 </li>
   

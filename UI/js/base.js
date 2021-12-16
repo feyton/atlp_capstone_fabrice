@@ -63,6 +63,7 @@ export const handleUserLoggedOut = () => {
 
 onAuthStateChanged(auth, (user) => {
   if (user) {
+    localStorage.setItem("currentUserId", user.uid);
     handleUserLoggedIn(user);
   } else {
     handleUserLoggedOut();
@@ -138,7 +139,10 @@ export function createUserProfile(user, data) {
   console.log("Profile created");
 }
 
-export function getUserData(uid) {}
+export function getUserData(uid) {
+  // TO-Do
+  //Adding ability to load user data from database
+}
 function checkSubEmail(email) {
   var emailRegex = /\S+@\S+\.\S+/;
   if (email.match(emailRegex)) {
@@ -261,3 +265,4 @@ $("#update-profile-form").submit((e) => {
     window.location.reload();
   }, 3000);
 });
+
