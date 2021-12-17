@@ -84,6 +84,7 @@ export const notifyUser = (message, type = "primary", duration = 3000) => {
 
 export function handleUserSignUpError(code) {
   console.log(code);
+  notifyUser(code, "danger", 3000);
 }
 
 $(".user-logout-button").click((e) => {
@@ -265,4 +266,3 @@ $("#update-profile-form").submit((e) => {
     window.location.reload();
   }, 3000);
 });
-

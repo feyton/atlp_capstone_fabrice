@@ -44,6 +44,7 @@ $(document).ready(() => {
         })
         .catch((err) => {
           console.log(err);
+          notifyUser(err.message, "danger", 3000);
         });
     }
   };

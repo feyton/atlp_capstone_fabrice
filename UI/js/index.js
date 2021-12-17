@@ -66,6 +66,7 @@ function loadBlogsIndex() {
     } else {
       contentLoadingController("hide");
       console.log("No post yet");
+      notifyUser("No posts yet");
     }
   });
 }
@@ -200,6 +201,7 @@ if (
           "primary",
           5000
         );
+        document.getElementById("contact-form").reset();
       } else {
         let email = document.getElementById("contact-email").value;
         let name = document.getElementById("contact-name").value;

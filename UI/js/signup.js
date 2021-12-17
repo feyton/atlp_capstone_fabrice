@@ -194,7 +194,7 @@ var submitData = (name, email, password, image) => {
               contentLoadingController("hide");
               setTimeout(() => {
                 window.location.pathname = "/UI/";
-              }, 3000);
+              }, 5000);
             })
             .catch((err) => {
               console.log(err);
@@ -202,11 +202,12 @@ var submitData = (name, email, password, image) => {
         })
         .catch((err) => {
           console.log(err);
+          notifyUser(err.message, "primary", 5000);
         });
     })
     .catch((err) => {
       console.log(err);
-      let code = err.code;
+      let code = err.message;
       handleUserSignUpError(code);
     });
 };
