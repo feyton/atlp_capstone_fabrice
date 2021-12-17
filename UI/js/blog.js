@@ -122,7 +122,7 @@ function loadBlogs(uid) {
         </tr>
           
           `;
-        $(".t-body").append(postRow);
+        $(".t-body").prepend(postRow);
       });
       handlePostDetailView();
       // console.log(data);

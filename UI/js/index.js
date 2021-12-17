@@ -60,7 +60,7 @@ function loadBlogsIndex() {
       <hr>
             
             `;
-        $(".index-blog-list-div").append(postRow);
+        $(".index-blog-list-div").prepend(postRow);
       });
       contentLoadingController("hide");
     } else {
@@ -148,7 +148,7 @@ export function loadBlogsBloPage() {
         <!-- End blog -->
             
             `;
-        $(".index-blog-list-div").append(postRow);
+        $(".index-blog-list-div").prepend(postRow);
       });
       contentLoadingController("hide");
     } else {

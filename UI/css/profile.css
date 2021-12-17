@@ -9,6 +9,7 @@
 
 }
 
+
 .user-profile h2 {
     padding: 2rem;
 }
@@ -48,6 +49,8 @@
     top: -50px;
     left: 50%;
     transform: translateX(-50%);
+    border: 2px solid grey;
+    z-index: 10;
 }
 
 .user-profile .update-profile {
@@ -67,12 +70,14 @@
     display: block;
     margin: 5px 10px;
 
-    background-color: var(--light-blue);
-    color: rgb(10, 10, 10);
+    background-color: rgb(152, 161, 160);
+    color: rgb(3, 3, 3);
     margin: 10px;
-    padding: .5rem;
+    padding: .5rem 1rem;
     border: none;
     font-family: var(--Lexend);
+    font-weight: bold;
+    border-radius: 5px;
 }
 
 .user-profile form input::placeholder,
