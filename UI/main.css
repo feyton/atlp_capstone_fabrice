@@ -71,6 +71,39 @@ main header nav ul {
 main header nav ul li {
     list-style: none;
     transition: .2s ease-in-out;
+    position: relative;
+}
+
+main header nav ul li ul {
+    position: absolute;
+    top: 10vh;
+    z-index: 1000;
+    right: 0px;
+    background: inherit;
+    color: inherit;
+    display: block;
+    text-align: center;
+
+}
+
+main header nav ul li ul li {
+    display: block;
+    padding: 1rem;
+}
+
+main header nav ul li ul i {
+    margin: auto;
+    justify-content: middle;
+    padding: 1rem;
+    display: flex;
+}
+
+main header nav ul .profile-picture {
+    height: 30px;
+    width: 30px;
+    object-fit: cover;
+    border-radius: 50%;
+    display: flex;
 }
 
 main header nav .menu {
