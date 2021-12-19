@@ -3,7 +3,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase
 import {
   getAuth,
   onAuthStateChanged,
-  updateProfile,
+  updateProfile
 } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
 import {
   child,
@@ -12,7 +12,7 @@ import {
   push,
   ref as databaseRef,
   set,
-  update,
+  update
 } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
 import { getStorage } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-storage.js";
 
@@ -80,7 +80,7 @@ export const notifyUser = (message, type = "primary", duration = 3000) => {
   }).showToast();
 };
 
-export function handleUserSignUpError(code) {
+export const handleUserSignUpError =(code) =>{
   console.log(code);
   notifyUser(code, "danger", 3000);
 }
@@ -126,7 +126,10 @@ function handleLoading() {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         alert("You should not be here.");
-        window.location.pathname = "/UI/";
+        setTimeout(()=>{
+          window.location.pathname = "/UI/";
+        }, 5000)
+        
       }
     });
   }
