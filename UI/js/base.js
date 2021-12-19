@@ -1,3 +1,4 @@
+// import { checkEmail } from "./signup.js";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
 import {
   getAuth,
@@ -14,7 +15,6 @@ import {
   update,
 } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
 import { getStorage } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-storage.js";
-// import { checkEmail } from "./signup.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDuKlY5Wq1Bt2ZSRzmM6iJfjfL6oB5VNKA",
@@ -71,15 +71,13 @@ onAuthStateChanged(auth, (user) => {
 });
 
 export const notifyUser = (message, type = "primary", duration = 3000) => {
-  $(".notify").text(message);
-  $(".notify").addClass(type);
-  $(".notify").removeClass("d-none");
-  // $(".animate-progress").css("animation-duration");
-  setTimeout(() => {
-    $(".notify").text(message);
-    $(".notify").removeClass(type);
-    $(".notify").addClass("d-none");
-  }, duration);
+  Toastify({
+    text: message,
+    duration: duration,
+    stopOnFocus: true,
+    close: true,
+    className: type,
+  }).showToast();
 };
 
 export function handleUserSignUpError(code) {
