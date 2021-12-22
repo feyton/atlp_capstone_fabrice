@@ -1,9 +1,10 @@
 // import { checkEmail } from "./signup.js";
+import Swal from "https://cdn.jsdelivr.net/npm/sweetalert2@8/src/sweetalert2.js";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
 import {
   getAuth,
   onAuthStateChanged,
-  updateProfile
+  updateProfile,
 } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
 import {
   child,
@@ -12,7 +13,7 @@ import {
   push,
   ref as databaseRef,
   set,
-  update
+  update,
 } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
 import { getStorage } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-storage.js";
 
@@ -32,17 +33,29 @@ export const auth = getAuth();
 export const database = getDatabase();
 export const storage = getStorage();
 
-console.log("Firebase loaded");
-
 export const handleUserLoggedIn = (user) => {
-  $(".logged-in").css("display", "block");
-  $(".logged-out").css("display", "none");
-  $(".profile-picture").attr("src", user.photoURL);
+  // Handling a change in authentication when a user log or logout
+  let loggedIn = document.querySelectorAll(".logged-in");
+  let loggedOut = document.querySelectorAll(".logged-out");
+  let profilePicture = document.querySelectorAll(".profile-picture");
+  loggedIn.forEach((element) => {
+    element.style.display = "block";
+  });
+  loggedOut.forEach((element) => {
+    element.style.display = "none";
+  });
+  profilePicture.forEach((element) => {
+    element.src = user.photoURL;
+  });
+  let userNameField = document.querySelectorAll(".user-name");
   try {
-    $(".user-name").text(user.displayName.split(" ")[0]);
-    $(".profile-picture").attr("src", user.photoURL);
+    userNameField.forEach((element) => {
+      element.innerHTML = user.displayName.split(" ")[0];
+    });
   } catch (error) {
-    $(".user-name").text(user.displayName);
+    userNameField.forEach((element) => {
+      element.innerHTML = user.displayName;
+    });
   }
 
   // console.log(user)
@@ -56,8 +69,14 @@ export const handleUserLoggedInFirstTime = (user) => {
 };
 
 export const handleUserLoggedOut = () => {
-  $(".logged-in").css("display", "none");
-  $(".logged-out").css("display", "block");
+  let loggedIn = document.querySelectorAll(".looged-in");
+  let loggedOut = document.querySelectorAll(".logged-out");
+  loggedIn.forEach((e) => {
+    this.style.display = "none";
+  });
+  loggedOut.forEach(() => {
+    this.style.display = "block";
+  });
   renderHome();
 };
 
@@ -71,19 +90,17 @@ onAuthStateChanged(auth, (user) => {
 });
 
 export const notifyUser = (message, type = "primary", duration = 3000) => {
-  Toastify({
-    text: message,
-    duration: duration,
-    stopOnFocus: true,
-    close: true,
-    className: type,
-  }).showToast();
+  Swal.fire({
+    title: message,
+    timer: duration,
+    timerProgressBar: true,
+  });
 };
 
-export const handleUserSignUpError =(code) =>{
+export const handleUserSignUpError = (code) => {
   console.log(code);
   notifyUser(code, "danger", 3000);
-}
+};
 
 $(".user-logout-button").click((e) => {
   e.preventDefault();
@@ -126,10 +143,9 @@ function handleLoading() {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         alert("You should not be here.");
-        setTimeout(()=>{
+        setTimeout(() => {
           window.location.pathname = "/UI/";
-        }, 5000)
-        
+        }, 5000);
       }
     });
   }
@@ -145,42 +161,70 @@ export function getUserData(uid) {
   // TO-Do
   //Adding ability to load user data from database
 }
-function checkSubEmail(email) {
-  var emailRegex = /\S+@\S+\.\S+/;
+export const checkSubEmail = (email) => {
+  const emailRegex = /\S+@\S+\.\S+/;
   if (email.match(emailRegex)) {
     return true;
   }
   return false;
-}
+};
 
-$(".sub-form").on("submit", (e) => {
-  e.preventDefault();
-  let email = e.target.querySelector("input").value;
-  // console.log(email);
-  if (email == "") {
-  } else {
-    if (checkSubEmail(email)) {
-      let subRef = push(child(databaseRef(database), "subscribers/")).key;
-      /**TO-DO
-       * Ensure email uniqueness to avoid double entries
-       *
-       */
-      //To do making sure that email does not exist in the database
-      set(databaseRef(database, "subscribers/" + subRef + "/"), {
-        email: email,
-      });
-      notifyUser("Thank you! You will start to receive our newsletter");
-      $(".sub-form").trigger("reset");
+let subForms = document.querySelectorAll(".sub-form");
+subForms.forEach((form) => {
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    let email = e.target.querySelector("input").value;
+    // console.log(email);
+    if (email == "") {
     } else {
-      notifyUser("Fill the form with valid email", "danger");
+      if (checkSubEmail(email)) {
+        let subRef = push(child(databaseRef(database), "subscribers/")).key;
+        /**TO-DO
+         * Ensure email uniqueness to avoid double entries
+         *
+         */
+        //To do making sure that email does not exist in the database
+        set(databaseRef(database, "subscribers/" + subRef + "/"), {
+          email: email,
+        });
+        notifyUser("Thank you! You will start to receive our newsletter");
+        form.reset();
+      } else {
+        notifyUser("Fill the form with valid email", "danger");
+      }
     }
-  }
+  });
 });
+// $(".sub-form").on("submit", (e) => {
+//   e.preventDefault();
+//   let email = e.target.querySelector("input").value;
+//   // console.log(email);
+//   if (email == "") {
+//   } else {
+//     if (checkSubEmail(email)) {
+//       let subRef = push(child(databaseRef(database), "subscribers/")).key;
+//       /**TO-DO
+//        * Ensure email uniqueness to avoid double entries
+//        *
+//        */
+//       //To do making sure that email does not exist in the database
+//       set(databaseRef(database, "subscribers/" + subRef + "/"), {
+//         email: email,
+//       });
+//       notifyUser("Thank you! You will start to receive our newsletter");
+//       $(".sub-form").trigger("reset");
+//     } else {
+//       notifyUser("Fill the form with valid email", "danger");
+//     }
+//   }
+// });
 
 $(".social-icons i").click((e) => {
   // To avoid turning all icons into url,
   let link = e.target.getAttribute("data-link");
-  window.open(link, "_blank");
+  notifyUser("Clicked");
+  // window.open(link, "_blank");
 });
 
 onAuthStateChanged(auth, (user) => {

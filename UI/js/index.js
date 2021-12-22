@@ -166,7 +166,6 @@ const checkContactForm = () => {
       let data = snapshot.val();
       setInputValue("contact-email", data.email);
       setInputValue("contact-name", data.name);
-      console.log("detected");
     });
   }
 };

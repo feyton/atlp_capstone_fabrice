@@ -214,7 +214,7 @@ const incrementCommentsCount = (key) => {
     });
 };
 
-function renderComment(comment) {
+const renderComment = (comment) => {
   let commentElement = `
   <li>
   <h3 class="title">By ${comment.author}<strong>On ${comment.date}</strong></h3>
@@ -225,19 +225,27 @@ function renderComment(comment) {
   
   `;
   return commentElement;
-}
+};
 
 // loadComments()
 // renderAuthorSection()
-$("#comment-form").submit((e) => {
+let commentForm = document.getElementById("comment-form");
+commentForm.addEventListener("submit", (e) => {
   e.preventDefault();
-
   let key = localStorage.getItem("currentPostKey");
   key = JSON.parse(key);
   addComment(key);
-  $("#comment-form").trigger("reset");
+  commentForm.reset();
 });
+// $("#comment-form").submit((e) => {
+//   e.preventDefault();
 
+//   let key = localStorage.getItem("currentPostKey");
+//   key = JSON.parse(key);
+//   addComment(key);
+//   $("#comment-form").trigger("reset");
+// });
+let postHTMLDiv = document.querySelector(".recommended-post-div");
 const loadRecommendedPost = () => {
   let postRefList = query(
     databaseRef(database, "posts/"),
@@ -245,11 +253,14 @@ const loadRecommendedPost = () => {
     limitToLast(3)
   );
   let activePost = localStorage.getItem("currentPostKey");
+
   activePost = JSON.parse(activePost);
   get(postRefList)
     .then((snapshot) => {
       if (snapshot.exists()) {
-        $(".recommended-post-div").html("");
+        postHTMLDiv.innerHTML = "";
+
+        // $(".recommended-post-div").html("");
         let data = snapshot.val();
         Object.keys(data).forEach((key) => {
           if (key !== activePost) {
@@ -265,13 +276,11 @@ const loadRecommendedPost = () => {
            </div>
         
         `;
-            $(".recommended-post-div").append(postDiv);
+            postHTMLDiv.innerHTML += postDiv;
           }
         });
       } else {
-        $(".recommended-post-div").html(
-          "<h3>No posts recommended for now</h3>"
-        );
+        postHTMLDiv.innerHTML = "<h3>No posts recommended for now</h3>";
       }
     })
     .catch((err) => {
@@ -280,12 +289,13 @@ const loadRecommendedPost = () => {
     });
 };
 
-$(".recommended-post-div").on("click", ".read-post", (e) => {
-  e.preventDefault();
-  //   alert("Clicked");
-  const key = e.target.getAttribute("data-key");
-  // console.log(key);
-  localStorage.setItem("currentPostKey", JSON.stringify(key));
-  // window.location.pathname = "/UI/pages/detail.html";
-  window.location.reload();
+postHTMLDiv.addEventListener("click", (e) => {
+  if (e.target.matches(".read-post")) {
+    e.preventDefault();
+    const key = e.target.getAttribute("data-key");
+    // console.log(key);
+    localStorage.setItem("currentPostKey", JSON.stringify(key));
+    // window.location.pathname = "/UI/pages/detail.html";
+    window.location.reload();
+  }
 });

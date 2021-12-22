@@ -102,11 +102,12 @@ $("#post-create-form").on("submit", (e) => {
 
 function loadBlogs(uid) {
   let postRefList = databaseRef(database, "user-posts/" + uid);
+  let postHTMLDiv = document.querySelector(".t-body");
 
   onValue(postRefList, (snapshot) => {
     // contentLoadingController();
     if (snapshot.exists()) {
-      $(".t-body").html("");
+      postHTMLDiv.innerHTML = "";
       let data = Object.keys(snapshot.val()).forEach((key) => {
         let post = snapshot.val()[key];
 
@@ -122,23 +123,14 @@ function loadBlogs(uid) {
         </tr>
           
           `;
-        $(".t-body").prepend(postRow);
+        postHTMLDiv.innerHTML += postRow;
+        // $(".t-body").prepend(postRow);
       });
-      handlePostDetailView();
-      // console.log(data);
-      // contentLoadingController("hide");
+    } else {
+      postHTMLDiv.innerHTML = "No posts yet. use the add sign to create one";
     }
   });
 }
-
-const handlePostDetailView = () => {
-  //   $(".post-detail").on("click", (e) => {
-  //     e.preventDefault();
-  //     let key = $(this).data("key");
-  //     console.log(key);
-  //     localStorage.setItem("currentPostKey", JSON.stringify(key));
-  //   });
-};
 
 function startDashboardPage() {
   let uid = localStorage.getItem("currentUserId");
