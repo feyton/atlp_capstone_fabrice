@@ -81,9 +81,12 @@
     font-size: 1.2rem;
 }
 
-.modal .info .date {
+.modal .info .date span {
     font-family: var(--Lexend);
     font-weight: bolder;
+    color: gray;
+    text-align: left;
+    margin-bottom: 1rem;
 }
 
 .modal .close-button {
@@ -98,6 +101,9 @@
 
 }
 
+.modal .button-group {
+    padding: 1rem 0rem;
+}
 
 .testimonials {
     text-align: center;
@@ -106,12 +112,14 @@
 }
 
 .testimonials .testimonial-list {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    padding: 1rem 3rem;
+    display: flex;
+    justify-content: center;
 
 
+}
+
+.testimonials .testimonial-list span {
+    color: black;
 }
 
 

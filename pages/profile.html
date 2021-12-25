@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main| Fabrice</title>
+    <link rel="icon" type="image/png" href="../assets/favicon.png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../css/main.css" class="css">
+    <link rel="stylesheet" href="../css/profile.css" class="css">
+</head>
+
+<body>
+    <header>
+
+        <nav class="">
+            <div class="brand">
+                <a href="../index.html">
+                    <h3>Feyton Inc</h3>
+                </a>
+            </div>
+            <div class="menu-toggle mobile">
+                <div class="toggle"><i class="fa fa-bars"></i></div>
+            </div>
+            <div class="menu flex-row menu-displayed">
+                <ul class="menu-items flex-row">
+
+                    <li class="menu-item menu-home"><a href="../index.html" class="">Home</a></li>
+                    <li class="menu-item active "><a href="./blog.html">Blog</a></li>
+                    <li class="menu-item"><a href="./work.html">Our Work</a></li>
+                    <li class="menu-item"><a href="./about.html">About Us</a></li>
+                    <li class="menu-item profile-img"><a href="#here"><img src="../assets/profile.JPG" alt=""
+                                class="profile-picture"><i class="fa fa-chevron-down"></i></a>
+                        <ul>
+                            <li><a href="./profile.html">Profile</a></li>
+                            <li><a href="../dashboard/index.html">Dashboard</a></li>
+                            <li><a href="#logout" class="logout">Logout</a></li>
+                        </ul>
+
+                    </li>
+                </ul>
+            </div>
+
+        </nav>
+
+    </header>
+    <main>
+
+
+        <div class="user-profile">
+
+            <div class="about-user">
+                <h2 class="head-title">My Profile</h2>
+                <hr>
+                <div class="user-card">
+                    <img src="../assets/fab-1.jpg" alt="" class="profile-picture">
+                    <div class="user-info-render">
+                        <div class="info">
+                            <span>Name:</span> <span class="">Fabrice</span>
+                        </div>
+                        <div class="info">
+                            <span>Facebook:</span> <span class="">Fahrer</span>
+                        </div>
+                        <div class="info">
+                            <span>Twitter:</span> <span class="">Twiiter</span>
+                        </div>
+                        <div class="info bio">
+                            <span>Bio:</span> <span class="">Here we are</span>
+                        </div>
+                        <!-- <div class="loader-for-div d-none"><i class="fas fa-spinner fa-spin"></i></div> -->
+                    </div>
+
+                    <button class="btn btn-update-profile">Update Profile</button>
+                </div>
+
+
+
+            </div>
+            <div class="update-profile update-div d-none">
+                <h2>Update Profile</h2>
+                <hr>
+                <div class="form-div">
+                    <form action="$sd" id="update-profile-form">
+                        <input type="text" placeholder="Full name" id="profile-name" value="" class="">
+                        <input type="url" placeholder="Link to Facebook" id="profile-facebook" value="" class="">
+                        <input type="url" placeholder="Link to Twitter" id="profile-twitter" value="" class="">
+                        <textarea name="biography" id="profile-bio" cols="30" rows="3" maxlength="200"
+                            placeholder="Biography"></textarea>
+                        <input type="submit" value="Update" class="btn btn-submit">
+
+                    </form>
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+
+        <div class="footer">
+            <footer>
+                <div class="about">
+                    <h3>About Us</h3>
+                    <p>Our goal is to provide you the best we have to offer</p>
+                    <a href="tel:+250787241457" class="text-link"><span>Call Us:</span> + (250) 787 241 457</a>
+                    <a href="mailto:info@feyton.co.rw" class="text-link"><span>Email:</span> info@fabrice.com</a>
+                </div>
+                <div class="form">
+                    <h3>Our NewsLetter</h3>
+                    <form action="#">
+                        <div class="input-container">
+                            <input type="text" placeholder="E-mail">
+                            <button type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+                        </div>
+                    </form>
+                </div>
+                <div class="social">
+                    <h3>Follow us</h3>
+                    <div class="social-icons">
+                        <i class="fab fa-facebook"></i>
+                        <i class="fab fa-instagram"></i>
+                        <i class="fab fa-github"></i>
+                        <i class="fab fa-youtube"></i>
+                    </div>
+
+                </div>
+
+            </footer>
+            <div class="admin center">
+                <div class="login">
+                    <p>Admin</p>
+                    <button class="login-btn" onclick="window.location.href='./login.html'">Login</button>
+                </div>
+
+            </div>
+        </div>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/profile.js"></script>
+
+</body>
+
+</html>

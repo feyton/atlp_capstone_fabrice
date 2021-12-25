@@ -6,13 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ATPL| The new macbook pro is the best on market</title>
-    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <link rel="icon" type="image/png" href="../assets/favicon.png">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
         integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="main.css" class="css">
-    <link rel="stylesheet" href="detail.css" class="css">
+    <link rel="stylesheet" href="../css/main.css" class="css">
+    <link rel="stylesheet" href="../css/detail.css" class="css">
 </head>
 
 <body>
@@ -20,7 +20,7 @@
 
         <nav class="">
             <div class="brand">
-                <a href="index.html">
+                <a href="../index.html">
                     <h3>Feyton Inc</h3>
                 </a>
             </div>
@@ -30,16 +30,16 @@
             <div class="menu flex-row menu-displayed">
                 <ul class="menu-items flex-row">
 
-                    <li class="menu-item active menu-home"><a href="index.html" class="">Home</a></li>
-                    <li class="menu-item"><a href="blog.html">Blog</a></li>
-                    <li class="menu-item"><a href="work.html">Our Work</a></li>
-                    <li class="menu-item"><a href="about.html">About Us</a></li>
-                    <li class="menu-item profile-img"><a href="#here"><img src="./assets/profile.JPG" alt=""
+                    <li class="menu-item menu-home"><a href="../index.html" class="">Home</a></li>
+                    <li class="menu-item active"><a href="./blog.html">Blog</a></li>
+                    <li class="menu-item"><a href="./work.html">Our Work</a></li>
+                    <li class="menu-item"><a href="./about.html">About Us</a></li>
+                    <li class="menu-item profile-img"><a href="#here"><img src="../assets/profile.JPG" alt=""
                                 class="profile-picture"><i class="fa fa-chevron-down"></i></a>
                         <ul>
-                            <li><a href="profile.html">Profile</a></li>
-                            <li><a href="profile.html">Dashboard</a></li>
-                            <li><a href="profile.html" class="logout">Logout</a></li>
+                            <li><a href="./profile.html">Profile</a></li>
+                            <li><a href="../dashboard/index.html">Dashboard</a></li>
+                            <li><a href="#logout" class="logout">Logout</a></li>
                         </ul>
 
                     </li>
@@ -130,35 +130,58 @@
                         <div class="comment-div">
                             <ul>
                                 <li>
-                                    <h3 class="title">By Fabrice</h3>
+                                    <div class="user-info-comment">
+                                        <img src="../assets/profile.JPG" alt=""><span>Fabrice</span>
+                                    </div>
                                     <p class="comment-content">Lorem ipsum dolor sit amet consectetur adipisicing elit.
                                         Magni
                                         rerum repellat doloremque repudiandae tenetur aliquam modi sapiente repellendus
                                         earum
                                         quisquam sed libero quis tempora, asperiores similique, fuga architecto iste
                                         velit!</p>
+                                    <div class="comment-footer">
+                                        <span class="comment-date">25 June 2021</span> <span><i
+                                                class="fas fa-star fa-lg"></i>&nbsp;26</span>
+                                    </div>
+
                                     <hr>
                                 </li>
                                 <li>
-                                    <h3 class="title">By Fabrice</h3>
+                                    <div class="user-info-comment">
+                                        <img src="../assets/profile.JPG" alt=""><span>Fabrice</span>
+                                    </div>
                                     <p class="comment-content">Lorem ipsum dolor sit amet consectetur adipisicing elit.
                                         Magni
                                         rerum repellat doloremque repudiandae tenetur aliquam modi sapiente repellendus
                                         earum
                                         quisquam sed libero quis tempora, asperiores similique, fuga architecto iste
                                         velit!</p>
+                                    <div class="comment-footer">
+                                        <span class="comment-date">25 June 2021</span> <span><i
+                                                class="fas fa-star fa-lg"></i>&nbsp;26</span>
+                                    </div>
+
                                     <hr>
                                 </li>
                                 <li>
-                                    <h3 class="title">By Fabrice</h3>
+                                    <div class="user-info-comment">
+                                        <img src="../assets/profile.JPG" alt=""><span>Fabrice</span>
+                                    </div>
                                     <p class="comment-content">Lorem ipsum dolor sit amet consectetur adipisicing elit.
                                         Magni
                                         rerum repellat doloremque repudiandae tenetur aliquam modi sapiente repellendus
                                         earum
                                         quisquam sed libero quis tempora, asperiores similique, fuga architecto iste
                                         velit!</p>
+                                    <div class="comment-footer">
+                                        <span class="comment-date">25 June 2021</span> <span><i
+                                                class="fas fa-star fa-lg"></i>&nbsp;26</span>
+                                    </div>
+
                                     <hr>
                                 </li>
+                                <button class="btn btn-primary center">LOAD MORE</button>
+
 
                             </ul>
                         </div>
@@ -167,7 +190,7 @@
                 </section>
                 <aside class="sidebar">
                     <div class="author author-card">
-                        <div class="author-avatar"><img src="assets/profile.JPG" alt=""></div>
+                        <div class="author-avatar"><img src="../assets/profile.JPG" alt=""></div>
 
 
                         <h2>Fabrice H.</h2>
@@ -183,19 +206,19 @@
                         <div class="r-post">
                             <img src="https://images.unsplash.com/photo-1607799279861-4dd421887fb3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
                                 alt="">
-                            <a href="detail.html" class="title">Lorem ipsum dolor sit amet</a>
+                            <a href="./detail.html" class="title">Lorem ipsum dolor sit amet</a>
                             <hr>
                         </div>
                         <div class="r-post">
                             <img src="https://images.unsplash.com/photo-1607799279861-4dd421887fb3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
                                 alt="">
-                            <a href="detail.html" class="title">Lorem ipsum dolor sit amet</a>
+                            <a href="./detail.html" class="title">Lorem ipsum dolor sit amet</a>
                             <hr>
                         </div>
                         <div class="r-post">
                             <img src="https://images.unsplash.com/photo-1607799279861-4dd421887fb3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
                                 alt="">
-                            <a href="detail.html" class="title">Lorem ipsum dolor sit amet</a>
+                            <a href="./detail.html" class="title">Lorem ipsum dolor sit amet</a>
                             <hr>
                         </div>
                     </div>
@@ -259,7 +282,7 @@
             <div class="admin center">
                 <div class="login">
                     <p>Admin</p>
-                    <button class="login-btn" onclick="window.location.href='login.html'">Login</button>
+                    <button class="login-btn" onclick="window.location.href='./login.html'">Login</button>
                 </div>
 
             </div>
@@ -267,7 +290,7 @@
     </main>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="main.js"></script>
+    <script src="../js/main.js"></script>
 
 </body>
 
