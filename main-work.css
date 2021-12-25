@@ -7,7 +7,7 @@
     --Abel: 'Abel', sans-serif;
     --light-blue: rgba(33, 141, 241, 1);
     --dark-blue: rgba(33, 141, 241, 0.31);
-    --dark-grey: rgba(35, 43, 51, 0.986);
+    --dark-grey: rgb(35, 43, 51);
     --light-cyan: rgba(130, 180, 195, 1);
 }
 
@@ -24,7 +24,6 @@
     font-weight: 600;
     text-align: center;
 }
-
 
 main {
     position: relative;
@@ -193,61 +192,6 @@ nav .menu-toggle {
 nav .mobile {
     display: none;
 }
-
-
-
-
-
-/* Styling the hero */
-
-main .hero {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.774), rgba(0, 0, 0, 0.623)), url("https://images.unsplash.com/photo-1453928582365-b6ad33cbcf64?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=873&q=80");
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100vh;
-    text-align: center;
-}
-
-main .hero .hero-text {
-    padding-top: 7rem;
-}
-
-main .hero .hero-text h2 {
-    font-size: 5rem;
-    color: var(--light-blue);
-    margin: 1rem;
-    font-family: var(--Lexend);
-
-}
-
-main .hero .hero-text h3 {
-    font-size: 3rem;
-    color: white;
-    margin: 1rem;
-    font-family: var(--Lexend);
-}
-
-main .hero button {
-    margin-top: 5rem;
-    font-size: 1.2rem;
-    background-color: var(--light-blue);
-    color: white;
-    font-family: var(--Abel);
-    font-weight: 600;
-    letter-spacing: 2px;
-    padding: 1rem 3rem;
-    border: none;
-    border-radius: 10px;
-    text-transform: uppercase;
-}
-
-main .hero button:hover {
-    background-color: var(--light-blue);
-    cursor: pointer;
-}
-
-
-
 
 
 
@@ -591,7 +535,7 @@ main .services {
     margin-bottom: 2rem;
 }
 
-.services h2, .our-work h2 {
+.services h2, .our-work h2, .about-me h2 {
     font-size: 2rem;
     font-family: var(--Lexend);
 
@@ -664,7 +608,6 @@ main .services {
     bottom: -30px;
     transform: translateX(50%);
     box-shadow: 2px 2px 2px 2px rgb(86, 86, 150);
-
     width: 60%;
 }
 
@@ -979,25 +922,6 @@ main .services {
     color: rgb(147, 168, 50);
 }
 
-.text-link {
-    display: block;
-    text-align: left;
-    padding: 3px 2rem;
-    text-decoration: none;
-    font-family: var(--Lexend);
-    color: rgb(2, 114, 20);
-    font-weight: bolder;
-}
-
-span {
-    color: white;
-}
-
-footer .about a:first-child {
-    padding-top: 1rem;
-}
-
-
 @media screen and (max-width:1110px) {
     .social-icons {
         padding: 1rem;
@@ -1151,11 +1075,14 @@ footer .about a:first-child {
         margin: auto;
     }
 
+}
+
+@media only screen and (max-width:655px) {
+
     header nav .menu .menu-item a {
 
         padding: 0px .3rem;
     }
-
 }
 
 @media only screen and (max-width:575px) {
@@ -1222,7 +1149,6 @@ footer .about a:first-child {
         padding-bottom: 10px;
         right: 0px;
         margin: 0px;
-        display: block;
 
     }
 
@@ -1230,16 +1156,7 @@ footer .about a:first-child {
         padding-bottom: 0px;
         margin-bottom: 0px;
     }
-}
 
-@media screen and (max-width:400px) {
-    .blog-section {
-        padding: 1rem .5rem;
-    }
-
-    .blog-list {
-        margin-left: .1rem;
-    }
 }
 
 @media screen and (max-width:330px) {
@@ -1252,8 +1169,6 @@ footer .about a:first-child {
     .footer .form {
         padding: 1rem 1rem;
     }
-
-
 }
 
 
