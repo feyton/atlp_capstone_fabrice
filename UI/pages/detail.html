@@ -56,132 +56,38 @@
         <div class="trending-blogs">
 
             <div class="blog-section">
-                <section class="blog-list">
+                <section class="blog-list ">
                     <!-- Blog -->
-                    <div class="blog-card">
-                        <div class="blog-image">
-                            <img src="https://images.unsplash.com/photo-1607799279861-4dd421887fb3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-                                alt="">
-                            <div class="date-info">
-                                <h2>24</h2>
-                                <hr>
-                                <h2>June</h2>
-                            </div>
-                        </div>
-                        <div class="blog-info">
-
-                            <h2>The new mac-book is the laptop on the market</h2>
-
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa laborum dolorum nihil? Non,
-                                a
-                                tenetur et aperiam hic illo maiores quibusdam iure tempora deserunt fuga eaque ipsam,
-                                voluptatem
-                                magni nobis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit omnis ad
-                                reiciendis enim accusamus dolorum itaque neque, ipsa dicta reprehenderit quod eos in
-                                aspernatur ipsum quidem fuga fugiat pariatur, culpa aliquam voluptate! Tempora,
-                                consequatur sapiente. Temporibus voluptatibus explicabo suscipit, officia iure ratione,
-                                numquam magnam id veniam voluptatum at? Molestias odio vero officiis vel nesciunt!
-                                Perspiciatis, enim quas. Harum autem libero voluptatum, placeat nostrum delectus
-                                expedita omnis maiores modi. Reprehenderit quos aliquid officia! Inventore cumque rerum
-                                asperiores eaque eius laudantium excepturi! Vero corrupti consectetur modi expedita,
-                                harum nobis aspernatur ab commodi nulla nam beatae voluptatem sit eos, neque earum
-                                blanditiis culpa esse accusamus id corporis. Aspernatur quos esse necessitatibus
-                                laudantium repellendus asperiores vitae. Voluptatem tempore natus accusantium iure
-                                laboriosam a tenetur nobis dolorum optio dolorem perferendis voluptatum esse rem error
-                                veniam sed pariatur, ad ex soluta quod. </p>
-                            <p>Mollitia eum nobis maxime eius repellat!
-                                Recusandae iste voluptatum mollitia saepe nisi tenetur ex velit quis necessitatibus
-                                dolore minima dolores est, sequi atque ea ratione? Dolorem voluptatem voluptas animi eum
-                                libero. Molestias quibusdam dolorem iusto ipsam adipisci nemo deserunt delectus ullam
-                                assumenda inventore molestiae sed autem, esse voluptas optio, quam beatae ab, minus qui
-                                dignissimos quas sit sapiente impedit. Quae, asperiores. Porro minima nostrum error
-                                minus reiciendis aperiam cupiditate ipsum, excepturi, neque deserunt illum nulla
-                                aliquam, est eos voluptas necessitatibus quidem sed eligendi! Dolore, voluptates
-                                nesciunt! Possimus laudantium eum iusto dicta obcaecati ad in, consequatur adipisci sint
-                                culpa veniam aspernatur voluptas iure magni quos! Nihil, laudantium vitae? Autem
-                                doloribus, voluptatibus pariatur placeat asperiores, aut architecto ipsa dolore magnam
-                                ratione nemo, voluptatem non deserunt sed nisi? Voluptate neque incidunt delectus quos,
-                                architecto ex, suscipit optio ipsa debitis corrupti dolorum impedit beatae blanditiis
-                                nihil at itaque fugit consequuntur sequi similique consequatur fuga. Expedita, ipsam
-                                veritatis. Nulla earum laudantium nam itaque delectus! Veritatis, quidem explicabo. Nam,
-                                illum!</p>
-
-
-
-                        </div>
-                        <br>
+                    <div class="blog-card post-detail-div">
 
                     </div>
                     <hr>
-                    <div class="comments">
+                    <div class="comments logged-in">
                         <h3>Add a comment</h3>
                         <div class="comment-form">
-                            <form action="#comment">
-                                <input type="text" name="name" placeholder="Name" required>
-                                <input type="email" name="email" id="" placeholder="Email" required>
-                                <textarea name="comment" id="" cols="30" rows="3" placeholder="Type your comment here"
-                                    required></textarea>
-                                <input type="submit" value="Send" class="disabled">
+                            <form action="#comment" id="comment-form">
+                                <textarea name="comment" id="user-comment" cols="30" rows="3"
+                                    placeholder="Type your comment here" required minlength="5" maxlength="500"
+                                    title="can't exceed 500 characters"></textarea>
+                                <input type="submit" value="Send" class="comment-submit">
                             </form>
                         </div>
                     </div>
+                    <div class="comments logged-out">
+                        <h3>Join the conversation</h3>
+                        <div class="button-group">
+                            <a href="../pages/login.html" class="btn login-button">LOGIN</a>
+                            <span>OR</span>
+                            <a href="../pages/signup.html" class="btn login-button">SIGN UP</a>
+                        </div>
+                    </div>
                     <div class="comment-list">
-                        <h2>Comments</h2>
+                        <h2>Comments (<span class="comment-count"></span>)</h2>
                         <div class="comment-div">
-                            <ul>
-                                <li>
-                                    <div class="user-info-comment">
-                                        <img src="../assets/profile.JPG" alt=""><span>Fabrice</span>
-                                    </div>
-                                    <p class="comment-content">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                        Magni
-                                        rerum repellat doloremque repudiandae tenetur aliquam modi sapiente repellendus
-                                        earum
-                                        quisquam sed libero quis tempora, asperiores similique, fuga architecto iste
-                                        velit!</p>
-                                    <div class="comment-footer">
-                                        <span class="comment-date">25 June 2021</span> <span><i
-                                                class="fas fa-star fa-lg"></i>&nbsp;26</span>
-                                    </div>
-
-                                    <hr>
-                                </li>
-                                <li>
-                                    <div class="user-info-comment">
-                                        <img src="../assets/profile.JPG" alt=""><span>Fabrice</span>
-                                    </div>
-                                    <p class="comment-content">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                        Magni
-                                        rerum repellat doloremque repudiandae tenetur aliquam modi sapiente repellendus
-                                        earum
-                                        quisquam sed libero quis tempora, asperiores similique, fuga architecto iste
-                                        velit!</p>
-                                    <div class="comment-footer">
-                                        <span class="comment-date">25 June 2021</span> <span><i
-                                                class="fas fa-star fa-lg"></i>&nbsp;26</span>
-                                    </div>
-
-                                    <hr>
-                                </li>
-                                <li>
-                                    <div class="user-info-comment">
-                                        <img src="../assets/profile.JPG" alt=""><span>Fabrice</span>
-                                    </div>
-                                    <p class="comment-content">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                        Magni
-                                        rerum repellat doloremque repudiandae tenetur aliquam modi sapiente repellendus
-                                        earum
-                                        quisquam sed libero quis tempora, asperiores similique, fuga architecto iste
-                                        velit!</p>
-                                    <div class="comment-footer">
-                                        <span class="comment-date">25 June 2021</span> <span><i
-                                                class="fas fa-star fa-lg"></i>&nbsp;26</span>
-                                    </div>
-
-                                    <hr>
-                                </li>
-                                <button class="btn btn-primary center">LOAD MORE</button>
-
+                            <ul class="comment-list-div">
+                                <div class="loader-for-div">
+                                    <i class="fas fa-spinner fa-spin"></i>
+                                </div>
 
                             </ul>
                         </div>
@@ -190,37 +96,16 @@
                 </section>
                 <aside class="sidebar">
                     <div class="author author-card">
-                        <div class="author-avatar"><img src="../assets/profile.JPG" alt=""></div>
+                        <div class="loader-for-div"><i class="fas fa-spinner fa-spin"></i></div>
 
-
-                        <h2>Fabrice H.</h2>
-                        <p>A happy traveller, and a software developer by passion. If you see me around,
-                            say hi and we can talk dev on a cup of coffe</p>
-                        <button class="coffee">
-                            <span>Follow</span><span><i class="fab fa-facebook"></i><i class="fab fa-github"></i></span>
-                        </button>
 
                     </div>
                     <div class="recommended">
                         <h2 class="title">You can also read</h2>
-                        <div class="r-post">
-                            <img src="https://images.unsplash.com/photo-1607799279861-4dd421887fb3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-                                alt="">
-                            <a href="./detail.html" class="title">Lorem ipsum dolor sit amet</a>
-                            <hr>
+                        <div class="recommended-post-div">
+
                         </div>
-                        <div class="r-post">
-                            <img src="https://images.unsplash.com/photo-1607799279861-4dd421887fb3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-                                alt="">
-                            <a href="./detail.html" class="title">Lorem ipsum dolor sit amet</a>
-                            <hr>
-                        </div>
-                        <div class="r-post">
-                            <img src="https://images.unsplash.com/photo-1607799279861-4dd421887fb3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-                                alt="">
-                            <a href="./detail.html" class="title">Lorem ipsum dolor sit amet</a>
-                            <hr>
-                        </div>
+
                     </div>
 
                     <div class="categories">
@@ -270,19 +155,20 @@
                 <div class="social">
                     <h3>Follow us</h3>
                     <div class="social-icons">
-                        <i class="fab fa-facebook"></i>
-                        <i class="fab fa-instagram"></i>
-                        <i class="fab fa-github"></i>
-                        <i class="fab fa-youtube"></i>
+                        <i class="fab fa-facebook" data-link="https://www.facebook.com/feytonf/"></i>
+                        <i class="fab fa-instagram" data-link="https://www.instagram.com/feytonf/"></i>
+                        <i class="fab fa-github" data-link="https://github.com/feyton"></i>
+                        <i class="fab fa-youtube"
+                            data-link="https://www.youtube.com/channel/UCfMEXzqST_bQSs0f31_R8NA"></i>
                     </div>
 
                 </div>
 
             </footer>
-            <div class="admin center">
+            <div class="admin center logged-out">
                 <div class="login">
                     <p>Admin</p>
-                    <button class="login-btn" onclick="window.location.href='./login.html'">Login</button>
+                    <button class="login-btn" onclick="window.location.href='login.html'">Login</button>
                 </div>
 
             </div>
@@ -290,6 +176,13 @@
     </main>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="./js/toastify.js"></script>
+
+    <script src="../js/base.js" type="module" defer></script>
+    <script src="../js/dashboard.js" type="module" defer></script>
+    <script src="../js/index.js" type="module" defer></script>
+    <script src="../js/blog.js" type="module" defer></script>
+    <script src="../js/detail.js" type="module" defer></script>
     <script src="../js/main.js"></script>
 
 </body>

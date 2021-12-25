@@ -10,14 +10,35 @@
         integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <link rel="stylesheet" href="dashboard.css" class="css">
+    <link rel="stylesheet" href="./dashboard.css" class="css">
     <link rel="stylesheet" href="blog.css" class="css">
-    <link rel="icon" href="assets/favicon.png">
+    <link rel="icon" href="../assets/favicon.png">
+    <style>
+        .t-body i {
+            pointer-events: none;
+        }
+    </style>
 </head>
 
 <body>
+
+    <div class="full-loader d-none">
+        <div class="lds-ring">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div>
+
+            </div>
+        </div>
+    </div>
+    <div class="notify d-none">
+        <span class="text-notification">Hi there</span>
+        <span class="notification-progress animate-progress"></span>
+
+    </div>
     <div class="add-blog">
-        <a href="create.html"><i class="fas fa-plus"></i></a>
+        <a href="./create.html"><i class="fas fa-plus"></i></a>
 
     </div>
     <div class="add-blog-message">
@@ -36,7 +57,7 @@
                         </ul>
                     </li>
 
-                    <li class="menu-item logout"><a href="#here">Logout</a></li>
+                    <li class="menu-item logout"><a href="#here" class="user-logout-button">Logout</a></li>
                 </ul>
             </div>
         </nav>
@@ -44,8 +65,8 @@
             <div class="menu-toggle close"><i class="fas fa-chevron-circle-left"></i></div>
 
             <div class="profile">
-                <img src="../assets/profile.JPG" alt="">
-                <h3>Fabrice</h3>
+                <img src="" alt="" class="profile-picture">
+                <h3 class="user-name"></h3>
 
             </div>
             <ul>
@@ -71,24 +92,18 @@
                             <th>Title&nbsp;<i class="fas fa-chevron-down"></i></th>
                             <th>Category&nbsp;<i class="fas fa-chevron-down"></i></th>
                             <th>Status&nbsp;<i class="fas fa-chevron-down"></i></th>
-                            <th>#Comments&nbsp;<i class="fas fa-chevron-down"></i></th>
+
                             <th>Actions&nbsp;<i class="fas fa-chevron-down"></i></th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="t-body">
                         <tr>
-                            <td class=""><a href="#Update page" class="color-primary">Lorem, ipsum dolor. Lorem ipsum
-                                    dolor sit
-                                    amet.</a></td>
-                            <td><a href="#comments" class="color-primary">Technology</a></td>
-                            <td>Approved</td>
-                            <td class="post-comments"><span>30 &nbsp;<i class="fa fa-check check-mark"
-                                        aria-hidden="true"></i></span></td>
-
-                            <td class="actions">
-                                <span><a href="edit.html" class="edit"><i class="fas fa-edit"></i></a></span>
-                                <span><a href="edit.html" class="delete"><i class="fas fa-trash"></i></a></span>
+                            <td colspan="5">
+                                <div class="loader-for-div">
+                                    <i class="fas fa-spinner fa-spin"></i>
+                                </div>
                             </td>
+
                         </tr>
 
                     </tbody>
@@ -117,6 +132,11 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <script src="../js/base.js" type="module" defer></script>
+    <script src="../js/dashboard.js" type="module" defer></script>
+    <script src="../js/index.js" type="module" defer></script>
+    <script src="../js/blog.js" type="module" defer></script>
     <script src="main.js"></script>
 </body>
 

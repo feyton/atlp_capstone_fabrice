@@ -139,6 +139,12 @@
     margin-bottom: 1rem;
 }
 
+.post-content-render {
+    box-shadow: 2px 2px 2px 2px grey;
+    padding: 10px;
+
+}
+
 .author {
     width: 100%;
     padding: 1rem;
@@ -273,4 +279,25 @@
 .title {
     font-family: var(--Lexend);
     margin-bottom: 1rem;
+}
+
+.button-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 1rem 2rem;
+    width: fit-content;
+}
+
+.button-group span {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    margin: auto 10px;
+    font-family: var(--Lexend);
+    font-weight: bolder;
+}
+
+.button-group a {
+    color: white;
 }

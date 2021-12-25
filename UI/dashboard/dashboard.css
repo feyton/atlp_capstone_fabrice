@@ -25,6 +25,175 @@
 
 body {
     overflow: hidden;
+    position: relative;
+}
+
+/* Notification */
+
+/* Custom User  Notification Popup */
+.notify {
+    position: fixed;
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgb(50, 143, 155);
+    color: white;
+    padding: 1rem 2rem;
+    font-weight: normal;
+    border-radius: 0px 0px 20px 20px;
+    font-family: var(--Lexend);
+    z-index: 100;
+    min-width: 100px;
+    max-width: 300px;
+    height: fit-content;
+    overflow-wrap: break-word;
+    text-align: center;
+
+}
+
+.notify.danger {
+    background-color: rgb(104, 11, 11);
+    color: #f0f0f0;
+    font-weight: bold;
+
+}
+
+.notify.danger>.notification-progress {
+    background-color: rgb(80, 120, 146);
+}
+
+.notify.warning {
+    background-color: rgb(108, 146, 36);
+    color: black;
+    font-weight: bold;
+}
+
+.notify .notification-progress {
+    position: absolute;
+    bottom: 0;
+    height: 10px;
+    left: 50%;
+    background-color: rgb(151, 26, 26);
+    transform: translateX(-50%);
+    animation-timing-function: linear;
+
+}
+
+.animate-progress {
+    animation: progress;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+
+}
+
+@keyframes progress {
+    0% {
+        width: 0%;
+    }
+
+    50% {
+        border-radius: 0px 0px 20px 20px;
+        width: 50%;
+    }
+
+    100% {
+        width: 90%;
+        border-radius: 0px 0px 30px 30px;
+        padding-bottom: 5px;
+    }
+
+}
+
+.d-none {
+    display: none;
+}
+
+body {
+    position: relative;
+}
+
+
+/* CSS Loader */
+
+.noscroll {
+    position: fixed !important
+}
+
+.full-loader {
+    background-color: rgba(5, 15, 24, 0.932);
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    text-align: center;
+    overflow: hidden;
+}
+
+.lds-ring {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% -50%);
+}
+
+.lds-ring div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border: 8px solid #fff;
+    border-radius: 50%;
+    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: #fff transparent transparent transparent;
+}
+
+.lds-ring div:nth-child(1) {
+    animation-delay: -0.45s;
+}
+
+.lds-ring div:nth-child(2) {
+    animation-delay: -0.3s;
+}
+
+.lds-ring div:nth-child(3) {
+    animation-delay: -0.15s;
+}
+
+@keyframes lds-ring {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* /// */
+
+
+/* Spinner */
+
+.loader-for-div {
+    height: 100%;
+    width: 100%;
+    padding: 2rem;
+    position: relative;
+}
+
+.loader-for-div i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% -50%);
 }
 
 a {
@@ -75,7 +244,7 @@ nav ul li {
 
 nav ul li ul {
     position: absolute;
-    top: 9vh;
+    top: 8vh;
     right: 0px;
     z-index: 10000;
     display: none;
@@ -231,11 +400,21 @@ main .dashboard {
 
 .dashboard .bg-light {
     height: 100px;
-    background-color: grey;
+    background-color: var(--dark-grey);
     box-shadow: 0px 0px 2px 0px white;
-    width: 120%;
+    width: 140%;
     margin-left: -10rem;
-    margin-top: -2rem;
+    margin-top: -1.5rem;
+    font-size: .8rem;
+    text-align: center;
+
+}
+
+.dashboard .bg-light h2 {
+    width: 90%;
+    text-align: center;
+    margin: 1px auto;
+    /* color: ; */
 }
 
 .stats {

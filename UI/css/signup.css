@@ -147,6 +147,21 @@ ul li {
     color: white;
 }
 
+.custom-file-input::-webkit-file-upload-button {
+    padding: 10px 20px;
+    margin: 0 5px 0px 0px;
+    border-radius: 10px 0px 0px 10px;
+    border: none;
+    font-family: var(--Lexend);
+    background-color: rgb(17, 73, 73);
+    color: white;
+}
+
+form input[type="file"] {
+    padding: 0px;
+    border: none;
+}
+
 .sign-container form .links {
     display: flex;
     justify-content: flex-end;
@@ -221,6 +236,133 @@ i.valid {
     color: green;
 
 }
+
+.d-none {
+    display: none;
+}
+
+body {
+    position: relative;
+}
+
+.notify {
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgb(50, 143, 155);
+    color: white;
+    padding: 1rem 2rem;
+    font-weight: normal;
+    border-radius: 0px 0px 20px 20px;
+    font-family: var(--Lexend);
+
+}
+
+.notify .notification-progress {
+    position: absolute;
+    bottom: 0;
+    height: 10px;
+    left: 50%;
+    background-color: rgb(151, 26, 26);
+    transform: translateX(-50%);
+    animation-timing-function: linear;
+
+}
+
+.animate-progress {
+    animation: progress;
+
+
+}
+
+@keyframes progress {
+    0% {
+        width: 0%;
+    }
+
+    50% {
+        border-radius: 0px 0px 20px 20px;
+        width: 50%;
+    }
+
+    100% {
+        width: 90%;
+        border-radius: 0px 0px 30px 30px;
+        padding-bottom: 5px;
+    }
+
+}
+
+
+
+/* CSS Loader */
+
+.noscroll {
+    position: fixed !important
+}
+
+.full-loader {
+    background-color: rgba(5, 15, 24, 0.932);
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    text-align: center;
+    overflow: hidden;
+}
+
+.lds-ring {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% -50%);
+}
+
+.lds-ring div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border: 8px solid #fff;
+    border-radius: 50%;
+    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: #fff transparent transparent transparent;
+}
+
+.lds-ring div:nth-child(1) {
+    animation-delay: -0.45s;
+}
+
+.lds-ring div:nth-child(2) {
+    animation-delay: -0.3s;
+}
+
+.lds-ring div:nth-child(3) {
+    animation-delay: -0.15s;
+}
+
+@keyframes lds-ring {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* /// */
+
+
 
 @media screen and (max-width: 1020px) {
     .sign-container {

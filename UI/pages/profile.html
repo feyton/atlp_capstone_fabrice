@@ -16,6 +16,16 @@
 </head>
 
 <body>
+    <div class="full-loader d-none">
+        <div class="lds-ring">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div>
+
+            </div>
+        </div>
+    </div>
     <header>
 
         <nav class="">
@@ -58,21 +68,10 @@
                 <h2 class="head-title">My Profile</h2>
                 <hr>
                 <div class="user-card">
-                    <img src="../assets/fab-1.jpg" alt="" class="profile-picture">
+                    <img src="" alt="" class="profile-picture">
                     <div class="user-info-render">
-                        <div class="info">
-                            <span>Name:</span> <span class="">Fabrice</span>
-                        </div>
-                        <div class="info">
-                            <span>Facebook:</span> <span class="">Fahrer</span>
-                        </div>
-                        <div class="info">
-                            <span>Twitter:</span> <span class="">Twiiter</span>
-                        </div>
-                        <div class="info bio">
-                            <span>Bio:</span> <span class="">Here we are</span>
-                        </div>
-                        <!-- <div class="loader-for-div d-none"><i class="fas fa-spinner fa-spin"></i></div> -->
+                        <div class="loader-for-div"><i class="fas fa-spinner fa-spin"></i></div>
+
                     </div>
 
                     <button class="btn btn-update-profile">Update Profile</button>
@@ -123,19 +122,20 @@
                 <div class="social">
                     <h3>Follow us</h3>
                     <div class="social-icons">
-                        <i class="fab fa-facebook"></i>
-                        <i class="fab fa-instagram"></i>
-                        <i class="fab fa-github"></i>
-                        <i class="fab fa-youtube"></i>
+                        <i class="fab fa-facebook" data-link="https://www.facebook.com/feytonf/"></i>
+                        <i class="fab fa-instagram" data-link="https://www.instagram.com/feytonf/"></i>
+                        <i class="fab fa-github" data-link="https://github.com/feyton"></i>
+                        <i class="fab fa-youtube"
+                            data-link="https://www.youtube.com/channel/UCfMEXzqST_bQSs0f31_R8NA"></i>
                     </div>
 
                 </div>
 
             </footer>
-            <div class="admin center">
+            <div class="admin center logged-out">
                 <div class="login">
                     <p>Admin</p>
-                    <button class="login-btn" onclick="window.location.href='./login.html'">Login</button>
+                    <button class="login-btn" onclick="window.location.href='login.html'">Login</button>
                 </div>
 
             </div>
@@ -144,7 +144,11 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="../js/main.js"></script>
-    <script src="../js/profile.js"></script>
+    <!-- Firebase Scrips -->
+    <script src="../js/base.js" type="module" defer></script>
+    <script src="../js/blog.js" type="module" defer></script>
+    <script src="../js/dashboard.js" type="module" defer></script>
+    <script src="../js/index.js" type="module" defer></script>
 
 </body>
 

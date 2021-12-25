@@ -25,11 +25,11 @@
             <div></div>
             <div></div>
             <div></div>
-            <div></div>
+            <div> </div>
         </div>
     </div>
     <div class="notify d-none">
-        <span class="text-notification"></span>
+        <span class="text-notification">Hi there</span>
         <span class="notification-progress animate-progress"></span>
 
     </div>
@@ -57,8 +57,7 @@
                         </ul>
                     </li>
 
-                    <li class="menu-item logout user-logout-button"><a href="#here"
-                            >Logout</a></li>
+                    <li class="menu-item logout user-logout-button"><a href="#here">Logout</a></li>
                 </ul>
             </div>
         </nav>
@@ -66,7 +65,6 @@
     <main class=" ">
         <div class="sidebar ">
             <div class="menu-toggle close"><i class="fas fa-chevron-circle-left"></i></div>
-
             <div class="profile">
                 <img src="" alt="" class="profile-picture">
                 <h3 class="user-name"></h3>
@@ -76,7 +74,7 @@
                 <li><a href="./index.html">Dashboard</a></li>
                 <li class="active"><a href="./blog.html">Blog</a></li>
                 <li><a href="#./comments.html">Comments</a></li>
-
+                <li><a href="../pages/profile.html">Profile</a></li>
 
             </ul>
 
@@ -85,10 +83,10 @@
 
         <section class="dashboard">
             <div class="bg-light">
-                <h2>Create Article&nbsp;<strong></strong></h2>
+                <h2>Editing Article:&nbsp;<strong id="editable-post"></strong></h2>
             </div>
             <div class="add-card">
-                <form action="#here" id="post-create-form">
+                <form action="#here" id="post-edit-form">
                     <div class="input-group">
                         <label for="title">Post Title</label>
                         <input type="text" placeholder="title" name="title" id="title" class="w-100" required>
@@ -106,20 +104,13 @@
                             <option value="Story">Story</option>
                         </select>
                     </div>
-
-
-                    <div class="input-group">
-                        <label for="post-date">Post Image</label>
-                        <input type="file" placeholder="title" name="title" id="post-image" class="custom-file-input"
-                            required accept="image/*">
-                    </div>
                     <div class="input-group editor-section">
                         <h2>Add your content here</h2>
                         <hr>
                         <textarea name="content" id="post-content" cols="30" rows="10"
                             class="post-content-create"></textarea>
                     </div>
-                    <input type="submit" value="Create" class="btn btn-submit">
+                    <input type="submit" value="Update Post" class="btn btn-submit">
 
 
 
@@ -136,6 +127,7 @@
     <script src="../js/dashboard.js" type="module" defer></script>
     <script src="../js/index.js" type="module" defer></script>
     <script src="../js/blog.js" type="module" defer></script>
+    <script src="../js/edit.js" type="module" defer></script>
 
 
 
