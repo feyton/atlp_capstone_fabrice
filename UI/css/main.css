@@ -89,12 +89,13 @@
     font-family: var(--Lato);
     font-weight: 600;
     text-align: center;
+    color: var(--dark-grey);
+    font-family: var(--Lexend);
 }
 
-.d-none {
-    display: none;
+.swal2-popup {
+    font-family: var(--Lexend) !important;
 }
-
 h2.link {
     pointer-events: none;
     cursor: pointer;
@@ -175,11 +176,11 @@ header nav ul li ul {
 
 }
 
-nav ul:first-child li:last-child:hover {
+nav ul:first-child li.pop-menu {
     border: none;
 }
 
-nav ul:first-child li:last-child:hover ul {
+nav ul:first-child li.pop-menu:hover ul {
     display: block;
 }
 

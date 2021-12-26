@@ -17,6 +17,10 @@
     font-family: var(--Lexend);
 }
 
+.comment-count {
+    color: var(--light-blue);
+}
+
 .comments {
     margin: 1rem;
     padding: 0rem 1rem;

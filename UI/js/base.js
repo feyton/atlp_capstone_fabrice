@@ -33,6 +33,21 @@ export const auth = getAuth();
 export const database = getDatabase();
 export const storage = getStorage();
 
+export const resolvePathname = (path) => {
+  let host = window.location.host;
+  let local = "127.0.0.1";
+  let gitPages = "feyton.github.io";
+  let localUI = window.location.pathname.split("/")[1];
+
+  if (host.startsWith(local) && !localUI == "UI") {
+    return path;
+  } else if (localUI == "UI") {
+    return "/UI" + path;
+  } else if (host.startsWith(gitPages)) {
+    let newPath = "atpl_capstone_fabrice" + path;
+    return newPath;
+  }
+};
 export const handleUserLoggedIn = (user) => {
   // Handling a change in authentication when a user log or logout
   let loggedIn = document.querySelectorAll(".logged-in");
@@ -69,15 +84,15 @@ export const handleUserLoggedInFirstTime = (user) => {
 };
 
 export const handleUserLoggedOut = () => {
-  let loggedIn = document.querySelectorAll(".looged-in");
+  let loggedIn = document.querySelectorAll(".logged-in");
   let loggedOut = document.querySelectorAll(".logged-out");
-  loggedIn.forEach((e) => {
-    this.style.display = "none";
+  loggedIn.forEach((element) => {
+    element.style.display = "none";
   });
-  loggedOut.forEach(() => {
-    this.style.display = "block";
+  loggedOut.forEach((element) => {
+    element.style.display = "block";
   });
-  renderHome();
+  // renderHome();
 };
 
 onAuthStateChanged(auth, (user) => {
@@ -89,11 +104,12 @@ onAuthStateChanged(auth, (user) => {
   }
 });
 
-export const notifyUser = (message, type = "primary", duration = 3000) => {
+export const notifyUser = (message, type = "success", duration = 3000) => {
   Swal.fire({
-    title: message,
+    html: message,
     timer: duration,
     timerProgressBar: true,
+    icon: type,
   });
 };
 
@@ -102,20 +118,39 @@ export const handleUserSignUpError = (code) => {
   notifyUser(code, "danger", 3000);
 };
 
+export const askUserConfirmation = () => {
+  Swal.fire({});
+};
+
 $(".user-logout-button").click((e) => {
   e.preventDefault();
-  let logout = confirm("Are you sure to logout?");
-  if (logout) {
-    auth.signOut();
-    handleUserLoggedOut();
-    notifyUser("You have successfully logged out", "warning", 3000);
-  }
+  Swal.fire({
+    title: "Are you sure?",
+    html: "You will be logged out!",
+    icon: "question",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes, log me out!",
+  }).then((result) => {
+    console.log(result.value);
+    if (result.value == true) {
+      auth.signOut();
+      notifyUser("You have successfully logged out", "warning", 3000);
+      handleUserLoggedOut();
+    } else {
+      notifyUser("Action cancelled");
+    }
+  });
 });
-export let loggedOutPath = ["/UI/pages/signup.html", "/UI/pages/login.html"];
+export let loggedOutPath = [
+  resolvePathname("/pages/signup.html"),
+  resolvePathname("/pages/login.html"),
+];
 export let loggedInPath = [""];
 export function renderHome() {
   // window.location.href = "/UI/";
-  let home = ["/UI/", "/UI/index.html"];
+  let home = ["/UI/", "/UI/index.html", resolvePathname("/index.html")];
   let host = window.location.pathname;
   if (!home.includes(host)) {
     // console.log("Not home");
@@ -137,19 +172,25 @@ function handleLoading() {
   let host = window.location.pathname;
   // let user = auth.currentUser;
   // console.log(host);
-  if (host == "/UI/pages/signup.html") {
+  if (
+    host == resolvePathname("/pages/signup.html") ||
+    host == resolvePathname("/pages/login.html")
+  ) {
     console.log("Matched");
 
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        alert("You should not be here.");
+        notifyUser("You should not be here.", "error");
         setTimeout(() => {
-          window.location.pathname = "/UI/";
-        }, 5000);
+          window.location.pathname = resolvePathname("/index.html");
+        }, 3000);
       }
     });
   }
 }
+try {
+  handleLoading();
+} catch (error) {}
 
 export function createUserProfile(user, data) {
   let userRef = push(child(databaseRef(database), "users/" + user.uid));
@@ -228,7 +269,10 @@ $(".social-icons i").click((e) => {
 });
 
 onAuthStateChanged(auth, (user) => {
-  if (user && window.location.pathname == "/UI/pages/profile.html") {
+  if (
+    user &&
+    window.location.pathname == resolvePathname("/pages/profile.html")
+  ) {
     renderUserInfo(user);
   }
 });

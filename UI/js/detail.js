@@ -10,13 +10,13 @@ import {
   set,
   update,
 } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
-import { auth, database, notifyUser } from "./base.js";
+import { auth, database, notifyUser, resolvePathname } from "./base.js";
 import { contentLoadingController } from "./index.js";
 
 function renderDetailPage() {
   contentLoadingController();
   let path = window.location.pathname;
-  if (path == "/UI/pages/detail.html") {
+  if (path == resolvePathname("/pages/detail.html")) {
     // console.log("Welcome on blod details");
     let key = localStorage.getItem("currentPostKey");
     key = JSON.parse(key);
@@ -85,7 +85,7 @@ const renderDetailTemplate = (post) => {
 `;
 
   $(".post-detail-div").html(postDetail);
-  $(".comment-count").text(post.commentCount);
+  $(".comment-count").html(post.commentCount);
 };
 
 const renderAuthorSection = (uid) => {
