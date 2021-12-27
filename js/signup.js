@@ -159,4 +159,13 @@ $(document).ready(function () {
       e.preventDefault();
     }
   });
+  let image = $("#user-image");
+  image.on("change", () => {
+    let file = image[0].files[0];
+    let reader = new FileReader();
+    reader.onload = (e) => {
+      $(".text-box").html(`<img src="${e.target.result}" alt="">`);
+    };
+    reader.readAsDataURL(file);
+  });
 });
