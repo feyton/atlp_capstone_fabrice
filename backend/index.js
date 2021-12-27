@@ -1,11 +1,15 @@
 const express = require("express");
 const fs = require("fs");
 const path = require("path");
+const { logEvents, logger } = require("./log");
 const fsPromises = require("fs").promises;
 
 const app = express();
 
 const PORT = process.env.PORT || 3500;
+
+// Custom middleware
+app.use(logger);
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
