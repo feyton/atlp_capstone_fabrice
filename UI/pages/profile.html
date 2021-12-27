@@ -58,7 +58,13 @@
                 <h2 class="head-title">My Profile</h2>
                 <hr>
                 <div class="user-card">
+
                     <img src="../assets/fab-1.jpg" alt="" class="profile-picture">
+                    <div class="update-picture">
+                        <span>Change Picture</span>
+                    </div>
+
+
                     <div class="user-info-render">
                         <div class="info">
                             <span>Name:</span> <span class="">Fabrice</span>
@@ -91,7 +97,7 @@
                         <input type="url" placeholder="Link to Twitter" id="profile-twitter" value="" class="">
                         <textarea name="biography" id="profile-bio" cols="30" rows="3" maxlength="200"
                             placeholder="Biography"></textarea>
-                        <input type="submit" value="Update" class="btn btn-submit">
+                        <input type="submit" value="Update" class="btn btn-primary btn-submit">
 
                     </form>
                 </div>
@@ -141,10 +147,43 @@
             </div>
         </div>
     </main>
+    <div class="modal d-none">
+
+        <form action="#none" class="update-profile-picture">
+            <h2>Change Picture</h2>
+            <input type="file" class="custom-file-input" name="profile-image" id="user-image"
+                placeholder="Profile picture" required accept="image/*">
+            <div class="image-div">
+                <img src="../assets/profile.JPG" alt="">
+            </div>
+            <div class="button-group">
+                <input type="submit" value="Upload" class="btn btn-secondary">
+
+
+                <button class="btn btn-primary" id="hideModal">CANCEL</button>
+            </div>
+
+        </form>
+
+    </div>
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="../js/main.js"></script>
     <script src="../js/profile.js"></script>
+    <script>
+        $(document).ready(() => {
+            $(".modal #hideModal").click((e) => {
+                e.preventDefault();
+                $(".modal").toggle(200)
+
+            })
+            $(".update-picture").click((e) => {
+                e.preventDefault();
+                $('.modal').toggle(200)
+            })
+        })
+    </script>
 
 </body>
 
