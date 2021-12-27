@@ -125,6 +125,7 @@
     padding: 2rem 3rem;
     color: rgba(33, 141, 241, 1);
     z-index: 10;
+    font-family: var(--Lexend);
 
 }
 

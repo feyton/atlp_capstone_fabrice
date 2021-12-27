@@ -9,9 +9,7 @@
 
 }
 
-.d-none {
-    display: none;
-}
+
 
 .user-profile h2 {
     padding: 2rem;
@@ -59,11 +57,10 @@
 }
 
 .user-profile .about-user .user-card .update-picture {
-    display: none;
-
     background-color: rgba(99, 70, 70, 0.616);
     border-radius: 50%;
     cursor: pointer;
+    display: none;
 }
 
 .user-profile .about-user .user-card img:hover+.update-picture {
@@ -150,7 +147,7 @@
     width: 100%;
     z-index: 100;
     background-color: rgba(41, 34, 34, 0.74);
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: center;
     text-align: center;
