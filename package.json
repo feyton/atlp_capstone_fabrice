@@ -1,0 +1,25 @@
+{
+  "name": "atlp_capstone",
+  "version": "1.0.0",
+  "description": "The project for Andella First Phase",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/feyton/atpl_capstone_fabrice.git"
+  },
+  "keywords": [
+    "andela"
+  ],
+  "author": "Fabrice",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/feyton/atpl_capstone_fabrice/issues"
+  },
+  "homepage": "https://github.com/feyton/atpl_capstone_fabrice#readme",
+  "dependencies": {
+    "date-fns": "^2.27.0"
+  }
+}
