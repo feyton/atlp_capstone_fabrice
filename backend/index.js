@@ -15,6 +15,7 @@ const whiteList = [
   "https://www.feyton.co.rw",
   "http://127.0.0.1:5500",
   "http://127.0.0.1:3500",
+  "http://localhost:3500",
 ];
 
 // Using cors to allow access
@@ -29,7 +30,7 @@ const corsOptions = {
   },
   optionsSuccessStatus: 200,
 };
-app.use(cors(corsOptions));
+app.use(cors());
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -75,8 +76,12 @@ app.get("/pages/detail(.html)?|/blog/detail(.html)?", (req, res) => {
 
 // Handling 404
 app.get("/*", (req, res) => {
-  res.status(404).send("Page not found");
+  res.status(404).sendFile("./pages/404.html", {
+    root: path.join((path.dirname(__dirname), "UI")),
+  });
 });
+
+// TO-DO Error handling
 app.listen(PORT, () => {
   console.log("Server listening on " + PORT);
 });
