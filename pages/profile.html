@@ -154,7 +154,6 @@
             <input type="file" class="custom-file-input" name="profile-image" id="user-image"
                 placeholder="Profile picture" required accept="image/*">
             <div class="image-div">
-                <img src="../assets/profile.JPG" alt="">
             </div>
             <div class="button-group">
                 <input type="submit" value="Upload" class="btn btn-secondary">
@@ -171,19 +170,8 @@
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="../js/main.js"></script>
     <script src="../js/profile.js"></script>
-    <script>
-        $(document).ready(() => {
-            $(".modal #hideModal").click((e) => {
-                e.preventDefault();
-                $(".modal").toggle(200)
 
-            })
-            $(".update-picture").click((e) => {
-                e.preventDefault();
-                $('.modal').toggle(200)
-            })
-        })
-    </script>
+
 
 </body>
 

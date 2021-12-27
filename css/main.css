@@ -989,7 +989,6 @@ main .services {
 
 .text-link {
     display: block;
-    text-align: left;
     padding: 3px 2rem;
     text-decoration: none;
     font-family: var(--Lexend);
