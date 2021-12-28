@@ -22,7 +22,7 @@ const whiteList = [
 
 const corsOptions = {
   origin: (origin, callback) => {
-    if (whiteList.indexOf(origin) !== -1) {
+    if (whiteList.indexOf(origin) !== -1 || !origin) {
       callback(null, true);
     } else {
       callback(new Error("Not allowed by CORS"));
@@ -30,13 +30,13 @@ const corsOptions = {
   },
   optionsSuccessStatus: 200,
 };
-app.use(cors());
+app.use(cors(corsOptions));
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static(path.join(path.dirname(__dirname), "UI/public")));
 
-app.get("^/$|/index(.html)?", (req, res) => {
+app.get("^/$|^/index(.html)?", (req, res) => {
   res.sendFile("./index.html", {
     root: path.join((path.dirname(__dirname), "UI")),
   });
@@ -48,32 +48,58 @@ app.get("/pages/about(.html)?|/about(.html)?", (req, res) => {
   });
   //   console.log(path.dirname(__dirname));
 });
-app.get("/pages/blog(.html)?|/blog(.html)?", (req, res) => {
+app.get("/pages/blog(.html)?|^/blog(.html)?", (req, res) => {
   res.sendFile("./pages/blog.html", {
     root: path.join((path.dirname(__dirname), "UI")),
   });
   //   console.log(path.dirname(__dirname));
 });
-app.get("/pages/detail(.html)?|/blog/detail(.html)?", (req, res) => {
+app.get("/pages/detail(.html)?|^/blog/detail(.html)?", (req, res) => {
   res.sendFile("./pages/detail.html", {
     root: path.join((path.dirname(__dirname), "UI")),
   });
   //   console.log(path.dirname(__dirname));
 });
+app.get("/pages/login(.html)?|/login(.html)?", (req, res) => {
+  res.sendFile("./pages/login.html", {
+    root: path.join((path.dirname(__dirname), "UI")),
+  });
+  //   console.log(path.dirname(__dirname));
+});
 
-// Route Handlers
+app.get("/pages/signup(.html)?|/signup(.html)?", (req, res) => {
+  res.sendFile("./pages/signup.html", {
+    root: path.join((path.dirname(__dirname), "UI")),
+  });
+  //   console.log(path.dirname(__dirname));
+});
 
-// app.get(
-//   "/blog(.html)?",
-//   (req, res, next) => {
-//     console.log("Hello there");
-//     next();
-//   },
-//   (req, res) => {
-//     res.send("testing");  //Testing the use of next like in login and next
-//   }
-// );
+app.get("/pages/work(.html)?|/work(.html)?", (req, res) => {
+  res.sendFile("./pages/work.html", {
+    root: path.join((path.dirname(__dirname), "UI")),
+  });
+  //   console.log(path.dirname(__dirname));
+});
+app.get("/pages/profile(.html)?|/profile(.html)?", (req, res) => {
+  res.sendFile("./pages/profile.html", {
+    root: path.join((path.dirname(__dirname), "UI")),
+  });
+  //   console.log(path.dirname(__dirname));
+});
 
+app.get("^/dashboard(.html)?$|^/dashboard/index(.html)?$", (req, res) => {
+  res.sendFile("./dashboard/index.html", {
+    root: path.join((path.dirname(__dirname), "UI")),
+  });
+  //   console.log(path.dirname(__dirname));
+});
+
+app.get("^/dashboard/blog(.html)?$|^/dashboard/blog(.html)?$", (req, res) => {
+  res.sendFile("./dashboard/blog.html", {
+    root: path.join((path.dirname(__dirname), "UI")),
+  });
+  //   console.log(path.dirname(__dirname));
+});
 // Handling 404
 app.get("/*", (req, res) => {
   res.status(404).sendFile("./pages/404.html", {
