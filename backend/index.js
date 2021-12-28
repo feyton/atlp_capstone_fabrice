@@ -54,7 +54,7 @@ app.get("/pages/blog(.html)?|^/blog(.html)?", (req, res) => {
   });
   //   console.log(path.dirname(__dirname));
 });
-app.get("/pages/detail(.html)?|^/blog/detail(.html)?", (req, res) => {
+app.get("/pages/detail(.html)?|^/detail(.html)?", (req, res) => {
   res.sendFile("./pages/detail.html", {
     root: path.join((path.dirname(__dirname), "UI")),
   });
