@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const fs = require("fs");
 const path = require("path");
@@ -5,11 +6,14 @@ const { logEvents, logger } = require("./middleware/logEvents");
 const fsPromises = require("fs").promises;
 const cors = require("cors");
 const { errorHandler } = require("./middleware/errorHandler");
-
+const mongoose = require("mongoose");
+const connectDB = require("./config/dbConfig");
 
 const app = express();
 
 const PORT = process.env.PORT || 3500;
+
+connectDB();
 
 // Custom middleware
 app.use(logger);
@@ -64,7 +68,9 @@ app.all("*", (req, res) => {
 //Error handling
 
 app.use(errorHandler);
-
-app.listen(PORT, () => {
-  console.log("Server listening on " + PORT);
+mongoose.connection.once("open", () => {
+  console.log("Connected");
+  app.listen(PORT, () => {
+    console.log("Server listening on " + PORT);
+  });
 });
