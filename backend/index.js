@@ -48,8 +48,10 @@ app.use(
 );
 
 app.use("/dashboard", require("./routes/dashboard"));
+app.use("/signup", require("./routes/user"));
 // app.use('/blog') //To do
 app.use("/", require("./routes/root"));
+
 // Handling 404
 app.all("*", (req, res) => {
   res.status(404);
