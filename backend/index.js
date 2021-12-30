@@ -1,10 +1,10 @@
 require("dotenv").config();
 const express = require("express");
-const fs = require("fs");
 const path = require("path");
-const { logEvents, logger } = require("./middleware/logEvents");
-const fsPromises = require("fs").promises;
+const verifyJWT = require("./middleware/verifyJWT");
+const { logger } = require("./middleware/logEvents");
 const cors = require("cors");
+const cookieParser = require("cookie-parser");
 const { errorHandler } = require("./middleware/errorHandler");
 const mongoose = require("mongoose");
 const connectDB = require("./config/dbConfig");
@@ -40,17 +40,26 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 app.use(express.urlencoded({ extended: false }));
+// built-in middleware for json
 app.use(express.json());
+
+//middleware for cookies
+app.use(cookieParser());
 app.use(express.static(path.join(path.dirname(__dirname), "UI/public")));
+
+app.use("/signup", require("./routes/user"));
+app.use("^/logout(.html)?", require("./routes/logout"));
+app.use("^/login(.html)?", require("./routes/login"));
+app.use("/refresh", require("./routes/refresh.js"));
+app.use("/pages/blog(.html)?|^/blog(.html)?", require("./routes/blog.js"));
+// app.use('/blog') //To do
+app.use("/", require("./routes/root"));
+app.use(verifyJWT);
 app.use(
   "/dashboard",
   express.static(path.join(path.dirname(__dirname), "UI/public"))
 );
-
 app.use("/dashboard", require("./routes/dashboard"));
-app.use("/signup", require("./routes/user"));
-// app.use('/blog') //To do
-app.use("/", require("./routes/root"));
 
 // Handling 404
 app.all("*", (req, res) => {

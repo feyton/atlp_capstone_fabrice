@@ -23,6 +23,12 @@ const blogSchema = new Schema({
     type: Date,
     default: Date.now,
   },
+  comments: [{ body: String, date: Date }],
+  meta: {
+    votes: Number,
+    favs: Number,
+  },
+  photoURL: URL,
 });
 
-module.exports = mongoose.model("Blog", blogSchema)
+module.exports = mongoose.model("Blog", blogSchema);

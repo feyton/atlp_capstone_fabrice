@@ -14,18 +14,7 @@ router.get("/pages/about(.html)?|/about(.html)?", (req, res) => {
   });
   //   console.log(path.dirname(__dirname));
 });
-router.get("/pages/blog(.html)?|^/blog(.html)?", (req, res) => {
-  res.sendFile("./pages/blog.html", {
-    root: path.join((path.dirname(__dirname), "UI")),
-  });
-  //   console.log(path.dirname(__dirname));
-});
-router.get("/pages/detail(.html)?|^/detail(.html)?", (req, res) => {
-  res.sendFile("./pages/detail.html", {
-    root: path.join((path.dirname(__dirname), "UI")),
-  });
-  //   console.log(path.dirname(__dirname));
-});
+
 router.get("/pages/login(.html)?|/login(.html)?", (req, res) => {
   res.sendFile("./pages/login.html", {
     root: path.join((path.dirname(__dirname), "UI")),

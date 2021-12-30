@@ -19,9 +19,12 @@ const handleNewUser = async (req, res) => {
       password: hashedPwd,
       email: email,
     });
-    console.log(result);
+    // console.log(result);
     return res.status(201).send("user created successfully");
-  } catch (error) {}
+  } catch (error) {
+    console.log(error);
+    return res.status(401).send(error.message);
+  }
 };
 
 module.exports = { handleNewUser };
