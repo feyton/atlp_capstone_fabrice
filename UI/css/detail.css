@@ -21,6 +21,11 @@
     color: var(--light-blue);
 }
 
+.blog-info .blog-detail-content {
+    box-shadow: 2px 2px 2px 2px gray;
+    padding: 1rem .1rem;
+}
+
 .comments {
     margin: 1rem;
     padding: 0rem 1rem;
@@ -191,6 +196,10 @@
     font-weight: bold;
 }
 
+.author span {
+    color: black;
+}
+
 .author .coffee {
     width: 200px;
     padding: 0rem;
@@ -201,6 +210,7 @@
     display: flex;
     position: relative;
     justify-content: space-between;
+    background-color: rgb(137, 225, 228);
 }
 
 .author .coffee span:first-child {

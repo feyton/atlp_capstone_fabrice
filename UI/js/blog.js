@@ -14,16 +14,14 @@ import {
 } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-storage.js";
 import { auth, database, notifyUser, storage } from "./base.js";
 import { contentLoadingController } from "./index.js";
-const savePost = (
-  title,
-  image,
-  content,
-  user,
-  summary,
-  category,
-  published = "true"
-) => {
+const savePost = (title, image, content, user, summary, category, status) => {
   contentLoadingController();
+  let published;
+  if (status == "published") {
+    published = "true";
+  } else {
+    published = "false";
+  }
   let imgURL;
   let newPostRef = push(child(databaseRef(database), "posts/")).key;
   let newUserPostRef = push(
@@ -61,6 +59,10 @@ const savePost = (
             authorName: user.displayName.split(" ")[0],
             user: user.uid,
             commentCount: 0,
+            imageData: {
+              ref: String(postImageRef),
+              name: image.name,
+            },
           };
           contentLoadingController("hide");
           set(databaseRef(database, "posts/" + newPostRef), postData);
@@ -87,22 +89,24 @@ $("form").submit((e) => {
 $("#post-create-form").on("submit", (e) => {
   e.preventDefault();
   const user = auth.currentUser;
-  let title, summary, image, content, category;
+  let title, summary, image, content, category, status;
   title = $("#title").val();
   summary = $("#post-summary").val();
   image = $("#post-image")[0].files[0];
   content = tinymce.get("post-content").getContent();
+  status = $("#status").val();
   //   content = $("#post-content").val();
   //   console.log(content);
   category = $("#category").val();
-  savePost(title, image, content, user, summary, category);
+  savePost(title, image, content, user, summary, category, status);
   console.log("Form submitted");
   console.log("Created");
 });
 
 function loadBlogs(uid) {
+  contentLoadingController();
   let postRefList = databaseRef(database, "user-posts/" + uid);
-  let postHTMLDiv = document.querySelector(".t-body");
+  let postHTMLDiv = document.querySelector("#blog-list-div");
 
   onValue(postRefList, (snapshot) => {
     // contentLoadingController();
@@ -112,22 +116,35 @@ function loadBlogs(uid) {
         let post = snapshot.val()[key];
 
         let postRow = `
-          <tr id="${key}">
-            <td class=""><a href="#Update page" class="color-primary post-detail" data-key="${key}">${post.title}</a></td>
-            <td><a href="#comments" class="color-primary">${post.category}</a></td>
-            <td>${post.published}</td>
-             <td class="actions">
-                <span><a href="edit.html" class="edit post-edit" data-key="${key}"><i class="fas fa-edit"></i></a></span>
-                <span><a href="edit.html" class="delete post-delete" data-key="${key}"><i class="fas fa-trash"></i></a></span>
-            </td>
-        </tr>
-          
+        <div class="item">
+      <div class="checkbox">
+          <input type="checkbox" name="checkbox" data-key="${key}" class="post-selection">
+      </div>
+      <div class="star">
+          <i class="far fa-star post-star" data-key="${key}"></i>
+      </div>
+      <div class="post-title" >
+          <h6 class=" post-detail" data-key="${key}">${post.title}</h6>
+      </div>
+      <div class="post-date">
+          <span>${post.date}</span>
+      </div>
+      <div class="post-actions">
+          <a href="#kd" class="post-detail" data-key="${key}"><i class="fas fa-eye"></i></a>
+          <a href="create.html" class="edit post-edit" data-key="${key}"><i class="fas fa-edit"></i></a>
+          <a href="#kd" class="delete post-delete" data-key="${key}"><i class="fas fa-trash"></i></a>
+
+      </div>
+  </div>
+                  
           `;
         postHTMLDiv.innerHTML += postRow;
         // $(".t-body").prepend(postRow);
       });
+      contentLoadingController("hide");
     } else {
       postHTMLDiv.innerHTML = "No posts yet. use the add sign to create one";
+      contentLoadingController("hide");
     }
   });
 }
@@ -146,12 +163,13 @@ if (window.location.pathname == "/UI/dashboard/blog.html") {
   startDashboardPage();
 }
 
-$(".t-body").on("click", ".post-detail", (e) => {
+$("#blog-list-div").on("click", ".post-detail", (e) => {
   e.preventDefault();
   //   alert("Clicked");
   let key = e.target.getAttribute("data-key");
   console.log(key);
   localStorage.setItem("currentPostKey", JSON.stringify(key));
+  // console.log(key);
   window.location.pathname = "/UI/pages/detail.html";
 });
 function renderPostDetails() {
@@ -166,14 +184,14 @@ function renderPostDetails() {
   }
 }
 
-$(".t-body").on("click", ".post-edit", (e) => {
+$("#blog-list-div").on("click", ".post-edit", (e) => {
   e.preventDefault();
   let postKey = e.target.getAttribute("data-key");
   console.log(postKey);
   localStorage.setItem("activeEditPost", JSON.stringify(postKey));
   window.location.pathname = "/UI/dashboard/edit.html";
 });
-$(".t-body").on("click", ".post-delete", (e) => {
+$("#blog-list-div").on("click", ".post-delete", (e) => {
   e.preventDefault();
   let key = e.target.getAttribute("data-key");
   console.log(key);
@@ -188,6 +206,9 @@ $(".t-body").on("click", ".post-delete", (e) => {
     );
     get(postRef).then((snapshot) => {
       let userId = snapshot.val().user;
+      let imageRef = storageRef(
+        "posts/" + postRef + "/" + snapshot.val().imageData.name
+      );
 
       if (user && user.uid == userId) {
         //To -Do: Work On File deletion
@@ -196,6 +217,20 @@ $(".t-body").on("click", ".post-delete", (e) => {
 
         // imgRef.delete();
         // console.log("deleted");
+        console.log(imageRef);
+        // imageRef
+        //   .delete()
+        //   .then()
+        //   .catch((err) => {
+        //     console.log(err);
+        //   });
+        // deleteObject(imageRef)
+        //   .then(() => {
+        //     console.log("Image deleted");
+        //   })
+        //   .catch((err) => {
+        //     console.log(err);
+        //   });
 
         remove(postRef);
         remove(userPostRef);

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | ATLP</title>
+    <link rel="icon" href="../assets/favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@8/dist/sweetalert2.css">
+    <link rel="stylesheet" href="main.css" class="css">
+</head>
+
+<body>
+    <div class="full-loader d-none">
+        <div class="lds-ring">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+
+
+
+    <main>
+        <div class="side-menu ">
+            <div class="menu-close">
+                <i class="fas fa-close"></i>
+            </div>
+            <div class="brand">
+                <h2 class="title" onclick="window.location.href='./dashboard.html'">FEYTON INC</h2>
+            </div>
+            <div class="side-menu-items">
+                <ul>
+                    <li class="menu-item active"><a href="./dashboard.html"><i
+                                class="fas fa-chalkboard fa-fw"></i>DASHBOARD</a></li>
+                    <li class="menu-item "><a href="./blog.html"><i class="fas fa-clipboard-list fa-fw"></i>BLOG</a>
+                    </li>
+                    <li class="menu-item "><a href="./query.html"><i class="far fa-comments fa-fw"></i>QUERIES</a>
+                    </li>
+                    <li class="menu-item"><a href="./users.html"><i class="far fa-user fa-fw"></i>USERS</a></li>
+
+                </ul>
+            </div>
+            <div class="actions">
+                <h3>ACTIONS</h3>
+                <ul>
+                    <li><a href="../index.html"><i class="fas fa-external-link-alt f-w"></i>&nbsp;MY SITE</a></li>
+                    <li class="logout"><i class="fas fa-sign-out-alt fa-fw"></i>&nbsp;LOGOUT</li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="dashboard">
+            <nav>
+                <div class="menu-toggle mobile">
+                    <div class="toggle"><i class="fa fa-bars"></i></div>
+
+                </div>
+                <ul>
+                    <li>
+                        <form action="#search">
+                            <input type="text" placeholder="Search">
+                            <button class="search" type="submit"><i class="fas fa-search"></i></button>
+                        </form>
+                    </li>
+                    <li class="user">
+                        <img src="../assets/profile.JPG" class="profile-picture" alt="">
+                        <span>Fabrice</span>
+                    </li>
+                </ul>
+            </nav>
+            <div class="content">
+                <div class="title-list">
+                    <div class="card suggested">
+                        <div class="header">
+                            <h4>Suggested Actions</h4>
+                        </div>
+                        <div class="body">
+                            <div class="s-action"><span>Create Post</span></div>
+                            <div class="s-action"><span>Moderate Comments</span></div>
+                            <div class="s-action"><span>Check queries</span></div>
+                            <div class="s-action"><span>Clean up queries</span></div>
+                        </div>
+                    </div>
+                    <div class="card suggested">
+                        <div class="header">
+                            <h4>Latest activities</h4>
+                        </div>
+                        <div class="body">
+                            <div class="s-action"><span>Created Post</span></div>
+                            <div class="s-action"><span>Approved 2 comments</span></div>
+                            <div class="s-action"><span>Added new query</span></div>
+
+                        </div>
+                    </div>
+                    <div class="card suggested">
+                        <div class="header">
+                            <h4>Recent searches</h4>
+                        </div>
+                        <div class="body">
+                            <div class="s-action"><span>MacBook</span></div>
+                            <div class="s-action"><span>Win11</span></div>
+                            <div class="s-action"><span>Stack</span></div>
+                            <div class="s-action"><span>Firebase</span></div>
+                            <div class="s-action"><span>How to cook</span></div>
+                            <div class="s-action"><span>Google</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="main-dashboard">
+                    <div class="task">
+                        <h2>Tasks</h2>
+                        <div class="task-addition">
+                            <i class="fa fa-plus"></i>
+                        </div>
+                        <div class="task-list">
+                            <div class="task-div">
+                                <span><input type="checkbox" name="complete task" id=""></span>
+                                <span>Create a new branch for the backend</span>
+                                <span>
+                                    <i class="fa fa-edit"></i>
+                                    <i class="fa fa-trash"></i>
+                                </span>
+                            </div>
+                            <div class="task-div">
+                                <span><input type="checkbox" name="complete task" id=""></span>
+                                <span>Create a new branch for the backend</span>
+                                <span>
+                                    <i class="fa fa-edit"></i>
+                                    <i class="fa fa-trash"></i>
+                                </span>
+                            </div>
+                            <div class="task-div">
+                                <span><input type="checkbox" name="complete task" id=""></span>
+                                <span>Create a new branch for the backend</span>
+                                <span>
+                                    <i class="fa fa-edit"></i>
+                                    <i class="fa fa-trash"></i>
+                                </span>
+                            </div>
+                            <div class="task-div">
+                                <span><input type="checkbox" name="complete task" id=""></span>
+                                <span>Create a new branch for the backend</span>
+                                <span>
+                                    <i class="fa fa-edit"></i>
+                                    <i class="fa fa-trash delete"></i>
+                                </span>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="latest-actions">
+                        <h2>Your Latest Actions</h2>
+                        <div class="action-list">
+                            <div class="action-title">
+                                <span>Time</span>
+                                <span>Action</span>
+                                <span>Method</span>
+                            </div>
+                            <div class="action-item">
+                                <span>24/12/21- 12:00</span>
+                                <span>Created new post</span>
+                                <span>Create</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <div class="modal md-center md-sm">
+        <div class="content">
+            <div class="modal-close">
+                <i class="fa fa-close"></i>
+            </div>
+            <form action="#none">
+                <h2>New Task</h2>
+                <hr>
+                <div class="input-group">
+                    <label for="taskActivity">Activity</label>
+                    <textarea name="taskActivity" id="taskActivity" cols="30" rows="3"
+                        placeholder="What are you planning to do?"></textarea>
+                </div>
+                <button type="submit">Add</button>
+            </form>
+        </div>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="../js/base.js" type="module" defer></script>
+    <script src="../js/dashboard.js" type="module" defer></script>
+    <script>
+        function toggleMenu() {
+            let menuOpen = true;
+            document.querySelector(".menu-close").addEventListener('click', () => {
+                if (menuOpen) {
+
+
+                    console.log('Menu hidden');
+                    menuOpen = false;
+                    document.querySelector(".side-menu").style.display = "none"
+                    document.querySelector(".menu-toggle").style.display = "flex";
+                    document.querySelector('main').style.gridTemplateColumns = "1fr"
+                }
+            });
+            document.querySelector(".menu-toggle").addEventListener('click', () => {
+                if (!menuOpen) {
+
+                    console.log('Menu open');
+                    menuOpen = true;
+                    document.querySelector(".side-menu").style.display = 'block'
+                    document.querySelector(".menu-toggle").style.display = "none"
+                    document.querySelector('main').style.gridTemplateColumns = "2fr 8fr"
+                };
+            })
+        }
+        toggleMenu()
+
+        document.querySelector(".task-addition").addEventListener('click', () => {
+            document.querySelector('.modal').style.display = 'flex';
+
+        })
+        document.querySelector('.modal-close').addEventListener('click', () => {
+            document.querySelector('.modal').style.display = 'none';
+        })
+    </script>
+</body>
+
+</html>

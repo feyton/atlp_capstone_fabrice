@@ -97,7 +97,7 @@ export const handleUserLoggedOut = () => {
 
 onAuthStateChanged(auth, (user) => {
   if (user) {
-    localStorage.setItem("currentUserId", user.uid);
+    // localStorage.setItem("currentUserId", user.uid);
     handleUserLoggedIn(user);
   } else {
     handleUserLoggedOut();
@@ -108,14 +108,14 @@ export const notifyUser = (message, type = "success", duration = 3000) => {
   Swal.fire({
     html: message,
     timer: duration,
-    timerProgressBar: true,
-    icon: type,
+    type: type,
   });
 };
 
 export const handleUserSignUpError = (code) => {
   console.log(code);
-  notifyUser(code, "danger", 3000);
+  
+  notifyUser(code, "error", 3000);
 };
 
 export const askUserConfirmation = () => {
@@ -133,7 +133,7 @@ $(".user-logout-button").click((e) => {
     cancelButtonColor: "#d33",
     confirmButtonText: "Yes, log me out!",
   }).then((result) => {
-    console.log(result.value);
+    // console.log(result.value);
     if (result.value == true) {
       auth.signOut();
       notifyUser("You have successfully logged out", "warning", 3000);
@@ -147,7 +147,6 @@ export let loggedOutPath = [
   resolvePathname("/pages/signup.html"),
   resolvePathname("/pages/login.html"),
 ];
-export let loggedInPath = [""];
 export function renderHome() {
   // window.location.href = "/UI/";
   let home = ["/UI/", "/UI/index.html", resolvePathname("/index.html")];
@@ -168,29 +167,29 @@ export function renderHome() {
   }
 }
 
-function handleLoading() {
-  let host = window.location.pathname;
-  // let user = auth.currentUser;
-  // console.log(host);
-  if (
-    host == resolvePathname("/pages/signup.html") ||
-    host == resolvePathname("/pages/login.html")
-  ) {
-    console.log("Matched");
+// function handleLoading() {
+//   let host = window.location.pathname;
+//   // let user = auth.currentUser;
+//   // console.log(host);
+//   if (
+//     host == resolvePathname("/pages/signup.html") ||
+//     host == resolvePathname("/pages/login.html")
+//   ) {
+//     console.log("Matched");
 
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        notifyUser("You should not be here.", "error");
-        setTimeout(() => {
-          window.location.pathname = resolvePathname("/index.html");
-        }, 3000);
-      }
-    });
-  }
-}
-try {
-  handleLoading();
-} catch (error) {}
+//     onAuthStateChanged(auth, (user) => {
+//       if (user) {
+//         notifyUser("You should not be here.", "error");
+//         setTimeout(() => {
+//           window.location.pathname = resolvePathname("/index.html");
+//         }, 3000);
+//       }
+//     });
+//   }
+// }
+// try {
+//   handleLoading();
+// } catch (error) {}
 
 export function createUserProfile(user, data) {
   let userRef = push(child(databaseRef(database), "users/" + user.uid));
@@ -355,3 +354,26 @@ $("#update-profile-form").submit((e) => {
     window.location.reload();
   }, 3000);
 });
+
+let protectedPaths = [
+  "/UI/dashboard/blog.html",
+  "/UI/dashboard/users.html",
+  "/UI/dashboard/query.html",
+  "/UI/dashboard/edit.html",
+  "/UI/dashboard/create.html",
+  "/UI/dashboard/dashboard.html",
+  "/UI/pages/profile.html",
+];
+
+setTimeout(() => {
+  if (protectedPaths.includes(window.location.pathname)) {
+    let user = auth.currentUser;
+    if (user) {
+    } else {
+      notifyUser("This page is reserved for authenticated users", "error");
+      setTimeout(() => {
+        window.location.pathname = resolvePathname("/index.html");
+      }, 3000);
+    }
+  }
+}, 3000);

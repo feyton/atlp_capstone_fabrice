@@ -34,6 +34,17 @@ $(document).ready(function (e) {
 
   // Managing the dropdown on the about me page
 
+  // let dropMenu = document.querySelectorAll(".drop-menu-item");
+  // dropMenu.forEach((element) => {
+  //   element.addEventListener("click", (e) => {
+  //     e.preventDefault();
+  //     let targetID = e.target.getAttribute("data-target");
+  //     let itemID = e.target.getAttribute("id");
+  //     console.log(targetID);
+  //     document.getElementById(targetID)
+  //   });
+  // });
+
   $(".drop-menu-item").on("click", (e) => {
     e.preventDefault();
     let targetID = e.target.getAttribute("data-target");

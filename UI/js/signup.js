@@ -26,6 +26,15 @@ $(".input").each(function () {
   $(this).on("blur", function () {
     $(this).parent().next(".message-div").toggle(100, "linear");
   });
+  let image = $("#user-image");
+  image.on("change", () => {
+    let file = image[0].files[0];
+    let reader = new FileReader();
+    reader.onload = (e) => {
+      $(".text-box").html(`<img src="${e.target.result}" alt="">`);
+    };
+    reader.readAsDataURL(file);
+  });
 });
 let $confInput = $("#user-password-confirm");
 // Email Validation
@@ -208,6 +217,7 @@ var submitData = (name, email, password, image) => {
     .catch((err) => {
       console.log(err);
       let code = err.message;
+      contentLoadingController("hide");
       handleUserSignUpError(code);
     });
 };

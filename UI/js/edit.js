@@ -54,14 +54,14 @@ function renderPostDetailEdit() {
 $("#post-edit-form").on("submit", (e) => {
   e.preventDefault();
   const user = auth.currentUser;
-  let title, summary, image, content, category;
+  let title, summary, image, content, category, status;
   console.log("Form submitted");
   title = $("#title").val();
   summary = $("#post-summary").val();
   content = tinymce.get("post-content").getContent();
-
   category = $("#category").val();
-  updatePost(title, summary, content, category);
+  status = $("#status").val();
+  updatePost(title, summary, content, category, status);
 
   console.log("Updated");
 });
@@ -78,10 +78,17 @@ function returnChanged(oldData, newData) {
   }
 }
 
-function updatePost(title, summary, content, category) {
+function updatePost(title, summary, content, category, status) {
+  contentLoadingController();
   let key = localStorage.getItem("activeEditPost");
   key = JSON.parse(key);
   let postRef = databaseRef(database, "posts/" + key);
+  let published;
+  if (status == "published") {
+    published = "true";
+  } else {
+    published = "false";
+  }
   get(postRef)
     .then((snapshot) => {
       let user = auth.currentUser;
@@ -106,11 +113,15 @@ function updatePost(title, summary, content, category) {
         if (returnChanged(post.summary, summary)) {
           newData["summary"] = summary;
         }
+        if (returnChanged(post.published, published)) {
+          newData["published"] = published;
+        }
         console.log(newData);
 
         update(postRef, newData);
         update(userPostRef, newData);
         console.log("Post updated.");
+        contentLoadingController("hide");
         notifyUser("New post updated. Redirecting in 3 seconds");
         localStorage.removeItem("activeEditPost");
         setTimeout(() => {
@@ -118,10 +129,13 @@ function updatePost(title, summary, content, category) {
         }, 3000);
       } else {
         console.log("Not editor");
+        contentLoadingController("hide");
         alert("You do not have the permission to edit this post");
       }
     })
     .catch((err) => {
       console.log(err);
+      contentLoadingController("hide");
+      notifyUser("Something happened on our end.");
     });
 }

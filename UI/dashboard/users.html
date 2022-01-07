@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard | Queries</title>
+    <title>Dashboard | Users</title>
     <link rel="icon" href="../assets/favicon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
         integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
@@ -31,9 +31,9 @@
                     <li class="menu-item "><a href="./dashboard.html"><i
                                 class="fas fa-chalkboard fa-fw"></i>DASHBOARD</a></li>
                     <li class="menu-item"><a href="./blog.html"><i class="fas fa-clipboard-list fa-fw"></i>BLOG</a></li>
-                    <li class="menu-item active"><a href="./query.html"><i class="far fa-comments fa-fw"></i>QUERIES</a>
+                    <li class="menu-item"><a href="./query.html"><i class="far fa-comments fa-fw"></i>QUERIES</a>
                     </li>
-                    <li class="menu-item"><a href="./users.html"><i class="far fa-user fa-fw"></i>USERS</a></li>
+                    <li class="menu-item active"><a href="./users.html"><i class="far fa-user fa-fw"></i>USERS</a></li>
 
                 </ul>
             </div>
@@ -67,14 +67,14 @@
             </nav>
             <div class="blog-view">
                 <div class="title-div">
-                    <h2>Queries</h2>
+                    <h2>Users</h2>
                 </div>
-                <div class="blog-list">
-                    <div class="list-head">
+                <div class="user-list">
+                    <div class="list-head f-bold">
                         <div>Select</div>
-                        <div>Star</div>
-                        <div>Message</div>
-                        <div>Senger</div>
+
+                        <div>User Info</div>
+                        <div>Email</div>
                         <div>Actions</div>
 
                     </div>
@@ -83,16 +83,70 @@
                             <div class="checkbox">
                                 <input type="checkbox" name="checkbox">
                             </div>
-                            <div class="star">
-                                <i class="far fa-star"></i>
+
+                            <div class="user-info">
+                                <img src="./download.png" alt="">
+                                <h6>Fahrer Feyton</h6>
                             </div>
-                            <div class="post-title">
-                                <h6>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum sunt saepe ex
-                                    magni, assumenda ea obcaecati temporibus facilis quis dicta nihil a, accusamus at
-                                    iste doloribus cumque tempore rerum repellat.</h6>
+                            <div class="user-email">
+                                <span>feyton@hotmail.com</span>
                             </div>
-                            <div class="post-date">
-                                <span>Fahrer</span>
+                            <div class="user-actions">
+                                <a href="#kd"><i class="fas fa-eye"></i></a>
+                                <a href="#kd"><i class="fas fa-edit"></i></a>
+                                <a href="#kd" class="confirm"><i class="fas fa-trash"></i></a>
+
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="checkbox">
+                                <input type="checkbox" name="checkbox">
+                            </div>
+
+                            <div class="user-info">
+                                <img src="./download.png" alt="">
+                                <h6>Fahrer Feyton</h6>
+                            </div>
+                            <div class="user-email">
+                                <span>feyton@hotmail.com</span>
+                            </div>
+                            <div class="user-actions">
+                                <a href="#kd"><i class="fas fa-eye"></i></a>
+                                <a href="#kd"><i class="fas fa-edit"></i></a>
+                                <a href="#kd" class="confirm"><i class="fas fa-trash"></i></a>
+
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="checkbox">
+                                <input type="checkbox" name="checkbox">
+                            </div>
+
+                            <div class="user-info">
+                                <img src="./download.png" alt="">
+                                <h6>Fahrer Feyton</h6>
+                            </div>
+                            <div class="user-email">
+                                <span>feyton@hotmail.com</span>
+                            </div>
+                            <div class="post-actions">
+                                <a href="#kd"><i class="fas fa-eye"></i></a>
+                                <a href="#kd"><i class="fas fa-edit"></i></a>
+                                <a href="#kd" class="confirm"><i class="fas fa-trash"></i></a>
+
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="checkbox">
+                                <input type="checkbox" name="checkbox">
+                            </div>
+
+                            <div class="user-info">
+                                <img src="./download.png" alt="">
+                                <h6>Fahrer Feyton</h6>
+                            </div>
+                            <div class="user-email">
+                                <span>feyton@hotmail.com</span>
                             </div>
                             <div class="post-actions">
                                 <a href="#kd"><i class="fas fa-eye"></i></a>
@@ -108,12 +162,13 @@
                             <div class="select-action">
 
 
-                                <label for="list-options">Choose what to do with selected queries:</label>
+                                <label for="list-options">Choose what to do with selected users:</label>
                                 <select name="option" id="list-options">
                                     <option value=""></option>
-                                    <option value="delete">Delete</option>
-                                    <option value="star">Star</option>
-                                    <option value="archive">Archive</option>
+                                    <option value="delete">Make Author</option>
+                                    <option value="star">Deactivate</option>
+                                    <option value="archive">Revoke permissions</option>
+                                    <option value="draft">Delete</option>
 
                                 </select>
                                 <button>GO</button>
