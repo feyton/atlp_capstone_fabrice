@@ -1,25 +1,33 @@
-$(document).ready(() => {
-  $(".btn-update-profile").click((e) => {
+document.addEventListener("DOMContentLoaded", (e) => {
+  const updateBtn = document.querySelector(".btn-update-profile");
+  const updateDiv = document.querySelector(".update-div");
+  updateBtn.addEventListener("click", (e) => {
     e.preventDefault();
-    $(".update-div").toggle(200);
+    updateDiv.classList.toggle("d-none");
   });
 
-  $(".modal #hideModal").click((e) => {
+  document.querySelector("#hideModal").addEventListener("click", (e) => {
+    console.log("clicked");
     e.preventDefault();
-    $(".modal").toggle(200);
+    document.querySelector(".modal").style.display = "none";
   });
-  $(".update-picture").click((e) => {
+  document.querySelector(".update-picture").addEventListener("click", (e) => {
     e.preventDefault();
-    $(".modal").toggle(200);
+    document.querySelector(".modal").style.display = "flex";
   });
 
-  let image = $("#user-image");
-  image.on("change", () => {
-    let file = image[0].files[0];
-    let reader = new FileReader();
-    reader.onload = (e) => {
-      $(".image-div").html(`<img src="${e.target.result}" alt="">`);
-    };
-    reader.readAsDataURL(file);
-  });
+  const image = document.getElementById("user-image");
+  try {
+    image.addEventListener("change", (e) => {
+      const file = e.target.files[0];
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        document.querySelector(".image-div").innerHTML = `
+        <img src="${e.target.result}" alt="uploaded image">`;
+      };
+      reader.readAsDataURL(file);
+    });
+  } catch (error) {
+    console.warn(error);
+  }
 });

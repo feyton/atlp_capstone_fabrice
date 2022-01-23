@@ -24,7 +24,7 @@
 
 
         <div class="text-box">
-            
+
             <h2>Why Choose Us?</h2>
             <p><i class="fa fa-check"></i>&nbsp;Fast and reliable</p>
             <p><i class="fa fa-check"></i>&nbsp;Updated Content</p>
@@ -41,10 +41,14 @@
                     </div>
                     <div class="">
                         <input type="text" name="name" id="user-name" class="input" required placeholder="Name"
-                            minlength="3">
+                            minlength="3" data-message="firstname-message">
                     </div>
-
-
+                    <div class="message-div" id="firstname-message">
+                        <b>Must:</b>
+                        <ul>
+                            <li class="invalid" id="name-valid">Minimum 3 characters and only letters</li>
+                        </ul>
+                    </div>
 
                 </div>
                 <div class="input-div ">
@@ -52,9 +56,10 @@
                         <i class="fas fa-at" id="email-icon"></i>
                     </div>
                     <div class="">
-                        <input type="email" class="input" name="email" required placeholder="Email" id="user-email">
+                        <input type="email" class="input" name="email" required placeholder="Email" id="user-email"
+                            data-message="email-message">
                     </div>
-                    <div class="message-div">
+                    <div class="message-div" id="email-message">
                         <b>Must:</b>
                         <ul>
                             <li class="invalid" id="email-valid">Valid email required</li>
@@ -62,8 +67,14 @@
                     </div>
 
                 </div>
-                <input type="file" class="custom-file-input" name="profile-image" id="user-image"
-                    placeholder="Profile picture" required accept="image/*">
+                <div class="input-div">
+                    <input type="file" class="custom-file-input" name="profile-image" id="user-image"
+                        placeholder="Profile picture" accept="image/*" data-message="image-message">
+                    <div class="message-div">
+                        <li class="valid" id="image-message">Profile picture required</li>
+                    </div>
+                </div>
+
                 <div class="input-div ">
                     <div class="i">
                         <i class="fas fa-lock" id="password-icon"></i>
@@ -71,9 +82,9 @@
                     <div class="">
 
                         <input type="password" id="user-password" class="input" name="password" required
-                            placeholder="Password">
+                            placeholder="Password" data-message="password-message" minlength="6">
                     </div>
-                    <div class="message-div">
+                    <div class="message-div" id="password-message">
                         <b>Password must:</b>
                         <ul>
                             <li class="invalid" id="lower-case-valid">Lower case letter</li>
@@ -87,10 +98,10 @@
                         <i class="fas fa-lock" id="password-confirm-icon"></i>
                     </div>
                     <div class="">
-                        <input type="password" class="input" id="user-password-confirm" name="password" required
-                            placeholder="Confirm password" disabled>
+                        <input type="password" class="input" id="user-password-confirm" name="password2" required
+                            placeholder="Confirm password" data-message="confirm-message" minlength="6">
                     </div>
-                    <div class="message-div">
+                    <div class="message-div" id="confirm-message">
                         <b>Must be:</b>
                         <ul>
                             <li class="invalid" id="confirm-password-list">Similar to password</li>
@@ -99,7 +110,7 @@
                 </div>
                 <input type="submit" class="btn" value="Sign Up" id="form-submit">
                 <div class="links">
-                    <a href="./login.html">Login Here</a>
+                    <a href="../index.html">Login Here</a>
                 </div>
 
                 <div class="social-login">
@@ -120,17 +131,7 @@
             </form>
         </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
     <script src="../js/signup.js"></script>
-
-
-    <script>
-
-    </script>
-
-
 </body>
 
 </html>

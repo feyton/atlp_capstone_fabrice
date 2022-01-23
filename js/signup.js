@@ -1,171 +1,154 @@
-$(document).ready(function () {
-  $confInput = $("#user-password-confirm");
-  $(".input").each(function () {
-    $(this).on("focus", function () {
-      //   alert("focused");
-      $(this).parent().next(".message-div").toggle(100, "linear");
-    });
-    $(this).on("blur", function () {
-      $(this).parent().next(".message-div").toggle(100, "linear");
-    });
+document.addEventListener("DOMContentLoaded", (e) => {
+  // Email Validation
+  let validName, validEmail, validPassword, validPasswordConfirm;
+  const validateName = (value) => {
+    var nameRegex = /^[a-zA-Z ]{3,}$/g;
+    if (value.match(nameRegex)) {
+      document.getElementById("name-valid").classList.remove("invalid");
+      validName = true;
+    } else {
+      document.getElementById("name-valid").classList.add("invalid");
+      validName = false;
+    }
+  };
+  const signupForm = document.querySelector("form");
+  signupForm.email.addEventListener("keyup", (e) => {
+    console.log(e.target.value);
+    // emailValidation(e.target.value)
+  });
+  signupForm.name.addEventListener("keyup", (e) => {
+    validateName(e.target.value);
   });
 
-  // Email Validation
-  var emailValidation = () => {
-    $email = $("#user-email");
-    // var emailValid = false;
-    var emailRegex = /\S+@\S+\.\S+/;
-    $email.on("keyup", () => {
-      if ($email.val().match(emailRegex)) {
-        $("#email-icon").addClass("valid");
-        $("#email-valid").removeClass("invalid");
-        $("#email-valid").addClass("valid");
-        console.log("valid");
-        // emailValid = true;
-      } else {
-        $("#email-icon").addClass("invalid");
-        $("#email-valid").addClass("invalid");
-        $("#email-valid").removeClass("valid");
-        console.log("invalid");
-      }
-      // return emailValid;
-    });
-  };
+  signupForm.password.addEventListener("keyup", (e) => {
+    validatePassword(e.target.value);
+  });
+  signupForm.email.addEventListener("keyup", (e) => {
+    emailValidation(e.target.value);
+  });
+  signupForm.password2.addEventListener("keyup", (e) => {
+    validatePasswordConfirm(signupForm.password.value, e.target.value);
+  });
 
+  var emailValidation = (value) => {
+    var emailRegex = /\S+@\S+\.\S+/;
+    if (value.match(emailRegex)) {
+      document.querySelector("#email-icon").classList.add("valid");
+      document.querySelector("#email-valid").classList.remove("invalid");
+      document.querySelector("#email-valid").classList.add("valid");
+      validEmail = true;
+    } else {
+      document.querySelector("#email-icon").classList.add("invalid");
+      document.querySelector("#email-valid").classList.add("invalid");
+      document.querySelector("#email-valid").classList.remove("valid");
+      validEmail = false;
+    }
+  };
   //   Form validation
-  var validatePassword = () => {
+  var validatePassword = (value) => {
     var lowerCaseLetter = /[a-z]/g;
     var upperCaseLetter = /[A-Z]/g;
     var numbers = /[0-9]/g;
     // var passwordValid = false;
-    $("#user-password").on("keyup", function () {
-      $("#password-icon").addClass("invalid");
-      //   console.log($(this).val());
-      if ($(this).val().match(lowerCaseLetter)) {
-        $("#lower-case-valid").removeClass("invalid");
-        $("#lower-case-valid").addClass("valid");
-      } else {
-        $("#lower-case-valid").removeClass("valid");
-        $("#lower-case-valid").addClass("invalid");
-      }
-      if ($(this).val().match(upperCaseLetter)) {
-        $("#upper-case").removeClass("invalid");
-        $("#upper-case").addClass("valid");
-      } else {
-        $("#upper-case").removeClass("valid");
-        $("#upper-case").addClass("invalid");
-      }
-      if ($(this).val().match(numbers)) {
-        $("#number").removeClass("invalid");
-        $("#number").addClass("valid");
-      } else {
-        $("#number").removeClass("valid");
-        $("#number").addClass("invalid");
-      }
+    document.querySelector("#password-icon").classList.add("invalid");
+    //   console.log($(this).val());
+    if (value.match(lowerCaseLetter)) {
+      document.querySelector("#lower-case-valid").classList.remove("invalid");
+      document.querySelector("#lower-case-valid").classList.add("valid");
+    } else {
+      document.querySelector("#lower-case-valid").classList.remove("valid");
+      document.querySelector("#lower-case-valid").classList.add("invalid");
+    }
+    if (value.match(upperCaseLetter)) {
+      document.querySelector("#upper-case").classList.remove("invalid");
+      document.querySelector("#upper-case").classList.add("valid");
+    } else {
+      document.querySelector("#upper-case").classList.remove("valid");
+      document.querySelector("#upper-case").classList.add("invalid");
+    }
+    if (value.match(numbers)) {
+      document.querySelector("#number").classList.remove("invalid");
+      document.querySelector("#number").classList.add("valid");
+    } else {
+      document.querySelector("#number").classList.remove("valid");
+      document.querySelector("#number").classList.add("invalid");
+    }
 
-      if (
-        $(this).val().match(lowerCaseLetter) &&
-        $(this).val().match(upperCaseLetter) &&
-        $(this).val().match(numbers) &&
-        $(this).val().length >= 6
-      ) {
-        $("#password-icon").removeClass("invalid");
-        $confInput.prop("disabled", false);
-        // return true;
-      } else {
-        // return false;
-      }
-    });
-  };
-  function validatePasswordConfirm() {
-    $confInput = $("#user-password-confirm");
-    $pass = $("#user-password").val();
-
-    $confInput.on("keyup", function () {
-      if ($("#user-password").val() == $(this).val()) {
-        // console.log($(this).val());
-        // confirmPasswordValid = true;
-        $("#password-confirm-icon").addClass("valid");
-        $("#confirm-password-list").addClass("valid");
-        $("#confirm-password-list").removeClass("invalid");
-        $("#form-submit").prop("disabled", false);
-        // return true;
-      } else {
-        console.log($(this).val());
-        console.log($("#user-password").val());
-        $("#password-confirm-icon").addClass("invalid");
-        $("#password-confirm-icon").removeClass("valid");
-        $("#confirm-password-list").addClass("invalid");
-        $("#confirm-password-list").removeClass("valid");
-        // return false;
-      }
-    });
-  }
-  validatePassword();
-  validatePasswordConfirm();
-  emailValidation();
-
-  function checkPass(pass) {
-    var lowerCaseLetter = /[a-z]/g;
-    var upperCaseLetter = /[A-Z]/g;
-    var numbers = /[0-9]/g;
     if (
-      pass.match(lowerCaseLetter) &&
-      pass.match(upperCaseLetter) &&
-      pass.match(numbers)
+      value.match(lowerCaseLetter) &&
+      value.match(upperCaseLetter) &&
+      value.match(numbers) &&
+      value.length >= 6
     ) {
-      return true;
-    }
-    return false;
-  }
-
-  function checkEmail(email) {
-    var emailRegex = /\S+@\S+\.\S+/;
-    if (email.match(emailRegex)) {
-      return true;
-    }
-    return false;
-  }
-
-  var validateSignUpForm = () => {
-    var password = $("#user-password").val();
-    var email = $("#user-email").val();
-    var name = $("#user-name").val();
-
-    if (checkEmail(email) && checkPass(password) && name.length >= 3) {
-      console.log("Form is valid");
-      submitData(name, email, password);
-      return true;
+      document.querySelector("#password-icon").classList.remove("invalid");
+      validPassword = true;
     } else {
-      console.log("Invalid form");
-      return false;
+      validPassword = false;
     }
   };
+  function validatePasswordConfirm(password, value) {
+    if (password == value) {
+      document.querySelector("#password-confirm-icon").classList.add("valid");
+      document.querySelector("#confirm-password-list").classList.add("valid");
+      document
+        .querySelector("#confirm-password-list")
+        .classList.remove("invalid");
+      validPasswordConfirm = true;
+    } else {
+      document.querySelector("#password-confirm-icon").classList.add("invalid");
+      document
+        .querySelector("#password-confirm-icon")
+        .classList.remove("valid");
+      document.querySelector("#confirm-password-list").classList.add("invalid");
+      document
+        .querySelector("#confirm-password-list")
+        .classList.remove("valid");
+      validPasswordConfirm = false;
+    }
+  }
 
-  // Form Submission function
-
-  var submitData = (name, email, password) => {
-    console.log(name, email, password);
-  };
-
-  $("#form").on("submit", function (e) {
+  signupForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    var valid = validateSignUpForm();
-
-    if (valid) {
-      console.log("Valid");
+    if ((validEmail, validName, validPassword, validPasswordConfirm)) {
+      const formData = new FormData(e.target);
+      var data = {};
+      for (var [key, value] of formData.entries()) {
+        data[key] = value;
+      }
+      console.log(data);
     } else {
-      alert("Form is not valid");
-      e.preventDefault();
+      alert("Form is invalid");
     }
   });
-  let image = $("#user-image");
-  image.on("change", () => {
-    let file = image[0].files[0];
-    let reader = new FileReader();
-    reader.onload = (e) => {
-      $(".text-box").html(`<img src="${e.target.result}" alt="">`);
-    };
-    reader.readAsDataURL(file);
-  });
+
+  const inputs = document.querySelectorAll("input");
+  try {
+    inputs.forEach((input) => {
+      input.addEventListener("focus", (e) => {
+        let messageDiv = e.target.getAttribute("data-message");
+        document.getElementById(messageDiv).style.display = "block";
+      });
+      input.addEventListener("blur", (e) => {
+        let messageDiv = e.target.getAttribute("data-message");
+        document.getElementById(messageDiv).style.display = "none";
+      });
+    });
+  } catch (error) {
+    console.warn(error);
+  }
+
+  const image = document.getElementById("user-image");
+  try {
+    image.addEventListener("change", (e) => {
+      const file = e.target.files[0];
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        document.querySelector(".text-box").innerHTML = `
+        <img src="${e.target.result}" alt="uploaded image">`;
+      };
+      reader.readAsDataURL(file);
+    });
+  } catch (error) {
+    console.warn(error);
+  }
 });

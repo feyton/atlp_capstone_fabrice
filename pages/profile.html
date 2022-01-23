@@ -31,14 +31,14 @@
                 <ul class="menu-items flex-row">
 
                     <li class="menu-item menu-home"><a href="../index.html" class="">Home</a></li>
-                    <li class="menu-item active "><a href="./blog.html">Blog</a></li>
+                    <li class="menu-item"><a href="./blog.html">Blog</a></li>
                     <li class="menu-item"><a href="./work.html">Our Work</a></li>
                     <li class="menu-item"><a href="./about.html">About Us</a></li>
-                    <li class="menu-item profile-img"><a href="#here"><img src="../assets/profile.JPG" alt=""
+                    <li class="menu-item profile-img "><a href="#here"><img src="../assets/profile.JPG" alt=""
                                 class="profile-picture"><i class="fa fa-chevron-down"></i></a>
                         <ul>
-                            <li><a href="./profile.html">Profile</a></li>
-                            <li><a href="../dashboard/dashboard.html">Dashboard</a></li>
+                            <li class="active"><a href="./profile.html">Profile</a></li>
+                            <li class="admin"><a href="../dashboard/dashboard.html">Dashboard</a></li>
                             <li><a href="#logout" class="logout">Logout</a></li>
                         </ul>
 
@@ -127,24 +127,21 @@
                     </form>
                 </div>
                 <div class="social">
-                    <h3>Follow us</h3>
+                    <h3>Follow me</h3>
                     <div class="social-icons">
-                        <i class="fab fa-facebook"></i>
-                        <i class="fab fa-instagram"></i>
-                        <i class="fab fa-github"></i>
-                        <i class="fab fa-youtube"></i>
+                        <a href="https://facebook.com/feytonf" target="_blank" rel="noopener noreferrer"><i
+                            class="fab fa-facebook"></i></a>
+                    <a href="https://instagram.com/feytonf" target="_blank" rel="noopener noreferrer"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="https://github.com/feyton" target="_blank" rel="noopener noreferrer"><i
+                            class="fab fa-github"></i></a>
+                    <a href="https://www.youtube.com/channel/UCfMEXzqST_bQSs0f31_R8NA" target="_blank"
+                        rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
                     </div>
 
                 </div>
 
             </footer>
-            <div class="admin center">
-                <div class="login">
-                    <p>Admin</p>
-                    <button class="login-btn" onclick="window.location.href='./login.html'">Login</button>
-                </div>
-
-            </div>
         </div>
     </main>
     <div class="modal d-none">
@@ -166,10 +163,14 @@
 
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="../js/main.js"></script>
-    <script src="../js/profile.js"></script>
+    <!-- MODAL -->
+    <div class="loader-div">
+        <div class="loader progress">
+            <div class="juice" data-percent=0%></div>
+        </div>
+    </div>
+    <script src="../js/main.js" defer type="module"></script>
+    <script src="../js/profile.js" defer type="module"></script>
 
 
 

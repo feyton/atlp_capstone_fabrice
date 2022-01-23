@@ -183,9 +183,10 @@
         </div>
 
     </div>
-    <script>
+    <script defer>
+        let menuOpen = true;
         function toggleMenu() {
-            let menuOpen = true;
+
             document.querySelector(".menu-close").addEventListener('click', () => {
                 if (menuOpen) {
 
@@ -216,6 +217,34 @@
         })
         document.querySelector('.modal-close').addEventListener('click', () => {
             document.querySelector('.modal').style.display = 'none';
+        })
+
+        window.addEventListener('load', (e) => {
+            const width = window.innerWidth
+            if (width < 800) {
+                const alreadyAccepted = localStorage.getItem('accept');
+                if (alreadyAccepted) {
+                } else {
+                    let accept = confirm(`For better experience, We recommend that you use a device with at least 1000 px. I understand`)
+                    if (accept) {
+                        localStorage.setItem("accept", true)
+                        alert("The experince may deteriorate")
+                    } else {
+                        alert("You will be redirected to the homepage");
+                        setTimeout(() => {
+                            window.location.pathname = '/'
+                        }, 3000)
+                    }
+                }
+
+            }
+            else if (width < 1000) {
+                console.log("Mini width");
+                menuOpen = false;
+                document.querySelector(".side-menu").style.display = "none"
+                document.querySelector(".menu-toggle").style.display = "flex";
+                document.querySelector('main').style.gridTemplateColumns = "1fr"
+            }
         })
     </script>
 </body>
