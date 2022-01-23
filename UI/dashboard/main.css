@@ -43,7 +43,7 @@ body {
     top: 0;
     left: 0;
     min-height: 100vh;
-    min-width: 1250px;
+    min-width: 100%;
     background-color: #A4ABBD;
     width: 100%;
     height: 100%;
@@ -853,4 +853,16 @@ main .user-list button {
 
 .user-actions a:nth-child(2) {
     color: green;
+}
+
+@media screen and (max-width: 1250px) {
+    body {
+        min-width: 300px !important;
+    }
+}
+@media screen and (max-width: 1182px) {
+    body {
+        min-width: 300px !important;
+    }
+    
 }

@@ -45,16 +45,267 @@ header nav {
 
 }
 
-/* nav.fixed {
-    position: fixed;
-    z-index: 1000;
-    background-color: rgb(241, 236, 236);
-
-} */
 
 header nav a {
     text-decoration: none;
 }
+
+/* AUTH UI MANAGER */
+
+.logged-in {
+    display: none !important;
+}
+
+/* MODAL CONTROLLER */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #2c3e50;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #3498db, #2c3e50f6);
+    background: linear-gradient(to right, #3498dbf6, #2c3e50f6);
+    z-index: 100;
+    display: none;
+}
+
+.modal-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal .modal-card {
+    position: relative;
+    background-color: white;
+    border-radius: 20px;
+    width: fit-content;
+    height: fit-content;
+    padding: 1rem;
+    font-family: 'Lexend';
+}
+
+.modal .modal-card .modal-close {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    background-color: rgb(117, 12, 12);
+    height: 30px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    /* font-size: 1.2rem; */
+    font-family: "Lexend";
+    padding: 0;
+    margin: 0;
+    color: white;
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+.modal .login-form {
+    display: block;
+}
+
+.modal h1, .modal h3 {
+    text-align: center;
+}
+
+.modal .button-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.modal .button-group div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: .3rem 1rem;
+    border-radius: 10px;
+    margin: .2rem;
+    cursor: pointer;
+}
+
+.modal .button-group .google {
+    padding: .3rem 1rem;
+    background-image: linear-gradient(to right, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #8d4034 100%);
+}
+
+.modal .button-group .facebook {
+    background-image: radial-gradient(circle 610px at 5.2% 51.6%, rgba(5, 8, 114, 1) 0%, rgba(7, 3, 53, 1) 97.5%);
+    color: white;
+    cursor: pointer;
+
+}
+
+.modal span {
+    font-family: var(--Lexend);
+}
+
+/* LOGIN FORM */
+
+.login-form input {
+    display: block;
+    padding: .3rem .5rem;
+    margin: .4rem .2rem;
+    border: 2px solid #3498db;
+    border-radius: 10px;
+    font-family: var(--Lexend);
+}
+
+.login-form input::placeholder {
+    color: rgb(3, 3, 75);
+    font-weight: bolder;
+}
+
+.login-form input:focus {
+    border: 2px solid #084d7a;
+    outline: none;
+}
+
+.login-form p {
+    margin-top: 1rem;
+}
+
+.login-form p a {
+    text-align: right;
+    text-decoration: none;
+    margin-top: 1rem;
+}
+
+button[type="submit"] {
+    cursor: pointer;
+}
+
+/* / */
+.disabled {
+    cursor: not-allowed;
+}
+
+.animate {
+    animation: animateWidth 1s linear forwards;
+}
+
+@keyframes animateWidth {
+    0% {
+
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+/* LOADER */
+.loader-div {
+    position: fixed;
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.95);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.loader.standard {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    border: 16px solid white;
+    border-bottom: 16px solid #267871;
+    border-top: 16px solid #267871;
+    animation: spin 2s linear infinite;
+
+}
+
+.juice {
+    display: none;
+}
+
+.loader-div .loader.progress .juice {
+    display: block;
+    height: 20px;
+    width: 0%;
+    animation: wave 3s linear infinite;
+}
+
+.loader-div .loader.progress .juice::after {
+    content: attr(data-percent);
+    align-items: right;
+    font-family: 'lexend';
+    color: white;
+    margin-left: 2px;
+}
+
+.loader.progress {
+    width: 300px;
+    height: 24px;
+    background: #ffffff;
+    border: 2px solid rgb(255, 0, 0);
+    overflow: hidden;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes wave {
+    0% {
+        background: #9CECFB;
+    }
+
+    20% {
+        background: #168497;
+    }
+
+    30% {
+        background: #066272;
+    }
+
+    30% {
+        background: #ad54e9;
+    }
+
+    40% {
+        background: #1757ac;
+    }
+
+    60% {
+        background: #461f66;
+    }
+
+    80% {
+        background: #1c3364;
+
+    }
+
+    100% {
+        background: #54cee4;
+
+    }
+}
+
+
+
 
 /* Brand */
 header nav .brand h3 {
@@ -104,6 +355,14 @@ header nav ul li ul {
 
 }
 
+nav ul:first-child li.profile-img:hover {
+    border: none;
+}
+
+nav ul:first-child li.profile-img:hover ul {
+    display: block;
+}
+
 nav ul:first-child li:last-child:hover {
     border: none;
 }
@@ -123,6 +382,13 @@ header nav ul li ul li {
 
 
 header nav ul .profile-picture {
+    height: 30px;
+    width: 30px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+header nav ul .picture-avatar {
     height: 30px;
     width: 30px;
     object-fit: cover;
@@ -205,7 +471,7 @@ nav .mobile {
 /* Styling the hero */
 
 main .hero {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.774), rgba(0, 0, 0, 0.623)), url("https://images.unsplash.com/photo-1453928582365-b6ad33cbcf64?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=873&q=80");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.774), rgba(0, 0, 0, 0.623)), url("../assets/bg.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;

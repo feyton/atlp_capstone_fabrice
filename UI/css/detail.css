@@ -33,7 +33,32 @@
     font-family: var(--Lexend);
     margin-left: 1rem;
 }
-
+.comment-login {
+    font-family: var(--Lexend);
+    text-align: center;
+}
+.comment-login .button-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .2rem 1rem;
+    margin-top: 1rem;
+}
+.comment-login .button-group a {
+    background: #314755;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #26a0da, #314755);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #26a0da, #314755); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    padding: .3rem 1rem;
+    border-radius: 10px;
+    margin-left: 10px;
+    font-family: var(--Lexend);
+    text-decoration: none;
+    color: white;
+    
+}
+button {
+    cursor: pointer;
+}
 .comments .comment-form {
     width: 80%;
     margin: 1rem;
